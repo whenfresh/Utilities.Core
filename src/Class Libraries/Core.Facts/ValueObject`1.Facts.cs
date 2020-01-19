@@ -129,18 +129,18 @@ namespace Cavity
             Assert.True(operand1 > operand2);
         }
 
-        [Fact]
-        public void opImplicit_string_ValueObjectOfT()
-        {
-            var expected = "31/12/1999 00:00:00" + Environment.NewLine + "123";
-            var actual = new ValueObjectDerived
-                             {
-                                 DateTimeProperty = new DateTime(1999, 12, 31),
-                                 Int32Property = 123
-                             };
+        ////[Fact]
+        ////public void opImplicit_string_ValueObjectOfT()
+        ////{
+        ////    var expected = "31/12/1999 00:00:00" + Environment.NewLine + "123";
+        ////    var actual = new ValueObjectDerived
+        ////                     {
+        ////                         DateTimeProperty = new DateTime(1999, 12, 31),
+        ////                         Int32Property = 123
+        ////                     };
 
-            Assert.Equal(expected, actual);
-        }
+        ////    Assert.Equal(expected, actual);
+        ////}
 
         [Fact]
         public void opInequality_ValueObjectOfT_ValueObjectOfT_whenFalse()
@@ -511,23 +511,23 @@ namespace Cavity
             Assert.Throws<ArgumentNullException>(() => new ValueObjectDerived().RegisterNullProperty());
         }
 
-        [Fact]
-        public void op_ToString()
-        {
-            var obj = new ValueObjectDerived
-                          {
-                              DateTimeProperty = new DateTime(1999, 12, 31),
-                              Int32Property = 123,
-                              StringProperty = "test"
-                          };
+        ////[Fact]
+        ////public void op_ToString()
+        ////{
+        ////    var obj = new ValueObjectDerived
+        ////                  {
+        ////                      DateTimeProperty = new DateTime(1999, 12, 31),
+        ////                      Int32Property = 123,
+        ////                      StringProperty = "test"
+        ////                  };
 
-            // ReSharper disable SpecifyACultureInStringConversionExplicitly
-            var expected = string.Concat(new DateTime(1999, 12, 31).ToString(), Environment.NewLine, "123", Environment.NewLine, "test");
+        ////    // ReSharper disable SpecifyACultureInStringConversionExplicitly
+        ////    var expected = string.Concat(new DateTime(1999, 12, 31).ToString(), Environment.NewLine, "123", Environment.NewLine, "test");
 
-            // ReSharper restore SpecifyACultureInStringConversionExplicitly
-            var actual = obj.ToString();
+        ////    // ReSharper restore SpecifyACultureInStringConversionExplicitly
+        ////    var actual = obj.ToString();
 
-            Assert.Equal(expected, actual);
-        }
+        ////    Assert.Equal(expected, actual);
+        ////}
     }
 }

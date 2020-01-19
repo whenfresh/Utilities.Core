@@ -194,14 +194,14 @@
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void op_Compute_FileSystemInfo()
-        {
-            MD5Hash expected = Convert.FromBase64String(_jigsawHash);
-            var actual = MD5Hash.Compute(new FileInfo(@"Security\Cryptography\jigsaw.html"));
+        ////[Fact]
+        ////public void op_Compute_FileSystemInfo()
+        ////{
+        ////    MD5Hash expected = Convert.FromBase64String(_jigsawHash);
+        ////    var actual = MD5Hash.Compute(new FileInfo(@"Security\Cryptography\jigsaw.html"));
 
-            Assert.Equal(expected, actual);
-        }
+        ////    Assert.Equal(expected, actual);
+        ////}
 
         [Fact]
         public void op_Compute_FileSystemInfoEmpty()
