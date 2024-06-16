@@ -1,17 +1,15 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+using System.Diagnostics.CodeAnalysis;
+
+public interface IGetTimeZone<out T>
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
+    T LocalTime { get; }
 
-    public interface IGetTimeZone<out T>
-    {
-        T LocalTime { get; }
-
-        T UniversalTime { get; }
+    T UniversalTime { get; }
 
 #if !NET20
-        [SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = "For", Justification = "This naming is intentional.")]
-        T For(TimeZoneInfo value);
+    [SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = "For", Justification = "This naming is intentional.")]
+    T For(TimeZoneInfo value);
 #endif
-    }
 }

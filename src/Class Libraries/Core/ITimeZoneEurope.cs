@@ -1,19 +1,16 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+public interface ITimeZoneEurope
 {
-    using System;
+    TimeZoneInfo BritishTime { get; }
 
-    public interface ITimeZoneEurope
-    {
-        TimeZoneInfo BritishTime { get; }
+    TimeZoneInfo CentralEuropeanTime { get; }
 
-        TimeZoneInfo CentralEuropeanTime { get; }
+    TimeZoneInfo EasternEuropeanStandardTime { get; }
 
-        TimeZoneInfo EasternEuropeanStandardTime { get; }
+    TimeZoneInfo GreenwichMeanTime { get; }
 
-        TimeZoneInfo GreenwichMeanTime { get; }
+    TimeZoneInfo RussianStandardTime { get; }
 
-        TimeZoneInfo RussianStandardTime { get; }
-
-        TimeZoneInfo WesternEuropeanStandardTime { get; }
-    }
+    TimeZoneInfo WesternEuropeanStandardTime { get; }
 }

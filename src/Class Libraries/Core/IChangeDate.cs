@@ -1,7 +1,6 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+public interface IChangeDate : IChangeMonth<Date>
 {
-    public interface IChangeDate : IChangeMonth<Date>
-    {
-        Date Day(int value);
-    }
+    Date Day(int value);
 }

@@ -1,76 +1,73 @@
-﻿namespace WhenFresh.Utilities.Core.IO
+﻿namespace WhenFresh.Utilities.Core.IO;
+
+using System.Collections;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+
+[SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "This naming is intentional.")]
+public class FileSpec : IEnumerable<FileInfo>
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.IO;
-
-    [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "This naming is intentional.")]
-    public class FileSpec : IEnumerable<FileInfo>
+    public FileSpec(string value)
     {
-        public FileSpec(string value)
+        if (null == value)
         {
-            if (null == value)
-            {
-                throw new ArgumentNullException("value");
-            }
-
-            value = value.Trim();
-            if (0 == value.Length)
-            {
-                throw new ArgumentOutOfRangeException("value");
-            }
-
-            Value = value;
+            throw new ArgumentNullException("value");
         }
 
-        private string Value { get; set; }
-
-        IEnumerator IEnumerable.GetEnumerator()
+        value = value.Trim();
+        if (0 == value.Length)
         {
-            return GetEnumerator();
+            throw new ArgumentOutOfRangeException("value");
         }
 
-        public IEnumerator<FileInfo> GetEnumerator()
+        Value = value;
+    }
+
+    private string Value { get; set; }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public IEnumerator<FileInfo> GetEnumerator()
+    {
+        if (!Value.Contains("*"))
         {
-            if (!Value.Contains("*"))
+            var file = new FileInfo(Value);
+            if (!file.Exists)
             {
-                var file = new FileInfo(Value);
-                if (!file.Exists)
-                {
-                    throw new FileNotFoundException(file.FullName);
-                }
-
-                yield return file;
-                yield break;
+                throw new FileNotFoundException(file.FullName);
             }
 
-            DirectoryInfo directory;
-            string pattern;
-            var option = SearchOption.TopDirectoryOnly;
-            if (Value.Contains(@"\**\"))
-            {
-                var index = Value.IndexOf(@"\**\", StringComparison.Ordinal);
-                directory = new DirectoryInfo(Value.Substring(0, index));
-                pattern = Value.Substring(index + 4);
-                option = SearchOption.AllDirectories;
-            }
-            else
-            {
-                var index = Value.IndexOf('*');
-                directory = new DirectoryInfo(Value.Substring(0, index));
-                pattern = Value.Substring(index);
-            }
+            yield return file;
+            yield break;
+        }
+
+        DirectoryInfo directory;
+        string pattern;
+        var option = SearchOption.TopDirectoryOnly;
+        if (Value.Contains(@"\**\"))
+        {
+            var index = Value.IndexOf(@"\**\", StringComparison.Ordinal);
+            directory = new DirectoryInfo(Value.Substring(0, index));
+            pattern = Value.Substring(index + 4);
+            option = SearchOption.AllDirectories;
+        }
+        else
+        {
+            var index = Value.IndexOf('*');
+            directory = new DirectoryInfo(Value.Substring(0, index));
+            pattern = Value.Substring(index);
+        }
 
 #if NET20 || NET35
             foreach (var file in directory.GetFiles(pattern, option))
 #else
-            foreach (var file in directory.EnumerateFiles(pattern, option))
+        foreach (var file in directory.EnumerateFiles(pattern, option))
 #endif
-            {
-                yield return file;
-            }
+        {
+            yield return file;
         }
     }
 }

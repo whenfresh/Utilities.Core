@@ -1,14 +1,13 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+public interface IGetPreviousDate : IGetPreviousMonth,
+                                    IGetPreviousWeekday
 {
-    public interface IGetPreviousDate : IGetPreviousMonth,
-                                        IGetPreviousWeekday
-    {
-        Date Day { get; }
+    Date Day { get; }
 
-        Date Month { get; }
+    Date Month { get; }
 
-        Date Week { get; }
+    Date Week { get; }
 
-        Date Year { get; }
-    }
+    Date Year { get; }
 }

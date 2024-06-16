@@ -1,24 +1,23 @@
-﻿namespace WhenFresh.Utilities.Core.Threading
+﻿namespace WhenFresh.Utilities.Core.Threading;
+
+using System.Threading;
+
+public abstract class ThreadedObject : DisposableObject,
+                                       IThreadedObject
 {
-    using System.Threading;
+    private CancellationToken _token;
 
-    public abstract class ThreadedObject : DisposableObject,
-                                           IThreadedObject
+    public CancellationToken CancellationToken
     {
-        private CancellationToken _token;
-
-        public CancellationToken CancellationToken
+        get
         {
-            get
-            {
-                return _token;
-            }
+            return _token;
+        }
 
-            set
-            {
-                _token = value;
-                _token.Register(Dispose);
-            }
+        set
+        {
+            _token = value;
+            _token.Register(Dispose);
         }
     }
 }

@@ -1,91 +1,90 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Dynamic
+﻿namespace WhenFresh.Utilities.Core.Facts.Dynamic;
+
+using System;
+using System.Dynamic;
+using WhenFresh.Utilities.Core.Dynamic;
+
+public sealed class DynamicDataFacts
 {
-    using System;
-    using System.Dynamic;
-    using WhenFresh.Utilities.Core.Dynamic;
-
-    public sealed class DynamicDataFacts
+    [Fact]
+    public void a_definition()
     {
-        [Fact]
-        public void a_definition()
+        Assert.True(new TypeExpectations<DynamicData>().DerivesFrom<DynamicObject>()
+                                                       .IsConcreteClass()
+                                                       .IsUnsealed()
+                                                       .HasDefaultConstructor()
+                                                       .IsNotDecorated()
+                                                       .Result);
+    }
+
+    [Fact]
+    public void ctor()
+    {
+        Assert.NotNull(new DynamicData());
+    }
+
+    [Fact]
+    public void derived()
+    {
+        const string expected = "bar";
+
+        dynamic obj = new DerivedDynamicData();
+
+        var actual = obj.Foo;
+
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void example()
+    {
+        const string expected = "example";
+
+        dynamic obj = new DynamicData();
+        obj.Example = expected;
+
+        var actual = obj.Example;
+
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void example_whenNotSet()
+    {
+        dynamic obj = new DynamicData();
+
+        Assert.Null(obj.Example);
+    }
+
+    [Fact]
+    public void op_GetDynamicMemberNames()
+    {
+        dynamic obj = new DynamicData();
+        obj.Example = string.Empty;
+
+        foreach (var actual in ((DynamicData)obj).GetDynamicMemberNames())
         {
-            Assert.True(new TypeExpectations<DynamicData>().DerivesFrom<DynamicObject>()
-                                                           .IsConcreteClass()
-                                                           .IsUnsealed()
-                                                           .HasDefaultConstructor()
-                                                           .IsNotDecorated()
-                                                           .Result);
+            Assert.Equal("Example", actual);
         }
+    }
 
-        [Fact]
-        public void ctor()
-        {
-            Assert.NotNull(new DynamicData());
-        }
+    [Fact]
+    public void op_TryGetMember_GetMemberBinder_object()
+    {
+        object result;
 
-        [Fact]
-        public void derived()
-        {
-            const string expected = "bar";
+        // ReSharper disable AssignNullToNotNullAttribute
+        Assert.Throws<ArgumentNullException>(() => new DynamicData().TryGetMember(null, out result));
 
-            dynamic obj = new DerivedDynamicData();
+        // ReSharper restore AssignNullToNotNullAttribute
+    }
 
-            var actual = obj.Foo;
+    [Fact]
+    public void op_TrySetMember_SetMemberBinder_object()
+    {
+        // ReSharper disable AssignNullToNotNullAttribute
+        Assert.Throws<ArgumentNullException>(() => new DynamicData().TrySetMember(null, "example"));
 
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void example()
-        {
-            const string expected = "example";
-
-            dynamic obj = new DynamicData();
-            obj.Example = expected;
-
-            var actual = obj.Example;
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void example_whenNotSet()
-        {
-            dynamic obj = new DynamicData();
-
-            Assert.Null(obj.Example);
-        }
-
-        [Fact]
-        public void op_GetDynamicMemberNames()
-        {
-            dynamic obj = new DynamicData();
-            obj.Example = string.Empty;
-
-            foreach (var actual in ((DynamicData)obj).GetDynamicMemberNames())
-            {
-                Assert.Equal("Example", actual);
-            }
-        }
-
-        [Fact]
-        public void op_TryGetMember_GetMemberBinder_object()
-        {
-            object result;
-
-            // ReSharper disable AssignNullToNotNullAttribute
-            Assert.Throws<ArgumentNullException>(() => new DynamicData().TryGetMember(null, out result));
-
-            // ReSharper restore AssignNullToNotNullAttribute
-        }
-
-        [Fact]
-        public void op_TrySetMember_SetMemberBinder_object()
-        {
-            // ReSharper disable AssignNullToNotNullAttribute
-            Assert.Throws<ArgumentNullException>(() => new DynamicData().TrySetMember(null, "example"));
-
-            // ReSharper restore AssignNullToNotNullAttribute
-        }
+        // ReSharper restore AssignNullToNotNullAttribute
     }
 }

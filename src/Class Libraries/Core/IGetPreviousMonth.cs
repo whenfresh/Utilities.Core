@@ -1,29 +1,28 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+public interface IGetPreviousMonth
 {
-    public interface IGetPreviousMonth
-    {
-        Date April { get; }
+    Date April { get; }
 
-        Date August { get; }
+    Date August { get; }
 
-        Date December { get; }
+    Date December { get; }
 
-        Date February { get; }
+    Date February { get; }
 
-        Date January { get; }
+    Date January { get; }
 
-        Date July { get; }
+    Date July { get; }
 
-        Date June { get; }
+    Date June { get; }
 
-        Date March { get; }
+    Date March { get; }
 
-        Date May { get; }
+    Date May { get; }
 
-        Date November { get; }
+    Date November { get; }
 
-        Date October { get; }
+    Date October { get; }
 
-        Date September { get; }
-    }
+    Date September { get; }
 }

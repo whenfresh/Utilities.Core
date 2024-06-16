@@ -1,231 +1,230 @@
-﻿namespace WhenFresh.Utilities.Core.Facts
+﻿namespace WhenFresh.Utilities.Core.Facts;
+
+using Moq;
+using WhenFresh.Utilities.Core;
+
+public sealed class IGetNextMonthFacts
 {
-    using Moq;
-    using WhenFresh.Utilities.Core;
-
-    public sealed class IGetNextMonthFacts
+    [Fact]
+    public void a_definition()
     {
-        [Fact]
-        public void a_definition()
-        {
-            Assert.True(new TypeExpectations<IGetNextMonth>().IsInterface()
-                                                             .Result);
-        }
+        Assert.True(new TypeExpectations<IGetNextMonth>().IsInterface()
+                                                         .Result);
+    }
 
-        [Fact]
-        public void prop_April_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_April_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.April)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.April)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.April;
+        var actual = mock.Object.April;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_August_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_August_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.August)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.August)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.August;
+        var actual = mock.Object.August;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_December_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_December_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.December)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.December)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.December;
+        var actual = mock.Object.December;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_February_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_February_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.February)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.February)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.February;
+        var actual = mock.Object.February;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_January_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_January_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.January)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.January)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.January;
+        var actual = mock.Object.January;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_July_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_July_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.July)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.July)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.July;
+        var actual = mock.Object.July;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_June_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_June_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.June)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.June)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.June;
+        var actual = mock.Object.June;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_March_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_March_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.March)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.March)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.March;
+        var actual = mock.Object.March;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_May_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_May_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.May)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.May)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.May;
+        var actual = mock.Object.May;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_November_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_November_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.November)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.November)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.November;
+        var actual = mock.Object.November;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_October_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_October_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.October)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.October)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.October;
+        var actual = mock.Object.October;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_September_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_September_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetNextMonth>();
-            mock
-                .SetupGet(x => x.September)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetNextMonth>();
+        mock
+            .SetupGet(x => x.September)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.September;
+        var actual = mock.Object.September;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
     }
 }

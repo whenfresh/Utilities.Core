@@ -1,40 +1,36 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+public static class Serial
 {
-    using System;
-    using System.Collections.Generic;
-
-    public static class Serial
+    public static void ForEach<T>(IEnumerable<T> source,
+                                  Action<T> body)
     {
-        public static void ForEach<T>(IEnumerable<T> source,
-                                      Action<T> body)
+        if (null == source)
         {
-            if (null == source)
-            {
-                throw new ArgumentNullException("source");
-            }
-
-            if (null == body)
-            {
-                throw new ArgumentNullException("body");
-            }
-
-            foreach (var item in source)
-            {
-                body.Invoke(item);
-            }
+            throw new ArgumentNullException("source");
         }
 
-        public static void Invoke(params Action[] actions)
+        if (null == body)
         {
-            if (null == actions)
-            {
-                throw new ArgumentNullException("actions");
-            }
+            throw new ArgumentNullException("body");
+        }
 
-            foreach (var action in actions)
-            {
-                action.Invoke();
-            }
+        foreach (var item in source)
+        {
+            body.Invoke(item);
+        }
+    }
+
+    public static void Invoke(params Action[] actions)
+    {
+        if (null == actions)
+        {
+            throw new ArgumentNullException("actions");
+        }
+
+        foreach (var action in actions)
+        {
+            action.Invoke();
         }
     }
 }

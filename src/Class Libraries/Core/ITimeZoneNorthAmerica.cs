@@ -1,25 +1,22 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+public interface ITimeZoneNorthAmerica
 {
-    using System;
+    TimeZoneInfo AlaskanStandardTime { get; }
 
-    public interface ITimeZoneNorthAmerica
-    {
-        TimeZoneInfo AlaskanStandardTime { get; }
+    TimeZoneInfo AtlanticStandardTime { get; }
 
-        TimeZoneInfo AtlanticStandardTime { get; }
+    TimeZoneInfo CentralStandardTime { get; }
 
-        TimeZoneInfo CentralStandardTime { get; }
+    TimeZoneInfo EasternStandardTime { get; }
 
-        TimeZoneInfo EasternStandardTime { get; }
+    TimeZoneInfo GreenlandStandardTime { get; }
 
-        TimeZoneInfo GreenlandStandardTime { get; }
+    TimeZoneInfo HawaiianStandardTime { get; }
 
-        TimeZoneInfo HawaiianStandardTime { get; }
+    TimeZoneInfo MountainStandardTime { get; }
 
-        TimeZoneInfo MountainStandardTime { get; }
+    TimeZoneInfo NewfoundlandStandardTime { get; }
 
-        TimeZoneInfo NewfoundlandStandardTime { get; }
-
-        TimeZoneInfo PacificStandardTime { get; }
-    }
+    TimeZoneInfo PacificStandardTime { get; }
 }

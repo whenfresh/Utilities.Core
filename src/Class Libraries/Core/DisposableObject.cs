@@ -1,35 +1,33 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+using System.Diagnostics;
+using WhenFresh.Utilities.Core.Diagnostics;
+
+public abstract class DisposableObject : IDisposable
 {
-    using System;
-    using System.Diagnostics;
-    using WhenFresh.Utilities.Core.Diagnostics;
-
-    public abstract class DisposableObject : IDisposable
+    ~DisposableObject()
     {
-        ~DisposableObject()
+        Dispose(false);
+    }
+
+    private bool Disposed { get; set; }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected abstract void OnDispose();
+
+    private void Dispose(bool disposing)
+    {
+        Trace.WriteIf(Tracing.Is.TraceVerbose, string.Empty);
+        if (!Disposed && disposing)
         {
-            Dispose(false);
+            OnDispose();
         }
 
-        private bool Disposed { get; set; }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected abstract void OnDispose();
-
-        private void Dispose(bool disposing)
-        {
-            Trace.WriteIf(Tracing.Is.TraceVerbose, string.Empty);
-            if (!Disposed && disposing)
-            {
-                OnDispose();
-            }
-
-            Disposed = true;
-        }
+        Disposed = true;
     }
 }

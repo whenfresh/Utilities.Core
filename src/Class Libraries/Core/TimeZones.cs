@@ -1,144 +1,141 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+public sealed class TimeZones : ITimeZoneEurope,
+                                ITimeZoneNorthAmerica
 {
-    using System;
-
-    public sealed class TimeZones : ITimeZoneEurope,
-                                    ITimeZoneNorthAmerica
+    public static ITimeZoneEurope Europe
     {
-        public static ITimeZoneEurope Europe
+        get
         {
-            get
-            {
-                return new TimeZones();
-            }
+            return new TimeZones();
         }
+    }
 
-        public static ITimeZoneNorthAmerica NorthAmerica
+    public static ITimeZoneNorthAmerica NorthAmerica
+    {
+        get
         {
-            get
-            {
-                return new TimeZones();
-            }
+            return new TimeZones();
         }
+    }
 
-        TimeZoneInfo ITimeZoneNorthAmerica.AlaskanStandardTime
+    TimeZoneInfo ITimeZoneNorthAmerica.AlaskanStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Alaskan Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Alaskan Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneNorthAmerica.AtlanticStandardTime
+    TimeZoneInfo ITimeZoneNorthAmerica.AtlanticStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Atlantic Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Atlantic Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneEurope.BritishTime
+    TimeZoneInfo ITimeZoneEurope.BritishTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneEurope.CentralEuropeanTime
+    TimeZoneInfo ITimeZoneEurope.CentralEuropeanTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneNorthAmerica.CentralStandardTime
+    TimeZoneInfo ITimeZoneNorthAmerica.CentralStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneEurope.EasternEuropeanStandardTime
+    TimeZoneInfo ITimeZoneEurope.EasternEuropeanStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("E. Europe Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("E. Europe Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneNorthAmerica.EasternStandardTime
+    TimeZoneInfo ITimeZoneNorthAmerica.EasternStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneNorthAmerica.GreenlandStandardTime
+    TimeZoneInfo ITimeZoneNorthAmerica.GreenlandStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Greenland Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Greenland Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneEurope.GreenwichMeanTime
+    TimeZoneInfo ITimeZoneEurope.GreenwichMeanTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneNorthAmerica.HawaiianStandardTime
+    TimeZoneInfo ITimeZoneNorthAmerica.HawaiianStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Hawaiian Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Hawaiian Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneNorthAmerica.MountainStandardTime
+    TimeZoneInfo ITimeZoneNorthAmerica.MountainStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Mountain Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Mountain Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneNorthAmerica.NewfoundlandStandardTime
+    TimeZoneInfo ITimeZoneNorthAmerica.NewfoundlandStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Newfoundland Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Newfoundland Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneNorthAmerica.PacificStandardTime
+    TimeZoneInfo ITimeZoneNorthAmerica.PacificStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneEurope.RussianStandardTime
+    TimeZoneInfo ITimeZoneEurope.RussianStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("Russian Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("Russian Standard Time");
         }
+    }
 
-        TimeZoneInfo ITimeZoneEurope.WesternEuropeanStandardTime
+    TimeZoneInfo ITimeZoneEurope.WesternEuropeanStandardTime
+    {
+        get
         {
-            get
-            {
-                return TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
-            }
+            return TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
         }
     }
 }

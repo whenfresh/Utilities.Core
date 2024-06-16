@@ -1,9 +1,8 @@
-namespace WhenFresh.Utilities.Core.Xml
-{
-    using System.Xml.Serialization;
+namespace WhenFresh.Utilities.Core.Xml;
 
-    public interface IXmlSerializerNamespaces
-    {
-        XmlSerializerNamespaces XmlNamespaceDeclarations { get; }
-    }
+using System.Xml.Serialization;
+
+public interface IXmlSerializerNamespaces
+{
+    XmlSerializerNamespaces XmlNamespaceDeclarations { get; }
 }

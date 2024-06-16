@@ -1,31 +1,30 @@
-﻿namespace WhenFresh.Utilities.Core.Facts
+﻿namespace WhenFresh.Utilities.Core.Facts;
+
+using WhenFresh.Utilities.Core;
+
+public sealed class NullableOfTExtensionMethodsFacts
 {
-    using WhenFresh.Utilities.Core;
-
-    public sealed class NullableOfTExtensionMethodsFacts
+    [Fact]
+    public void a_definition()
     {
-        [Fact]
-        public void a_definition()
-        {
-            Assert.True(typeof(NullableOfTExtensionMethods).IsStatic());
-        }
+        Assert.True(typeof(NullableOfTExtensionMethods).IsStatic());
+    }
 
-        [Fact]
-        public void op_HasNoValue_whenFalse()
-        {
-            int? value = 123;
+    [Fact]
+    public void op_HasNoValue_whenFalse()
+    {
+        int? value = 123;
 
-            Assert.False(value.HasNoValue());
-        }
+        Assert.False(value.HasNoValue());
+    }
 
-        [Fact]
-        public void op_HasNoValue_whenTrue()
-        {
-            int? value = null;
+    [Fact]
+    public void op_HasNoValue_whenTrue()
+    {
+        int? value = null;
 
-            // ReSharper disable ExpressionIsAlwaysNull
-            Assert.True(value.HasNoValue());
-            // ReSharper restore ExpressionIsAlwaysNull
-        }
+        // ReSharper disable ExpressionIsAlwaysNull
+        Assert.True(value.HasNoValue());
+        // ReSharper restore ExpressionIsAlwaysNull
     }
 }

@@ -1,14 +1,14 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+public static class TemporalExtensionMethods
 {
-    public static class TemporalExtensionMethods
-    {
 #if NET20
         public static Date ToDate(string obj)
 #else
         public static Date ToDate(this string obj)
 #endif
         {
-            return Date.FromString(obj);
+                return Date.FromString(obj);
         }
 
 #if NET20
@@ -17,7 +17,7 @@
         public static Month ToMonth(this string obj)
 #endif
         {
-            return Month.FromString(obj);
+                return Month.FromString(obj);
         }
 
 #if NET20
@@ -26,7 +26,6 @@
         public static Quarter ToQuarter(this string obj)
 #endif
         {
-            return Quarter.FromString(obj);
+                return Quarter.FromString(obj);
         }
-    }
 }

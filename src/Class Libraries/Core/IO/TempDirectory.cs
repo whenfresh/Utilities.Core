@@ -1,73 +1,72 @@
-﻿namespace WhenFresh.Utilities.Core.IO
+﻿namespace WhenFresh.Utilities.Core.IO;
+
+using System.IO;
+using System.Threading.Tasks;
+
+public class TempDirectory : IDisposable
 {
-    using System;
-    using System.IO;
-    using System.Threading.Tasks;
-
-    public class TempDirectory : IDisposable
+    public TempDirectory()
+        : this(new DirectoryInfo(Path.GetTempPath()))
     {
-        public TempDirectory()
-            : this(new DirectoryInfo(Path.GetTempPath()))
-        {
-        }
+    }
 
-        public TempDirectory(DirectoryInfo directory)
+    public TempDirectory(DirectoryInfo directory)
+    {
+        if (null == directory)
         {
-            if (null == directory)
-            {
-                throw new ArgumentNullException("directory");
-            }
+            throw new ArgumentNullException("directory");
+        }
 
 #if NET20 || NET35
             Info = new DirectoryInfo(Path.Combine(directory.FullName, Guid.NewGuid().ToString()));
 #else
-            Info = directory.CombineAsDirectory(Guid.NewGuid());
+        Info = directory.CombineAsDirectory(Guid.NewGuid());
 #endif
-            Info.Create();
-        }
+        Info.Create();
+    }
 
-        ~TempDirectory()
+    ~TempDirectory()
+    {
+        Dispose(false);
+    }
+
+    public DirectoryInfo Info { get; protected set; }
+
+    private bool Disposed { get; set; }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!Disposed && disposing)
         {
-            Dispose(false);
-        }
-
-        public DirectoryInfo Info { get; protected set; }
-
-        private bool Disposed { get; set; }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed && disposing)
-            {
 #if NET20
                 if (ObjectExtensionMethods.IsNotNull(Info))
 #else
-                if (Info.IsNotNull())
+            if (Info.IsNotNull())
 #endif
+            {
+                Info.Refresh();
+                if (Info.Exists)
                 {
-                    Info.Refresh();
-                    if (Info.Exists)
-                    {
-                        DeleteFiles();
-                        DeleteSubdirectories(Info);
-                        Info.Delete();
-                    }
-
-                    Info = null;
+                    DeleteFiles();
+                    DeleteSubdirectories(Info);
+                    Info.Delete();
                 }
-            }
 
-            Disposed = true;
+                Info = null;
+            }
         }
 
-        private static void DeleteSubdirectories(DirectoryInfo directory)
-        {
+        Disposed = true;
+    }
+
+    private static void DeleteSubdirectories(DirectoryInfo directory)
+    {
 #if NET20 || NET35
             foreach (var subdirectory in directory.GetDirectories())
             {
@@ -75,26 +74,25 @@
                 subdirectory.Delete();
             }
 #else
-            Parallel.ForEach(directory.EnumerateDirectories(),
-                             subdirectory =>
-                                 {
-                                     DeleteSubdirectories(subdirectory);
-                                     subdirectory.Delete();
-                                 });
+        Parallel.ForEach(directory.EnumerateDirectories(),
+                         subdirectory =>
+                             {
+                                 DeleteSubdirectories(subdirectory);
+                                 subdirectory.Delete();
+                             });
 #endif
-        }
+    }
 
-        private void DeleteFiles()
-        {
+    private void DeleteFiles()
+    {
 #if NET20 || NET35
             foreach (var file in Info.GetFiles("*", SearchOption.AllDirectories))
             {
                 file.Delete();
             }
 #else
-            Parallel.ForEach(Info.EnumerateFiles("*", SearchOption.AllDirectories),
-                             file => file.Delete());
+        Parallel.ForEach(Info.EnumerateFiles("*", SearchOption.AllDirectories),
+                         file => file.Delete());
 #endif
-        }
     }
 }

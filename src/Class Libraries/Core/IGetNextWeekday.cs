@@ -1,19 +1,18 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+public interface IGetNextWeekday
 {
-    public interface IGetNextWeekday
-    {
-        Date Friday { get; }
+    Date Friday { get; }
 
-        Date Monday { get; }
+    Date Monday { get; }
 
-        Date Saturday { get; }
+    Date Saturday { get; }
 
-        Date Sunday { get; }
+    Date Sunday { get; }
 
-        Date Thursday { get; }
+    Date Thursday { get; }
 
-        Date Tuesday { get; }
+    Date Tuesday { get; }
 
-        Date Wednesday { get; }
-    }
+    Date Wednesday { get; }
 }

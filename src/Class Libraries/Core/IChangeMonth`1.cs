@@ -1,14 +1,13 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+using System.Diagnostics.CodeAnalysis;
+
+public interface IChangeMonth<out T>
 {
-    using System.Diagnostics.CodeAnalysis;
+    T Month(int value);
 
-    public interface IChangeMonth<out T>
-    {
-        T Month(int value);
+    [SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = "To", Justification = "This naming is intentional.")]
+    T To(MonthOfYear month);
 
-        [SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = "To", Justification = "This naming is intentional.")]
-        T To(MonthOfYear month);
-
-        T Year(int value);
-    }
+    T Year(int value);
 }

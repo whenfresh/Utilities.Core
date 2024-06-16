@@ -1,46 +1,43 @@
-﻿namespace WhenFresh.Utilities.Core.Dynamic
+﻿namespace WhenFresh.Utilities.Core.Dynamic;
+
+using System.Dynamic;
+
+public class DynamicData : DynamicObject
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Dynamic;
-
-    public class DynamicData : DynamicObject
+    public DynamicData()
     {
-        public DynamicData()
+        Data = new Dictionary<string, object>();
+    }
+
+    protected Dictionary<string, object> Data { get; private set; }
+
+    public override IEnumerable<string> GetDynamicMemberNames()
+    {
+        return Data.Keys;
+    }
+
+    public override bool TryGetMember(GetMemberBinder binder,
+                                      out object result)
+    {
+        if (null == binder)
         {
-            Data = new Dictionary<string, object>();
+            throw new ArgumentNullException("binder");
         }
 
-        protected Dictionary<string, object> Data { get; private set; }
+        result = Data.ContainsKey(binder.Name) ? Data[binder.Name] : null;
 
-        public override IEnumerable<string> GetDynamicMemberNames()
+        return true;
+    }
+
+    public override bool TrySetMember(SetMemberBinder binder,
+                                      object value)
+    {
+        if (null == binder)
         {
-            return Data.Keys;
+            throw new ArgumentNullException("binder");
         }
 
-        public override bool TryGetMember(GetMemberBinder binder,
-                                          out object result)
-        {
-            if (null == binder)
-            {
-                throw new ArgumentNullException("binder");
-            }
-
-            result = Data.ContainsKey(binder.Name) ? Data[binder.Name] : null;
-
-            return true;
-        }
-
-        public override bool TrySetMember(SetMemberBinder binder,
-                                          object value)
-        {
-            if (null == binder)
-            {
-                throw new ArgumentNullException("binder");
-            }
-
-            Data[binder.Name] = value;
-            return true;
-        }
+        Data[binder.Name] = value;
+        return true;
     }
 }

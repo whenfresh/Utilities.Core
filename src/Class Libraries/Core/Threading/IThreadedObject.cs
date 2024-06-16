@@ -1,10 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Threading
-{
-    using System;
-    using System.Threading;
+﻿namespace WhenFresh.Utilities.Core.Threading;
 
-    public interface IThreadedObject : IDisposable
-    {
-        CancellationToken CancellationToken { get; set; }
-    }
+using System.Threading;
+
+public interface IThreadedObject : IDisposable
+{
+    CancellationToken CancellationToken { get; set; }
 }

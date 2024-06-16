@@ -1,40 +1,39 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Threading
+﻿namespace WhenFresh.Utilities.Core.Facts.Threading;
+
+using System.Threading;
+using WhenFresh.Utilities.Core;
+using WhenFresh.Utilities.Core.Threading;
+
+public sealed class ThreadedObjectFacts
 {
-    using System.Threading;
-    using WhenFresh.Utilities.Core;
-    using WhenFresh.Utilities.Core.Threading;
-
-    public sealed class ThreadedObjectFacts
+    [Fact]
+    public void a_definition()
     {
-        [Fact]
-        public void a_definition()
-        {
-            Assert.True(new TypeExpectations<ThreadedObject>().DerivesFrom<DisposableObject>()
-                                                              .IsAbstractBaseClass()
-                                                              .IsNotDecorated()
-                                                              .Result);
-        }
+        Assert.True(new TypeExpectations<ThreadedObject>().DerivesFrom<DisposableObject>()
+                                                          .IsAbstractBaseClass()
+                                                          .IsNotDecorated()
+                                                          .Result);
+    }
 
-        [Fact]
-        public void prop_CancellationToken()
-        {
-            Assert.True(new PropertyExpectations<ThreadedObject>(x => x.CancellationToken)
-                            .TypeIs<CancellationToken>()
-                            .Result);
-        }
+    [Fact]
+    public void prop_CancellationToken()
+    {
+        Assert.True(new PropertyExpectations<ThreadedObject>(x => x.CancellationToken)
+                    .TypeIs<CancellationToken>()
+                    .Result);
+    }
 
-        [Fact]
-        public void prop_CancellationToken_set()
-        {
-            var expected = new CancellationToken();
-            ThreadedObject obj = new DerivedThreadedObject
-                                     {
-                                         CancellationToken = expected
-                                     };
+    [Fact]
+    public void prop_CancellationToken_set()
+    {
+        var expected = new CancellationToken();
+        ThreadedObject obj = new DerivedThreadedObject
+                                 {
+                                     CancellationToken = expected
+                                 };
 
-            var actual = obj.CancellationToken;
+        var actual = obj.CancellationToken;
 
-            Assert.Equal(expected, actual);
-        }
+        Assert.Equal(expected, actual);
     }
 }

@@ -1,134 +1,132 @@
-﻿namespace WhenFresh.Utilities.Core.Collections
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
-    using System.Runtime.Serialization;
-    using WhenFresh.Utilities.Core.Data;
-    using WhenFresh.Utilities.Core.Properties;
+﻿namespace WhenFresh.Utilities.Core.Collections;
+
+using System.Globalization;
+using System.Linq;
+using System.Runtime.Serialization;
+using WhenFresh.Utilities.Core.Data;
+using WhenFresh.Utilities.Core.Properties;
 #if !NET20
 #endif
 
-    [Serializable]
-    public class KeyStringDictionary : Dictionary<string, string>,
-                                       IEnumerable<KeyStringPair>,
-                                       ICloneable
+[Serializable]
+public class KeyStringDictionary : Dictionary<string, string>,
+                                   IEnumerable<KeyStringPair>,
+                                   ICloneable
+{
+    public KeyStringDictionary()
+        : this(StringComparer.OrdinalIgnoreCase)
     {
-        public KeyStringDictionary()
-            : this(StringComparer.OrdinalIgnoreCase)
-        {
-        }
+    }
 
-        public KeyStringDictionary(IEqualityComparer<string> comparer)
-            : base(comparer)
-        {
-        }
+    public KeyStringDictionary(IEqualityComparer<string> comparer)
+        : base(comparer)
+    {
+    }
 
-        protected KeyStringDictionary(SerializationInfo info,
-                                      StreamingContext context)
-            : base(info, context)
-        {
-        }
+    protected KeyStringDictionary(SerializationInfo info,
+                                  StreamingContext context)
+        : base(info, context)
+    {
+    }
 
-        public string this[int index]
+    public string this[int index]
+    {
+        get
         {
-            get
+            if (index > -1 &&
+                index < Count)
             {
-                if (index > -1 &&
-                    index < Count)
+                var i = 0;
+                foreach (var key in Keys)
                 {
-                    var i = 0;
-                    foreach (var key in Keys)
+                    if (i == index)
                     {
-                        if (i == index)
-                        {
-                            return this[key];
-                        }
-
-                        i++;
+                        return this[key];
                     }
-                }
 
-                throw new ArgumentOutOfRangeException("index", Resources.IndexOutOfRangeException_Message);
+                    i++;
+                }
             }
+
+            throw new ArgumentOutOfRangeException("index", Resources.IndexOutOfRangeException_Message);
         }
+    }
 
-        public new string this[string key]
+    public new string this[string key]
+    {
+        get
         {
-            get
+            try
             {
-                try
-                {
-                    return base[key];
-                }
-                catch (KeyNotFoundException)
-                {
-                    throw new KeyNotFoundException(string.Format(CultureInfo.InvariantCulture, "The '{0}' key was not present in the dictionary.", key));
-                }
+                return base[key];
             }
-
-            set
-            {
-                base[key] = value;
-            }
-        }
-
-        public void Set(string key,
-                        string value)
-        {
-            if (!ContainsKey(key))
+            catch (KeyNotFoundException)
             {
                 throw new KeyNotFoundException(string.Format(CultureInfo.InvariantCulture, "The '{0}' key was not present in the dictionary.", key));
             }
-
-            this[key] = value;
         }
 
-        public virtual void Add(KeyStringPair item)
+        set
         {
-            Add(item.Key, item.Value);
+            base[key] = value;
+        }
+    }
+
+    public void Set(string key,
+                    string value)
+    {
+        if (!ContainsKey(key))
+        {
+            throw new KeyNotFoundException(string.Format(CultureInfo.InvariantCulture, "The '{0}' key was not present in the dictionary.", key));
         }
 
-        public virtual object Clone()
+        this[key] = value;
+    }
+
+    public virtual void Add(KeyStringPair item)
+    {
+        Add(item.Key, item.Value);
+    }
+
+    public virtual object Clone()
+    {
+        return Clone<KeyStringDictionary>();
+    }
+
+    public virtual T Clone<T>()
+        where T : KeyStringDictionary, new()
+    {
+        var clone = Activator.CreateInstance<T>();
+
+        CopyTo(clone);
+
+        return clone;
+    }
+
+    public virtual bool Contains(KeyStringPair item)
+    {
+        return (this as IDictionary<string, string>).Contains(new KeyValuePair<string, string>(item.Key, item.Value));
+    }
+
+    public virtual void CopyTo(KeyStringDictionary target)
+    {
+        if (null == target)
         {
-            return Clone<KeyStringDictionary>();
+            throw new ArgumentNullException("target");
         }
 
-        public virtual T Clone<T>()
-            where T : KeyStringDictionary, new()
+        foreach (var item in this)
         {
-            var clone = Activator.CreateInstance<T>();
-
-            CopyTo(clone);
-
-            return clone;
+            target[item.Key] = item.Value;
         }
+    }
 
-        public virtual bool Contains(KeyStringPair item)
+    public virtual bool Empty(params string[] keys)
+    {
+        if (null == keys)
         {
-            return (this as IDictionary<string, string>).Contains(new KeyValuePair<string, string>(item.Key, item.Value));
+            throw new ArgumentNullException("keys");
         }
-
-        public virtual void CopyTo(KeyStringDictionary target)
-        {
-            if (null == target)
-            {
-                throw new ArgumentNullException("target");
-            }
-
-            foreach (var item in this)
-            {
-                target[item.Key] = item.Value;
-            }
-        }
-
-        public virtual bool Empty(params string[] keys)
-        {
-            if (null == keys)
-            {
-                throw new ArgumentNullException("keys");
-            }
 #if NET20
             if (0 == keys.Length)
             {
@@ -147,18 +145,18 @@
 
             return true;
 #else
-            return 0 == keys.Length
-                       ? Empty(Keys.ToArray())
-                       : keys.All(key => string.IsNullOrEmpty(this[key]));
+        return 0 == keys.Length
+                   ? Empty(Keys.ToArray())
+                   : keys.All(key => string.IsNullOrEmpty(this[key]));
 #endif
-        }
+    }
 
-        public virtual int Length(params string[] keys)
+    public virtual int Length(params string[] keys)
+    {
+        if (null == keys)
         {
-            if (null == keys)
-            {
-                throw new ArgumentNullException("keys");
-            }
+            throw new ArgumentNullException("keys");
+        }
 #if NET20
             if (0 == keys.Length)
             {
@@ -173,63 +171,63 @@
 
             return sum;
 #else
-            return 0 == keys.Length
-                       ? Length(Keys.ToArray())
-                       : keys.Sum(key => this[key].Length);
+        return 0 == keys.Length
+                   ? Length(Keys.ToArray())
+                   : keys.Sum(key => this[key].Length);
 #endif
+    }
+
+    public virtual void Move(string source,
+                             string destination)
+    {
+        this[destination] = this[source];
+        this[source] = string.Empty;
+    }
+
+    public virtual bool NotContains(KeyStringPair item)
+    {
+        return !Contains(item);
+    }
+
+    public virtual bool NotEmpty(params string[] keys)
+    {
+        return !Empty(keys);
+    }
+
+    public virtual bool Remove(KeyStringPair item)
+    {
+        return (this as IDictionary<string, string>).Remove(new KeyValuePair<string, string>(item.Key, item.Value));
+    }
+
+    public virtual void RemoveAny(params string[] keys)
+    {
+        if (null == keys)
+        {
+            throw new ArgumentNullException("keys");
         }
 
-        public virtual void Move(string source,
-                                 string destination)
+        if (0 == keys.Length)
         {
-            this[destination] = this[source];
-            this[source] = string.Empty;
+            throw new ArgumentOutOfRangeException("keys");
         }
 
-        public virtual bool NotContains(KeyStringPair item)
+        foreach (var key in keys)
         {
-            return !Contains(item);
-        }
-
-        public virtual bool NotEmpty(params string[] keys)
-        {
-            return !Empty(keys);
-        }
-
-        public virtual bool Remove(KeyStringPair item)
-        {
-            return (this as IDictionary<string, string>).Remove(new KeyValuePair<string, string>(item.Key, item.Value));
-        }
-
-        public virtual void RemoveAny(params string[] keys)
-        {
-            if (null == keys)
+            if (!ContainsKey(key))
             {
-                throw new ArgumentNullException("keys");
+                continue;
             }
 
-            if (0 == keys.Length)
-            {
-                throw new ArgumentOutOfRangeException("keys");
-            }
-
-            foreach (var key in keys)
-            {
-                if (!ContainsKey(key))
-                {
-                    continue;
-                }
-
-                Remove(key);
-            }
+            Remove(key);
         }
+    }
 
-        public virtual IEnumerable<string> Strings(params string[] keys)
+    public virtual IEnumerable<string> Strings(params string[] keys)
+    {
+        if (null == keys)
         {
-            if (null == keys)
-            {
-                throw new ArgumentNullException("keys");
-            }
+            throw new ArgumentNullException("keys");
+        }
 #if NET20
             if (0 == keys.Length)
             {
@@ -241,112 +239,112 @@
                 yield return this[key];
             }
 #else
-            return 0 == keys.Length
-                       ? Strings(Keys.ToArray())
-                       : keys.Select(key => this[key]);
+        return 0 == keys.Length
+                   ? Strings(Keys.ToArray())
+                   : keys.Select(key => this[key]);
 #endif
-        }
+    }
 
-        public virtual T TryValue<T>(int index)
-        {
+    public virtual T TryValue<T>(int index)
+    {
 #if NET20
             return StringExtensionMethods.TryTo<T>(this[index]);
 #else
-            return this[index].TryTo<T>();
+        return this[index].TryTo<T>();
 #endif
-        }
+    }
 
-        public virtual T TryValue<T>(int index,
-                                     T empty)
-        {
-            var value = this[index];
+    public virtual T TryValue<T>(int index,
+                                 T empty)
+    {
+        var value = this[index];
 
 #if NET20 || NET35
             return StringExtensionMethods.IsNullOrWhiteSpace(value)
 #else
-            return string.IsNullOrWhiteSpace(value)
+        return string.IsNullOrWhiteSpace(value)
 #endif
-                       ? empty
-                       : TryValue<T>(index);
-        }
+                   ? empty
+                   : TryValue<T>(index);
+    }
 
-        public virtual T TryValue<T>(string key)
-        {
+    public virtual T TryValue<T>(string key)
+    {
 #if NET20
             return StringExtensionMethods.TryTo<T>(this[key]);
 #else
-            return this[key].TryTo<T>();
+        return this[key].TryTo<T>();
 #endif
-        }
+    }
 
-        public virtual T TryValue<T>(string key,
-                                     T empty)
-        {
-            var value = this[key];
+    public virtual T TryValue<T>(string key,
+                                 T empty)
+    {
+        var value = this[key];
 
 #if NET20 || NET35
             return StringExtensionMethods.IsNullOrWhiteSpace(value)
 #else
-            return string.IsNullOrWhiteSpace(value)
+        return string.IsNullOrWhiteSpace(value)
 #endif
-                       ? empty
-                       : TryValue<T>(key);
-        }
+                   ? empty
+                   : TryValue<T>(key);
+    }
 
-        public virtual T Value<T>(int index)
-        {
+    public virtual T Value<T>(int index)
+    {
 #if NET20
             return StringExtensionMethods.To<T>(this[index]);
 #else
-            return this[index].To<T>();
+        return this[index].To<T>();
 #endif
-        }
+    }
 
-        public virtual T Value<T>(int index,
-                                  T empty)
-        {
-            var value = this[index];
+    public virtual T Value<T>(int index,
+                              T empty)
+    {
+        var value = this[index];
 
 #if NET20 || NET35
             return StringExtensionMethods.IsNullOrWhiteSpace(value)
 #else
-            return string.IsNullOrWhiteSpace(value)
+        return string.IsNullOrWhiteSpace(value)
 #endif
-                       ? empty
-                       : Value<T>(index);
-        }
+                   ? empty
+                   : Value<T>(index);
+    }
 
-        public virtual T Value<T>(string key)
-        {
+    public virtual T Value<T>(string key)
+    {
 #if NET20
             return StringExtensionMethods.To<T>(this[key]);
 #else
-            return this[key].To<T>();
+        return this[key].To<T>();
 #endif
-        }
+    }
 
-        public virtual T Value<T>(string key,
-                                  T empty)
-        {
-            var value = this[key];
+    public virtual T Value<T>(string key,
+                              T empty)
+    {
+        var value = this[key];
 
 #if NET20 || NET35
             return StringExtensionMethods.IsNullOrWhiteSpace(value)
 #else
-            return string.IsNullOrWhiteSpace(value)
+        return string.IsNullOrWhiteSpace(value)
 #endif
-                       ? empty
-                       : Value<T>(key);
-        }
+                   ? empty
+                   : Value<T>(key);
+    }
 
-        public new IEnumerator<KeyStringPair> GetEnumerator()
+    public new IEnumerator<KeyStringPair> GetEnumerator()
+    {
+        var e = base.GetEnumerator();
+        while (e.MoveNext())
         {
-            var e = base.GetEnumerator();
-            while (e.MoveNext())
-            {
-                yield return new KeyStringPair(e.Current.Key, e.Current.Value);
-            }
+            yield return new KeyStringPair(e.Current.Key, e.Current.Value);
         }
+    }
 
 #if NET20
         private string[] ToKeyArray()
@@ -361,5 +359,4 @@
             return keys;
         }
 #endif
-    }
 }

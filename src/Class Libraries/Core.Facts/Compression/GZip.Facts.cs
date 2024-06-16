@@ -1,76 +1,75 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Compression
+﻿namespace WhenFresh.Utilities.Core.Facts.Compression;
+
+using System;
+using System.IO;
+using WhenFresh.Utilities.Core;
+using WhenFresh.Utilities.Core.Compression;
+using WhenFresh.Utilities.Core.IO;
+
+public sealed class GZipFacts
 {
-    using System;
-    using System.IO;
-    using WhenFresh.Utilities.Core;
-    using WhenFresh.Utilities.Core.Compression;
-    using WhenFresh.Utilities.Core.IO;
-
-    public sealed class GZipFacts
+    [Fact]
+    public void a_definition()
     {
-        [Fact]
-        public void a_definition()
+        Assert.True(typeof(GZip).IsStatic());
+    }
+
+    [Fact]
+    public void op_Extract_FileInfoMissing_DirectoryInfo()
+    {
+        using (var temp = new TempDirectory())
         {
-            Assert.True(typeof(GZip).IsStatic());
-        }
+            var source = new FileInfo(AlphaDecimal.Random());
 
-        [Fact]
-        public void op_Extract_FileInfoMissing_DirectoryInfo()
+            // ReSharper disable AccessToDisposedClosure
+            Assert.Throws<FileNotFoundException>(() => GZip.Extract(source, temp.Info));
+
+            // ReSharper restore AccessToDisposedClosure
+        }
+    }
+
+    [Fact]
+    public void op_Extract_FileInfoNull_DirectoryInfo()
+    {
+        using (var temp = new TempDirectory())
         {
-            using (var temp = new TempDirectory())
-            {
-                var source = new FileInfo(AlphaDecimal.Random());
+            // ReSharper disable AccessToDisposedClosure
+            Assert.Throws<ArgumentNullException>(() => GZip.Extract(null, temp.Info));
 
-                // ReSharper disable AccessToDisposedClosure
-                Assert.Throws<FileNotFoundException>(() => GZip.Extract(source, temp.Info));
-
-                // ReSharper restore AccessToDisposedClosure
-            }
+            // ReSharper restore AccessToDisposedClosure
         }
+    }
 
-        [Fact]
-        public void op_Extract_FileInfoNull_DirectoryInfo()
+    [Fact]
+    public void op_Extract_FileInfo_DirectoryInfo()
+    {
+        const string expected = "example";
+        using (var temp = new TempDirectory())
         {
-            using (var temp = new TempDirectory())
-            {
-                // ReSharper disable AccessToDisposedClosure
-                Assert.Throws<ArgumentNullException>(() => GZip.Extract(null, temp.Info));
+            var source = new FileInfo("example.txt.gz");
+            var destination = temp.Info;
 
-                // ReSharper restore AccessToDisposedClosure
-            }
+            var actual = GZip.Extract(source, destination).ReadToEnd();
+
+            Assert.Equal(expected, actual);
         }
+    }
 
-        [Fact]
-        public void op_Extract_FileInfo_DirectoryInfo()
+    [Fact]
+    public void op_Extract_FileInfo_DirectoryInfoMissing()
+    {
+        using (var temp = new TempDirectory())
         {
-            const string expected = "example";
-            using (var temp = new TempDirectory())
-            {
-                var source = new FileInfo("example.txt.gz");
-                var destination = temp.Info;
+            var source = new FileInfo("example.txt.gz");
+            var destination = temp.Info.ToDirectory(AlphaDecimal.Random());
 
-                var actual = GZip.Extract(source, destination).ReadToEnd();
-
-                Assert.Equal(expected, actual);
-            }
+            Assert.Throws<DirectoryNotFoundException>(() => GZip.Extract(source, destination));
         }
+    }
 
-        [Fact]
-        public void op_Extract_FileInfo_DirectoryInfoMissing()
-        {
-            using (var temp = new TempDirectory())
-            {
-                var source = new FileInfo("example.txt.gz");
-                var destination = temp.Info.ToDirectory(AlphaDecimal.Random());
-
-                Assert.Throws<DirectoryNotFoundException>(() => GZip.Extract(source, destination));
-            }
-        }
-
-        [Fact]
-        public void op_Extract_FileInfo_DirectoryInfoNull()
-        {
-            Assert.Throws<ArgumentNullException>(() => GZip.Extract(new FileInfo("example.txt.gz"), null));
-        }
+    [Fact]
+    public void op_Extract_FileInfo_DirectoryInfoNull()
+    {
+        Assert.Throws<ArgumentNullException>(() => GZip.Extract(new FileInfo("example.txt.gz"), null));
     }
 }

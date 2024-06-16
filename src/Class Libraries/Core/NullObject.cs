@@ -1,19 +1,18 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+public sealed class NullObject
 {
-    public sealed class NullObject
+    private static readonly NullObject _value = new NullObject();
+
+    private NullObject()
     {
-        private static readonly NullObject _value = new NullObject();
+    }
 
-        private NullObject()
+    public static NullObject Value
+    {
+        get
         {
-        }
-
-        public static NullObject Value
-        {
-            get
-            {
-                return _value;
-            }
+            return _value;
         }
     }
 }

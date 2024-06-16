@@ -1,173 +1,171 @@
-﻿namespace WhenFresh.Utilities.Core.Net
-{
-    using System;
-    using System.ComponentModel;
-    using System.Globalization;
-    using System.Runtime.Serialization;
-    using WhenFresh.Utilities.Core.Properties;
-    using WhenFresh.Utilities.Core.Security.Cryptography;
+﻿namespace WhenFresh.Utilities.Core.Net;
+
+using System.ComponentModel;
+using System.Globalization;
+using System.Runtime.Serialization;
+using WhenFresh.Utilities.Core.Properties;
+using WhenFresh.Utilities.Core.Security.Cryptography;
 #if NET20 || NET35
     using System.Security.Permissions;
 #endif
 
-    /// <summary>
-    /// Represents an entity tag.
-    /// </summary>
-    /// <remarks>
-    /// <see href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19">HTTP/1.1 ETag</see>
-    /// </remarks>
-    [ImmutableObject(true)]
-    [Serializable]
-    public struct EntityTag : ISerializable,
-                              IComparable,
-                              IComparable<EntityTag>,
-                              IEquatable<EntityTag>
+/// <summary>
+/// Represents an entity tag.
+/// </summary>
+/// <remarks>
+/// <see href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19">HTTP/1.1 ETag</see>
+/// </remarks>
+[ImmutableObject(true)]
+[Serializable]
+public struct EntityTag : ISerializable,
+                          IComparable,
+                          IComparable<EntityTag>,
+                          IEquatable<EntityTag>
+{
+    public EntityTag(string value)
+        : this()
     {
-        public EntityTag(string value)
-            : this()
+        if (null == value)
         {
-            if (null == value)
-            {
-                return;
-            }
-
-            if ("\"\"".Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                return;
-            }
-
-            if ("\"".Equals(value, StringComparison.OrdinalIgnoreCase) ||
-                "W/\"".Equals(value, StringComparison.OrdinalIgnoreCase))
-            {
-                throw new FormatException(Resources.EntityTag_FormatException_Message);
-            }
-
-            if (!value.StartsWith("\"", StringComparison.OrdinalIgnoreCase) &&
-                !value.StartsWith("W/\"", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new FormatException(Resources.EntityTag_FormatException_Message);
-            }
-
-            if (!value.EndsWith("\"", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new FormatException(Resources.EntityTag_FormatException_Message);
-            }
-
-            Value = value;
+            return;
         }
 
-        private EntityTag(SerializationInfo info,
-                          StreamingContext context)
-            : this()
+        if ("\"\"".Equals(value, StringComparison.OrdinalIgnoreCase))
         {
-            Value = info.GetString("_value");
+            return;
         }
 
-        public static EntityTag Null
+        if ("\"".Equals(value, StringComparison.OrdinalIgnoreCase) ||
+            "W/\"".Equals(value, StringComparison.OrdinalIgnoreCase))
         {
-            get
-            {
-                return new EntityTag();
-            }
+            throw new FormatException(Resources.EntityTag_FormatException_Message);
         }
 
-        private string Value { get; set; }
-
-        public static bool operator ==(EntityTag obj,
-                                       EntityTag comparand)
+        if (!value.StartsWith("\"", StringComparison.OrdinalIgnoreCase) &&
+            !value.StartsWith("W/\"", StringComparison.OrdinalIgnoreCase))
         {
-            return obj.Equals(comparand);
+            throw new FormatException(Resources.EntityTag_FormatException_Message);
         }
 
-        public static bool operator >(EntityTag operand1,
-                                      EntityTag operand2)
+        if (!value.EndsWith("\"", StringComparison.OrdinalIgnoreCase))
         {
-            return 0 < Compare(operand1, operand2);
+            throw new FormatException(Resources.EntityTag_FormatException_Message);
         }
 
-        public static implicit operator string(EntityTag value)
-        {
-            return value.ToString();
-        }
+        Value = value;
+    }
 
-        public static implicit operator EntityTag(string value)
-        {
-            return new EntityTag(value);
-        }
+    private EntityTag(SerializationInfo info,
+                      StreamingContext context)
+        : this()
+    {
+        Value = info.GetString("_value");
+    }
 
-        public static implicit operator EntityTag(MD5Hash value)
+    public static EntityTag Null
+    {
+        get
         {
-            return new EntityTag(string.Format(CultureInfo.InvariantCulture, "\"{0}\"", value));
+            return new EntityTag();
         }
+    }
 
-        public static bool operator !=(EntityTag obj,
-                                       EntityTag comparand)
-        {
-            return !obj.Equals(comparand);
-        }
+    private string Value { get; set; }
 
-        public static bool operator <(EntityTag operand1,
-                                      EntityTag operand2)
-        {
-            return 0 > Compare(operand1, operand2);
-        }
+    public static bool operator ==(EntityTag obj,
+                                   EntityTag comparand)
+    {
+        return obj.Equals(comparand);
+    }
 
-        public static int Compare(EntityTag operand1,
+    public static bool operator >(EntityTag operand1,
                                   EntityTag operand2)
+    {
+        return 0 < Compare(operand1, operand2);
+    }
+
+    public static implicit operator string(EntityTag value)
+    {
+        return value.ToString();
+    }
+
+    public static implicit operator EntityTag(string value)
+    {
+        return new EntityTag(value);
+    }
+
+    public static implicit operator EntityTag(MD5Hash value)
+    {
+        return new EntityTag(string.Format(CultureInfo.InvariantCulture, "\"{0}\"", value));
+    }
+
+    public static bool operator !=(EntityTag obj,
+                                   EntityTag comparand)
+    {
+        return !obj.Equals(comparand);
+    }
+
+    public static bool operator <(EntityTag operand1,
+                                  EntityTag operand2)
+    {
+        return 0 > Compare(operand1, operand2);
+    }
+
+    public static int Compare(EntityTag operand1,
+                              EntityTag operand2)
+    {
+        return string.CompareOrdinal(operand1, operand2);
+    }
+
+    public override bool Equals(object obj)
+    {
+        return !ReferenceEquals(null, obj) && Equals((EntityTag)obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return null == Value
+                   ? 0
+                   : Value.GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return Value ?? "\"\"";
+    }
+
+    public int CompareTo(object obj)
+    {
+        if (null == obj)
         {
-            return string.CompareOrdinal(operand1, operand2);
+            throw new ArgumentNullException("obj");
         }
 
-        public override bool Equals(object obj)
-        {
-            return !ReferenceEquals(null, obj) && Equals((EntityTag)obj);
-        }
+        return CompareTo((EntityTag)obj);
+    }
 
-        public override int GetHashCode()
-        {
-            return null == Value
-                       ? 0
-                       : Value.GetHashCode();
-        }
+    public int CompareTo(EntityTag other)
+    {
+        return Compare(this, other);
+    }
 
-        public override string ToString()
-        {
-            return Value ?? "\"\"";
-        }
-
-        public int CompareTo(object obj)
-        {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
-
-            return CompareTo((EntityTag)obj);
-        }
-
-        public int CompareTo(EntityTag other)
-        {
-            return Compare(this, other);
-        }
-
-        public bool Equals(EntityTag other)
-        {
-            return Value == other.Value;
-        }
+    public bool Equals(EntityTag other)
+    {
+        return Value == other.Value;
+    }
 
 #if NET20 || NET35
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
 #endif
 
-        void ISerializable.GetObjectData(SerializationInfo info,
-                                         StreamingContext context)
+    void ISerializable.GetObjectData(SerializationInfo info,
+                                     StreamingContext context)
+    {
+        if (null == info)
         {
-            if (null == info)
-            {
-                throw new ArgumentNullException("info");
-            }
-
-            info.AddValue("_value", ToString());
+            throw new ArgumentNullException("info");
         }
+
+        info.AddValue("_value", ToString());
     }
 }

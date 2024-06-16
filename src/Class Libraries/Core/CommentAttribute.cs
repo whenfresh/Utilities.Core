@@ -1,20 +1,17 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+[AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
+public sealed class CommentAttribute : Attribute
 {
-    using System;
-
-    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
-    public sealed class CommentAttribute : Attribute
+    public CommentAttribute(string value)
+        : this()
     {
-        public CommentAttribute(string value)
-            : this()
-        {
-            Value = value;
-        }
-
-        private CommentAttribute()
-        {
-        }
-
-        public string Value { get; private set; }
+        Value = value;
     }
+
+    private CommentAttribute()
+    {
+    }
+
+    public string Value { get; private set; }
 }

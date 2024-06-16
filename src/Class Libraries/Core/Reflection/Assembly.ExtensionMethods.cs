@@ -1,45 +1,43 @@
-﻿namespace WhenFresh.Utilities.Core.Reflection
-{
-    using System;
-    using System.IO;
-    using System.Reflection;
+﻿namespace WhenFresh.Utilities.Core.Reflection;
 
-    public static class AssemblyExtensionMethods
-    {
+using System.IO;
+using System.Reflection;
+
+public static class AssemblyExtensionMethods
+{
 #if NET20
         public static DirectoryInfo Directory(Assembly obj)
 #else
-        public static DirectoryInfo Directory(this Assembly obj)
+    public static DirectoryInfo Directory(this Assembly obj)
 #endif
+    {
+        if (null == obj)
         {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
-
-            return ToDirectory(obj.Location);
+            throw new ArgumentNullException("obj");
         }
 
-        public static DirectoryInfo ToDirectory(string location)
+        return ToDirectory(obj.Location);
+    }
+
+    public static DirectoryInfo ToDirectory(string location)
+    {
+        if (null == location)
         {
-            if (null == location)
-            {
-                throw new ArgumentNullException("location");
-            }
-
-            location = location.Trim();
-            if (0 == location.Length)
-            {
-                throw new ArgumentOutOfRangeException("location");
-            }
-
-            var file = new FileInfo(location);
-            if (null == file.Directory)
-            {
-                throw new DirectoryNotFoundException(location);
-            }
-
-            return new DirectoryInfo(file.Directory.FullName);
+            throw new ArgumentNullException("location");
         }
+
+        location = location.Trim();
+        if (0 == location.Length)
+        {
+            throw new ArgumentOutOfRangeException("location");
+        }
+
+        var file = new FileInfo(location);
+        if (null == file.Directory)
+        {
+            throw new DirectoryNotFoundException(location);
+        }
+
+        return new DirectoryInfo(file.Directory.FullName);
     }
 }

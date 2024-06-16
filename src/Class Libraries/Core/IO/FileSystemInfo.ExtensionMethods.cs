@@ -1,77 +1,74 @@
-﻿namespace WhenFresh.Utilities.Core.IO
+﻿namespace WhenFresh.Utilities.Core.IO;
+
+using System.IO;
+using System.Linq;
+
+public static class FileSystemInfoExtensionMethods
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-
-    public static class FileSystemInfoExtensionMethods
-    {
 #if !NET20 && !NET35
-        public static string Combine(this FileSystemInfo obj,
-                                     params object[] paths)
-        {
-            return Path.Combine(ToStringArray(obj, paths));
-        }
+    public static string Combine(this FileSystemInfo obj,
+                                 params object[] paths)
+    {
+        return Path.Combine(ToStringArray(obj, paths));
+    }
 
-        public static DirectoryInfo CombineAsDirectory(this FileSystemInfo obj,
-                                                       params object[] paths)
-        {
-            return new DirectoryInfo(Combine(obj, paths));
-        }
+    public static DirectoryInfo CombineAsDirectory(this FileSystemInfo obj,
+                                                   params object[] paths)
+    {
+        return new DirectoryInfo(Combine(obj, paths));
+    }
 
-        public static FileInfo CombineAsFile(this FileSystemInfo obj,
-                                             params object[] paths)
-        {
-            return new FileInfo(Combine(obj, paths));
-        }
+    public static FileInfo CombineAsFile(this FileSystemInfo obj,
+                                         params object[] paths)
+    {
+        return new FileInfo(Combine(obj, paths));
+    }
 #endif
 
 #if NET20
         public static bool NotFound(FileSystemInfo obj)
 #else
-        public static bool NotFound(this FileSystemInfo obj)
+    public static bool NotFound(this FileSystemInfo obj)
 #endif
+    {
+        if (null == obj)
         {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
-
-            return !obj.Exists;
+            throw new ArgumentNullException("obj");
         }
 
-#if !NET20 && !NET35
-        private static string[] ToStringArray(FileSystemInfo obj,
-                                              IEnumerable<object> paths)
-        {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
+        return !obj.Exists;
+    }
 
-            var args = new List<string>
-                           {
-                               obj.FullName
-                           };
+#if !NET20 && !NET35
+    private static string[] ToStringArray(FileSystemInfo obj,
+                                          IEnumerable<object> paths)
+    {
+        if (null == obj)
+        {
+            throw new ArgumentNullException("obj");
+        }
+
+        var args = new List<string>
+                       {
+                           obj.FullName
+                       };
 #if NET20
             if (ObjectExtensionMethods.IsNotNull(paths))
 #else
-            if (paths.IsNotNull())
+        if (paths.IsNotNull())
 #endif
-            {
-                var range = paths
+        {
+            var range = paths
 #if NET20
                     .Where(x => ObjectExtensionMethods.IsNotNull(x))
 #else
-                    .Where(x => x.IsNotNull())
+                        .Where(x => x.IsNotNull())
 #endif
-                    .Select(path => path.ToString().RemoveIllegalFileCharacters());
-                args.AddRange(range);
-            }
-
-            return args.ToArray();
+                        .Select(path => path.ToString().RemoveIllegalFileCharacters());
+            args.AddRange(range);
         }
-#endif
+
+        return args.ToArray();
     }
+#endif
 }

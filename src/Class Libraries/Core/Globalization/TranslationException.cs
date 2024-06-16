@@ -1,30 +1,28 @@
-﻿namespace WhenFresh.Utilities.Core.Globalization
+﻿namespace WhenFresh.Utilities.Core.Globalization;
+
+using System.Runtime.Serialization;
+
+[Serializable]
+public sealed class TranslationException : Exception
 {
-    using System;
-    using System.Runtime.Serialization;
-
-    [Serializable]
-    public sealed class TranslationException : Exception
+    public TranslationException()
     {
-        public TranslationException()
-        {
-        }
+    }
 
-        public TranslationException(string message)
-            : base(message)
-        {
-        }
+    public TranslationException(string message)
+        : base(message)
+    {
+    }
 
-        public TranslationException(string message,
-                                    Exception innerException)
-            : base(message, innerException)
-        {
-        }
+    public TranslationException(string message,
+                                Exception innerException)
+        : base(message, innerException)
+    {
+    }
 
-        private TranslationException(SerializationInfo info,
-                                     StreamingContext context)
-            : base(info, context)
-        {
-        }
+    private TranslationException(SerializationInfo info,
+                                 StreamingContext context)
+        : base(info, context)
+    {
     }
 }

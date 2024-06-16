@@ -1,50 +1,49 @@
-﻿namespace WhenFresh.Utilities.Core.Facts
+﻿namespace WhenFresh.Utilities.Core.Facts;
+
+using System;
+using WhenFresh.Utilities.Core;
+
+public sealed class CommentAttributeFacts
 {
-    using System;
-    using WhenFresh.Utilities.Core;
-
-    public sealed class CommentAttributeFacts
+    [Fact]
+    public void a_definition()
     {
-        [Fact]
-        public void a_definition()
-        {
-            Assert.True(new TypeExpectations<CommentAttribute>().DerivesFrom<Attribute>()
-                                                                .IsConcreteClass()
-                                                                .IsSealed()
-                                                                .NoDefaultConstructor()
-                                                                .AttributeUsage(AttributeTargets.All, true, true)
-                                                                .Result);
-        }
+        Assert.True(new TypeExpectations<CommentAttribute>().DerivesFrom<Attribute>()
+                                                            .IsConcreteClass()
+                                                            .IsSealed()
+                                                            .NoDefaultConstructor()
+                                                            .AttributeUsage(AttributeTargets.All, true, true)
+                                                            .Result);
+    }
 
-        [Fact]
-        public void ctor_string()
-        {
-            Assert.NotNull(new CommentAttribute("Example"));
-        }
+    [Fact]
+    public void ctor_string()
+    {
+        Assert.NotNull(new CommentAttribute("Example"));
+    }
 
-        [Fact]
-        public void ctor_stringEmpty()
-        {
-            Assert.NotNull(new CommentAttribute(string.Empty));
-        }
+    [Fact]
+    public void ctor_stringEmpty()
+    {
+        Assert.NotNull(new CommentAttribute(string.Empty));
+    }
 
-        [Fact]
-        public void ctor_stringNull()
-        {
-            Assert.NotNull(new CommentAttribute(null));
-        }
+    [Fact]
+    public void ctor_stringNull()
+    {
+        Assert.NotNull(new CommentAttribute(null));
+    }
 
-        [Fact]
-        public void prop_Value()
-        {
-            Assert.True(new PropertyExpectations<CommentAttribute>(x => x.Value)
-                            .IsAutoProperty<string>()
-                            .Result);
-        }
+    [Fact]
+    public void prop_Value()
+    {
+        Assert.True(new PropertyExpectations<CommentAttribute>(x => x.Value)
+                    .IsAutoProperty<string>()
+                    .Result);
+    }
 
-        [Comment("An example.")]
-        public void usage()
-        {
-        }
+    [Comment("An example.")]
+    public void usage()
+    {
     }
 }

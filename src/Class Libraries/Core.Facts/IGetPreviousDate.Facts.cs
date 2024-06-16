@@ -1,89 +1,88 @@
-﻿namespace WhenFresh.Utilities.Core.Facts
+﻿namespace WhenFresh.Utilities.Core.Facts;
+
+using Moq;
+using WhenFresh.Utilities.Core;
+
+public sealed class IGetPreviousDateFacts
 {
-    using Moq;
-    using WhenFresh.Utilities.Core;
-
-    public sealed class IGetPreviousDateFacts
+    [Fact]
+    public void a_definition()
     {
-        [Fact]
-        public void a_definition()
-        {
-            Assert.True(new TypeExpectations<IGetPreviousDate>().IsInterface()
-                                                                .Implements<IGetPreviousMonth>()
-                                                                .Implements<IGetPreviousWeekday>()
-                                                                .Result);
-        }
+        Assert.True(new TypeExpectations<IGetPreviousDate>().IsInterface()
+                                                            .Implements<IGetPreviousMonth>()
+                                                            .Implements<IGetPreviousWeekday>()
+                                                            .Result);
+    }
 
-        [Fact]
-        public void prop_Day_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_Day_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetPreviousDate>();
-            mock
-                .SetupGet(x => x.Day)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetPreviousDate>();
+        mock
+            .SetupGet(x => x.Day)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.Day;
+        var actual = mock.Object.Day;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_Month_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_Month_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetPreviousDate>();
-            mock
-                .SetupGet(x => x.Month)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetPreviousDate>();
+        mock
+            .SetupGet(x => x.Month)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.Month;
+        var actual = mock.Object.Month;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_Week_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_Week_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetPreviousDate>();
-            mock
-                .SetupGet(x => x.Week)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetPreviousDate>();
+        mock
+            .SetupGet(x => x.Week)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.Week;
+        var actual = mock.Object.Week;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
+    }
 
-        [Fact]
-        public void prop_Year_get()
-        {
-            var expected = Date.Today.LocalTime;
+    [Fact]
+    public void prop_Year_get()
+    {
+        var expected = Date.Today.LocalTime;
 
-            var mock = new Mock<IGetPreviousDate>();
-            mock
-                .SetupGet(x => x.Year)
-                .Returns(expected)
-                .Verifiable();
+        var mock = new Mock<IGetPreviousDate>();
+        mock
+            .SetupGet(x => x.Year)
+            .Returns(expected)
+            .Verifiable();
 
-            var actual = mock.Object.Year;
+        var actual = mock.Object.Year;
 
-            Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual);
 
-            mock.VerifyAll();
-        }
+        mock.VerifyAll();
     }
 }

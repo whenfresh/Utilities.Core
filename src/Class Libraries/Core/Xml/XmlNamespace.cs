@@ -1,70 +1,68 @@
-﻿namespace WhenFresh.Utilities.Core.Xml
+﻿namespace WhenFresh.Utilities.Core.Xml;
+
+using System.Globalization;
+
+public sealed class XmlNamespace : ComparableObject
 {
-    using System;
-    using System.Globalization;
+    private string _prefix;
 
-    public sealed class XmlNamespace : ComparableObject
+    private AbsoluteUri _uri;
+
+    public XmlNamespace(string prefix,
+                        AbsoluteUri uri)
+        : this()
     {
-        private string _prefix;
+        Prefix = prefix;
+        Uri = uri;
+    }
 
-        private AbsoluteUri _uri;
+    private XmlNamespace()
+    {
+    }
 
-        public XmlNamespace(string prefix,
-                            AbsoluteUri uri)
-            : this()
+    public string Prefix
+    {
+        get
         {
-            Prefix = prefix;
-            Uri = uri;
+            return _prefix;
         }
 
-        private XmlNamespace()
+        private set
         {
-        }
-
-        public string Prefix
-        {
-            get
+            if (null == value)
             {
-                return _prefix;
+                throw new ArgumentNullException("value");
             }
 
-            private set
+            if (0 == value.Length)
             {
-                if (null == value)
-                {
-                    throw new ArgumentNullException("value");
-                }
-
-                if (0 == value.Length)
-                {
-                    throw new ArgumentOutOfRangeException("value");
-                }
-
-                _prefix = value;
+                throw new ArgumentOutOfRangeException("value");
             }
-        }
 
-        public AbsoluteUri Uri
+            _prefix = value;
+        }
+    }
+
+    public AbsoluteUri Uri
+    {
+        get
         {
-            get
-            {
-                return _uri;
-            }
-
-            set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException("value");
-                }
-
-                _uri = value;
-            }
+            return _uri;
         }
 
-        public override string ToString()
+        set
         {
-            return string.Format(CultureInfo.InvariantCulture, "xmlns:{0}=\"{1}\"", Prefix, Uri);
+            if (null == value)
+            {
+                throw new ArgumentNullException("value");
+            }
+
+            _uri = value;
         }
+    }
+
+    public override string ToString()
+    {
+        return string.Format(CultureInfo.InvariantCulture, "xmlns:{0}=\"{1}\"", Prefix, Uri);
     }
 }

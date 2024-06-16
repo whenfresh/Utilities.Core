@@ -1,32 +1,30 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+using System.Diagnostics.CodeAnalysis;
+
+[SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = "Static", Justification = "This name is intentional.")]
+public static class Static<T>
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
+    [ThreadStatic]
+    private static T _instance;
 
-    [SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", MessageId = "Static", Justification = "This name is intentional.")]
-    public static class Static<T>
+    [SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes", Justification = "This design is intentional.")]
+    public static T Instance
     {
-        [ThreadStatic]
-        private static T _instance;
-
-        [SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes", Justification = "This design is intentional.")]
-        public static T Instance
+        get
         {
-            get
-            {
-                return _instance;
-            }
-
-            set
-            {
-                _instance = value;
-            }
+            return _instance;
         }
 
-        [SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes", Justification = "This design is intentional.")]
-        public static void Reset()
+        set
         {
-            _instance = default(T);
+            _instance = value;
         }
+    }
+
+    [SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes", Justification = "This design is intentional.")]
+    public static void Reset()
+    {
+        _instance = default(T);
     }
 }

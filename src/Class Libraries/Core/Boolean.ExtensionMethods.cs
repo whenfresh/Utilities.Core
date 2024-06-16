@@ -1,7 +1,7 @@
-﻿namespace WhenFresh.Utilities.Core
+﻿namespace WhenFresh.Utilities.Core;
+
+public static class BooleanExtensionMethods
 {
-    public static class BooleanExtensionMethods
-    {
 #if NET20
         public static bool And(bool value,
                                bool comparand)
@@ -10,7 +10,7 @@
                                bool comparand)
 #endif
         {
-            return value && comparand;
+                return value && comparand;
         }
 
 #if NET20
@@ -19,7 +19,7 @@
         public static bool IsFalse(this bool value)
 #endif
         {
-            return !value;
+                return !value;
         }
 
 #if NET20
@@ -28,7 +28,7 @@
         public static bool IsTrue(this bool value)
 #endif
         {
-            return value;
+                return value;
         }
 
 #if NET20
@@ -39,7 +39,6 @@
                               bool comparand)
 #endif
         {
-            return value || comparand;
+                return value || comparand;
         }
-    }
 }

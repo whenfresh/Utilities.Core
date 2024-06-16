@@ -1,100 +1,97 @@
-namespace WhenFresh.Utilities.Core
+namespace WhenFresh.Utilities.Core;
+
+public abstract class ComparableObject : IComparable
 {
-    using System;
-
-    public abstract class ComparableObject : IComparable
+    public static bool operator ==(ComparableObject operand1,
+                                   ComparableObject operand2)
     {
-        public static bool operator ==(ComparableObject operand1,
-                                       ComparableObject operand2)
+        return ReferenceEquals(null, operand1)
+                   ? ReferenceEquals(null, operand2)
+                   : operand1.Equals(operand2);
+    }
+
+    public static bool operator >(ComparableObject operand1,
+                                  ComparableObject operand2)
+    {
+        return Compare(operand1, operand2) > 0;
+    }
+
+    public static implicit operator string(ComparableObject value)
+    {
+        return ReferenceEquals(null, value)
+                   ? null
+                   : value.ToString();
+    }
+
+    public static bool operator !=(ComparableObject operand1,
+                                   ComparableObject operand2)
+    {
+        return ReferenceEquals(null, operand1)
+                   ? !ReferenceEquals(null, operand2)
+                   : !operand1.Equals(operand2);
+    }
+
+    public static bool operator <(ComparableObject operand1,
+                                  ComparableObject operand2)
+    {
+        return Compare(operand1, operand2) < 0;
+    }
+
+    public static int Compare(ComparableObject comparand1,
+                              ComparableObject comparand2)
+    {
+        return ReferenceEquals(comparand1, comparand2)
+                   ? 0
+                   : string.Compare(
+                                    ReferenceEquals(null, comparand1) ? null : comparand1.ToString(),
+                                    ReferenceEquals(null, comparand2) ? null : comparand2.ToString(),
+                                    StringComparison.OrdinalIgnoreCase);
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (ReferenceEquals(null, obj))
         {
-            return ReferenceEquals(null, operand1)
-                       ? ReferenceEquals(null, operand2)
-                       : operand1.Equals(operand2);
+            return false;
         }
 
-        public static bool operator >(ComparableObject operand1,
-                                      ComparableObject operand2)
+        if (ReferenceEquals(this, obj))
         {
-            return Compare(operand1, operand2) > 0;
+            return true;
         }
 
-        public static implicit operator string(ComparableObject value)
+        var cast = obj as ComparableObject;
+        if (ReferenceEquals(null, cast))
         {
-            return ReferenceEquals(null, value)
-                       ? null
-                       : value.ToString();
+            return false;
         }
 
-        public static bool operator !=(ComparableObject operand1,
-                                       ComparableObject operand2)
+        return 0 == Compare(this, cast);
+    }
+
+    public override int GetHashCode()
+    {
+        return ToString().GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return string.Empty;
+    }
+
+    public virtual int CompareTo(object obj)
+    {
+        if (ReferenceEquals(null, obj))
         {
-            return ReferenceEquals(null, operand1)
-                       ? !ReferenceEquals(null, operand2)
-                       : !operand1.Equals(operand2);
+            return 1;
         }
 
-        public static bool operator <(ComparableObject operand1,
-                                      ComparableObject operand2)
+        var value = obj as ComparableObject;
+        if (ReferenceEquals(null, value))
         {
-            return Compare(operand1, operand2) < 0;
+            throw new ArgumentOutOfRangeException("obj");
         }
 
-        public static int Compare(ComparableObject comparand1,
-                                  ComparableObject comparand2)
-        {
-            return ReferenceEquals(comparand1, comparand2)
-                       ? 0
-                       : string.Compare(
-                                        ReferenceEquals(null, comparand1) ? null : comparand1.ToString(),
-                                        ReferenceEquals(null, comparand2) ? null : comparand2.ToString(),
-                                        StringComparison.OrdinalIgnoreCase);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            var cast = obj as ComparableObject;
-            if (ReferenceEquals(null, cast))
-            {
-                return false;
-            }
-
-            return 0 == Compare(this, cast);
-        }
-
-        public override int GetHashCode()
-        {
-            return ToString().GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return string.Empty;
-        }
-
-        public virtual int CompareTo(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return 1;
-            }
-
-            var value = obj as ComparableObject;
-            if (ReferenceEquals(null, value))
-            {
-                throw new ArgumentOutOfRangeException("obj");
-            }
-
-            return Compare(this, value);
-        }
+        return Compare(this, value);
     }
 }

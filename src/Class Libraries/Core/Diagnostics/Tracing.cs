@@ -1,15 +1,14 @@
-﻿namespace WhenFresh.Utilities.Core.Diagnostics
-{
-    using System.Diagnostics;
+﻿namespace WhenFresh.Utilities.Core.Diagnostics;
 
-    internal static class Tracing
+using System.Diagnostics;
+
+internal static class Tracing
+{
+    internal static TraceSwitch Is
     {
-        internal static TraceSwitch Is
+        get
         {
-            get
-            {
-                return new TraceSwitch("Cavity.Core", string.Empty);
-            }
+            return new TraceSwitch("Cavity.Core", string.Empty);
         }
     }
 }

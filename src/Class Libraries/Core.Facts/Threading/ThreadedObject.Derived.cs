@@ -1,11 +1,10 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Threading
-{
-    using WhenFresh.Utilities.Core.Threading;
+﻿namespace WhenFresh.Utilities.Core.Facts.Threading;
 
-    public sealed class DerivedThreadedObject : ThreadedObject
+using WhenFresh.Utilities.Core.Threading;
+
+public sealed class DerivedThreadedObject : ThreadedObject
+{
+    protected override void OnDispose()
     {
-        protected override void OnDispose()
-        {
-        }
     }
 }

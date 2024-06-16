@@ -1,66 +1,65 @@
-﻿namespace WhenFresh.Utilities.Core.Net
-{
-    using System;
-    using System.ComponentModel;
-    using System.Linq;
-    using System.Runtime.Serialization;
-    using WhenFresh.Utilities.Core.Properties;
+﻿namespace WhenFresh.Utilities.Core.Net;
+
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.Serialization;
+using WhenFresh.Utilities.Core.Properties;
 #if !NET20
 #endif
 #if NET20 || NET35
     using System.Security.Permissions;
 #endif
 
-    [ImmutableObject(true)]
-    [Serializable]
-    public class Token : IComparable,
-                         IComparable<Token>,
-                         IEquatable<Token>,
-                         ISerializable
+[ImmutableObject(true)]
+[Serializable]
+public class Token : IComparable,
+                     IComparable<Token>,
+                     IEquatable<Token>,
+                     ISerializable
+{
+    private static readonly char[] _illegal = new[] { '"', '@', '(', ')', ',', '/', ':', ';', '<', '=', '>', '?', '[', '\\', ']', '{', '}' };
+
+    private string _value;
+
+    public Token(string value)
+        : this()
     {
-        private static readonly char[] _illegal = new[] { '"', '@', '(', ')', ',', '/', ':', ';', '<', '=', '>', '?', '[', '\\', ']', '{', '}' };
+        Value = value;
+    }
 
-        private string _value;
-
-        public Token(string value)
-            : this()
+    protected Token(SerializationInfo info,
+                    StreamingContext context)
+    {
+        if (null == info)
         {
-            Value = value;
+            return;
         }
 
-        protected Token(SerializationInfo info,
-                        StreamingContext context)
+        _value = info.GetString("_value");
+    }
+
+    private Token()
+    {
+    }
+
+    public string Value
+    {
+        get
         {
-            if (null == info)
+            return _value;
+        }
+
+        private set
+        {
+            if (null == value)
             {
-                return;
+                throw new ArgumentNullException("value");
             }
 
-            _value = info.GetString("_value");
-        }
-
-        private Token()
-        {
-        }
-
-        public string Value
-        {
-            get
+            if (0 == value.Length)
             {
-                return _value;
+                throw new ArgumentOutOfRangeException("value");
             }
-
-            private set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException("value");
-                }
-
-                if (0 == value.Length)
-                {
-                    throw new ArgumentOutOfRangeException("value");
-                }
 
 #if NET20
                 foreach (var c in value.ToUpperInvariant())
@@ -71,150 +70,149 @@
                     }
                 }
 #else
-                if (value
-                    .ToUpperInvariant()
-                    .Any(c => ' ' >= c || c.EqualsOneOf(_illegal) || (char)127 <= c))
-                {
-                    throw new FormatException(Resources.Token_FormatException_Message);
-                }
+            if (value
+                .ToUpperInvariant()
+                .Any(c => ' ' >= c || c.EqualsOneOf(_illegal) || (char)127 <= c))
+            {
+                throw new FormatException(Resources.Token_FormatException_Message);
+            }
 
 #endif
 
-                _value = value;
-            }
+            _value = value;
         }
+    }
 
-        public static bool operator ==(Token obj,
-                                       Token comparand)
+    public static bool operator ==(Token obj,
+                                   Token comparand)
+    {
+        return ReferenceEquals(null, obj)
+                   ? ReferenceEquals(null, comparand)
+                   : obj.Equals(comparand, StringComparison.Ordinal);
+    }
+
+    public static bool operator >(Token obj,
+                                  Token comparand)
+    {
+        return !ReferenceEquals(null, obj) && 0 < obj.CompareTo(comparand, StringComparison.Ordinal);
+    }
+
+    public static implicit operator string(Token uri)
+    {
+        return (null == uri) ? null : uri.Value;
+    }
+
+    public static implicit operator Token(string value)
+    {
+        return ReferenceEquals(null, value)
+                   ? null
+                   : new Token(value);
+    }
+
+    public static bool operator !=(Token obj,
+                                   Token comparand)
+    {
+        return ReferenceEquals(null, obj)
+                   ? !ReferenceEquals(null, comparand)
+                   : !obj.Equals(comparand, StringComparison.Ordinal);
+    }
+
+    public static bool operator <(Token obj,
+                                  Token comparand)
+    {
+        return ReferenceEquals(null, obj)
+                   ? !ReferenceEquals(null, comparand)
+                   : 0 > obj.CompareTo(comparand, StringComparison.Ordinal);
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (ReferenceEquals(null, obj))
         {
-            return ReferenceEquals(null, obj)
-                       ? ReferenceEquals(null, comparand)
-                       : obj.Equals(comparand, StringComparison.Ordinal);
+            return false;
         }
 
-        public static bool operator >(Token obj,
-                                      Token comparand)
+        if (ReferenceEquals(this, obj))
         {
-            return !ReferenceEquals(null, obj) && 0 < obj.CompareTo(comparand, StringComparison.Ordinal);
+            return true;
         }
 
-        public static implicit operator string(Token uri)
+        var cast = obj as Token;
+        if (ReferenceEquals(null, cast))
         {
-            return (null == uri) ? null : uri.Value;
+            return false;
         }
 
-        public static implicit operator Token(string value)
+        return Value == cast.Value;
+    }
+
+    public override int GetHashCode()
+    {
+        return ToString().GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public virtual int CompareTo(object obj)
+    {
+        if (null == obj)
         {
-            return ReferenceEquals(null, value)
-                       ? null
-                       : new Token(value);
+            return 1;
         }
 
-        public static bool operator !=(Token obj,
-                                       Token comparand)
+        var cast = obj as Token;
+        if (null == cast)
         {
-            return ReferenceEquals(null, obj)
-                       ? !ReferenceEquals(null, comparand)
-                       : !obj.Equals(comparand, StringComparison.Ordinal);
+            throw new ArgumentOutOfRangeException("obj");
         }
 
-        public static bool operator <(Token obj,
-                                      Token comparand)
+        return string.CompareOrdinal(Value, cast.Value);
+    }
+
+    public virtual int CompareTo(Token other)
+    {
+        return CompareTo(other, StringComparison.Ordinal);
+    }
+
+    public virtual int CompareTo(Token other,
+                                 StringComparison comparison)
+    {
+        return null == other
+                   ? 1
+                   : string.Compare(Value, other.Value, comparison);
+    }
+
+    public virtual bool Equals(Token other)
+    {
+        return Equals(other, StringComparison.Ordinal);
+    }
+
+    public virtual bool Equals(Token other,
+                               StringComparison comparison)
+    {
+        if (ReferenceEquals(null, other))
         {
-            return ReferenceEquals(null, obj)
-                       ? !ReferenceEquals(null, comparand)
-                       : 0 > obj.CompareTo(comparand, StringComparison.Ordinal);
+            return false;
         }
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            var cast = obj as Token;
-            if (ReferenceEquals(null, cast))
-            {
-                return false;
-            }
-
-            return Value == cast.Value;
-        }
-
-        public override int GetHashCode()
-        {
-            return ToString().GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return Value;
-        }
-
-        public virtual int CompareTo(object obj)
-        {
-            if (null == obj)
-            {
-                return 1;
-            }
-
-            var cast = obj as Token;
-            if (null == cast)
-            {
-                throw new ArgumentOutOfRangeException("obj");
-            }
-
-            return string.CompareOrdinal(Value, cast.Value);
-        }
-
-        public virtual int CompareTo(Token other)
-        {
-            return CompareTo(other, StringComparison.Ordinal);
-        }
-
-        public virtual int CompareTo(Token other,
-                                     StringComparison comparison)
-        {
-            return null == other
-                       ? 1
-                       : string.Compare(Value, other.Value, comparison);
-        }
-
-        public virtual bool Equals(Token other)
-        {
-            return Equals(other, StringComparison.Ordinal);
-        }
-
-        public virtual bool Equals(Token other,
-                                   StringComparison comparison)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            return ReferenceEquals(this, other) || 0 == CompareTo(other, comparison);
-        }
+        return ReferenceEquals(this, other) || 0 == CompareTo(other, comparison);
+    }
 
 #if NET20 || NET35
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
 #endif
 
-        public virtual void GetObjectData(SerializationInfo info,
-                                          StreamingContext context)
+    public virtual void GetObjectData(SerializationInfo info,
+                                      StreamingContext context)
+    {
+        if (null == info)
         {
-            if (null == info)
-            {
-                throw new ArgumentNullException("info");
-            }
-
-            info.AddValue("_value", _value);
+            throw new ArgumentNullException("info");
         }
+
+        info.AddValue("_value", _value);
     }
 }

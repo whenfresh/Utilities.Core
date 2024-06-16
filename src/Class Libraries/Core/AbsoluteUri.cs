@@ -1,225 +1,223 @@
-﻿namespace WhenFresh.Utilities.Core
-{
-    using System;
-    using System.IO;
-    using System.Runtime.Serialization;
+﻿namespace WhenFresh.Utilities.Core;
+
+using System.IO;
+using System.Runtime.Serialization;
 #if NET20 || NET35
     using System.Security.Permissions;
 #endif
 
-    [Serializable]
-    public class AbsoluteUri : IComparable,
-                               IComparable<AbsoluteUri>,
-                               IEquatable<AbsoluteUri>,
-                               ISerializable
+[Serializable]
+public class AbsoluteUri : IComparable,
+                           IComparable<AbsoluteUri>,
+                           IEquatable<AbsoluteUri>,
+                           ISerializable
+{
+    private Uri _value;
+
+    public AbsoluteUri(string value)
+        : this(null == value ? null : new Uri(value, UriKind.Absolute))
     {
-        private Uri _value;
+    }
 
-        public AbsoluteUri(string value)
-            : this(null == value ? null : new Uri(value, UriKind.Absolute))
+    public AbsoluteUri(Uri value)
+    {
+        Value = value;
+    }
+
+    protected AbsoluteUri(SerializationInfo info,
+                          StreamingContext context)
+    {
+        if (null == info)
         {
+            return;
         }
 
-        public AbsoluteUri(Uri value)
+        _value = new Uri(info.GetString("_value"), UriKind.Absolute);
+    }
+
+    protected Uri Value
+    {
+        get
         {
-            Value = value;
+            return _value;
         }
 
-        protected AbsoluteUri(SerializationInfo info,
-                              StreamingContext context)
+        set
         {
-            if (null == info)
+            if (null == value)
             {
-                return;
+                throw new ArgumentNullException("value");
             }
 
-            _value = new Uri(info.GetString("_value"), UriKind.Absolute);
-        }
-
-        protected Uri Value
-        {
-            get
+            if (!value.IsAbsoluteUri)
             {
-                return _value;
+                throw new UriFormatException();
             }
 
-            set
-            {
-                if (null == value)
-                {
-                    throw new ArgumentNullException("value");
-                }
-
-                if (!value.IsAbsoluteUri)
-                {
-                    throw new UriFormatException();
-                }
-
-                _value = value;
-            }
+            _value = value;
         }
+    }
 
-        public static bool operator ==(AbsoluteUri obj,
-                                       AbsoluteUri comparand)
+    public static bool operator ==(AbsoluteUri obj,
+                                   AbsoluteUri comparand)
+    {
+        return ReferenceEquals(null, obj)
+                   ? ReferenceEquals(null, comparand)
+                   : obj.Equals(comparand);
+    }
+
+    public static bool operator >(AbsoluteUri obj,
+                                  AbsoluteUri comparand)
+    {
+        return !ReferenceEquals(null, obj) && 0 < obj.CompareTo(comparand);
+    }
+
+    public static implicit operator string(AbsoluteUri uri)
+    {
+        return null == uri ? null : uri.Value.AbsoluteUri;
+    }
+
+    public static implicit operator AbsoluteUri(string value)
+    {
+        return null == value ? null : new Uri(value, UriKind.Absolute);
+    }
+
+    public static implicit operator Uri(AbsoluteUri uri)
+    {
+        return null == uri ? null : uri.Value;
+    }
+
+    public static implicit operator AbsoluteUri(Uri value)
+    {
+        return null == value ? null : new AbsoluteUri(value);
+    }
+
+    public static bool operator !=(AbsoluteUri obj,
+                                   AbsoluteUri comparand)
+    {
+        return ReferenceEquals(null, obj)
+                   ? !ReferenceEquals(null, comparand)
+                   : !obj.Equals(comparand);
+    }
+
+    public static bool operator <(AbsoluteUri obj,
+                                  AbsoluteUri comparand)
+    {
+        return ReferenceEquals(null, obj)
+                   ? !ReferenceEquals(null, comparand)
+                   : 0 > obj.CompareTo(comparand);
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (ReferenceEquals(null, obj))
         {
-            return ReferenceEquals(null, obj)
-                       ? ReferenceEquals(null, comparand)
-                       : obj.Equals(comparand);
+            return false;
         }
 
-        public static bool operator >(AbsoluteUri obj,
-                                      AbsoluteUri comparand)
+        if (ReferenceEquals(this, obj))
         {
-            return !ReferenceEquals(null, obj) && 0 < obj.CompareTo(comparand);
+            return true;
         }
 
-        public static implicit operator string(AbsoluteUri uri)
+        var cast = obj as AbsoluteUri;
+        if (ReferenceEquals(null, cast))
         {
-            return null == uri ? null : uri.Value.AbsoluteUri;
+            return false;
         }
 
-        public static implicit operator AbsoluteUri(string value)
-        {
-            return null == value ? null : new Uri(value, UriKind.Absolute);
-        }
+        return Value == cast.Value;
+    }
 
-        public static implicit operator Uri(AbsoluteUri uri)
-        {
-            return null == uri ? null : uri.Value;
-        }
+    public override int GetHashCode()
+    {
+        return ToString().GetHashCode();
+    }
 
-        public static implicit operator AbsoluteUri(Uri value)
-        {
-            return null == value ? null : new AbsoluteUri(value);
-        }
-
-        public static bool operator !=(AbsoluteUri obj,
-                                       AbsoluteUri comparand)
-        {
-            return ReferenceEquals(null, obj)
-                       ? !ReferenceEquals(null, comparand)
-                       : !obj.Equals(comparand);
-        }
-
-        public static bool operator <(AbsoluteUri obj,
-                                      AbsoluteUri comparand)
-        {
-            return ReferenceEquals(null, obj)
-                       ? !ReferenceEquals(null, comparand)
-                       : 0 > obj.CompareTo(comparand);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            var cast = obj as AbsoluteUri;
-            if (ReferenceEquals(null, cast))
-            {
-                return false;
-            }
-
-            return Value == cast.Value;
-        }
-
-        public override int GetHashCode()
-        {
-            return ToString().GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return Value.AbsoluteUri;
-        }
+    public override string ToString()
+    {
+        return Value.AbsoluteUri;
+    }
 
 #if !NET20
-        public virtual FileSystemInfo ToPath(FileSystemInfo root)
+    public virtual FileSystemInfo ToPath(FileSystemInfo root)
+    {
+        if (null == root)
         {
-            if (null == root)
-            {
-                throw new ArgumentNullException("root");
-            }
-
-            var path = ToString().Replace("%5C", "&bsol;");
-            if (path.Contains("://"))
-            {
-                path = path.Replace("://", @"\");
-            }
-            else
-            {
-                var index = path.IndexOf(':');
-                path = @"{0}\{1}".FormatWith(path.Substring(0, index), path.Substring(index + 1));
-            }
-
-            path = path
-                .Replace('/', '\\')
-                .Replace("*", "&ast;")
-                .Replace(":", "&colon;")
-                .Replace("%3E", "&gt;")
-                .Replace("%3C", "&lt;")
-                .Replace("?", "&quest;")
-                .Replace("%22", "&quot;")
-                .Replace("%7C", "&verbar;");
-
-            return new DirectoryInfo(Path.Combine(root.FullName, path));
+            throw new ArgumentNullException("root");
         }
+
+        var path = ToString().Replace("%5C", "&bsol;");
+        if (path.Contains("://"))
+        {
+            path = path.Replace("://", @"\");
+        }
+        else
+        {
+            var index = path.IndexOf(':');
+            path = @"{0}\{1}".FormatWith(path.Substring(0, index), path.Substring(index + 1));
+        }
+
+        path = path
+               .Replace('/', '\\')
+               .Replace("*", "&ast;")
+               .Replace(":", "&colon;")
+               .Replace("%3E", "&gt;")
+               .Replace("%3C", "&lt;")
+               .Replace("?", "&quest;")
+               .Replace("%22", "&quot;")
+               .Replace("%7C", "&verbar;");
+
+        return new DirectoryInfo(Path.Combine(root.FullName, path));
+    }
 
 #endif
 
-        public virtual int CompareTo(object obj)
+    public virtual int CompareTo(object obj)
+    {
+        if (null == obj)
         {
-            if (null == obj)
-            {
-                return 1;
-            }
-
-            var cast = obj as AbsoluteUri;
-            if (null == cast)
-            {
-                throw new ArgumentOutOfRangeException("obj");
-            }
-
-            return string.CompareOrdinal(Value.AbsoluteUri, cast.Value.AbsoluteUri);
+            return 1;
         }
 
-        public virtual int CompareTo(AbsoluteUri other)
+        var cast = obj as AbsoluteUri;
+        if (null == cast)
         {
-            return null == other
-                       ? 1
-                       : string.CompareOrdinal(Value.AbsoluteUri, other.Value.AbsoluteUri);
+            throw new ArgumentOutOfRangeException("obj");
         }
 
-        public virtual bool Equals(AbsoluteUri other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
+        return string.CompareOrdinal(Value.AbsoluteUri, cast.Value.AbsoluteUri);
+    }
 
-            return ReferenceEquals(this, other) || 0 == CompareTo(other);
+    public virtual int CompareTo(AbsoluteUri other)
+    {
+        return null == other
+                   ? 1
+                   : string.CompareOrdinal(Value.AbsoluteUri, other.Value.AbsoluteUri);
+    }
+
+    public virtual bool Equals(AbsoluteUri other)
+    {
+        if (ReferenceEquals(null, other))
+        {
+            return false;
         }
+
+        return ReferenceEquals(this, other) || 0 == CompareTo(other);
+    }
 
 #if NET20 || NET35
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
 #endif
 
-        public virtual void GetObjectData(SerializationInfo info,
-                                          StreamingContext context)
+    public virtual void GetObjectData(SerializationInfo info,
+                                      StreamingContext context)
+    {
+        if (null == info)
         {
-            if (null == info)
-            {
-                throw new ArgumentNullException("info");
-            }
-
-            info.AddValue("_value", _value.AbsoluteUri);
+            throw new ArgumentNullException("info");
         }
+
+        info.AddValue("_value", _value.AbsoluteUri);
     }
 }
