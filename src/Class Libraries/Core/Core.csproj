@@ -1,9 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>Cavity.Core</AssemblyName>
-    <TargetFramework>net472</TargetFramework>
-    <AssemblyTitle>Cavity.Core.dll</AssemblyTitle>
-    <Description>Cavity : Core Library (Release)</Description>
+    <TargetFramework>net80</TargetFramework>
+    <Description>Utility core library used by dependent libraries.</Description>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Properties\CodeAnalysis.dictionary" />
