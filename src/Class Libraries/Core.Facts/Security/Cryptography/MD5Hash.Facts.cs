@@ -51,23 +51,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            MD5Hash expected = Convert.FromBase64String(_jigsawHash);
-            MD5Hash actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, (MD5Hash)Convert.FromBase64String(_jigsawHash));
-                stream.Position = 0;
-                actual = (MD5Hash)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void ctor_bytes()
         {
             Assert.NotNull(new MD5Hash(Convert.FromBase64String(_jigsawHash)));

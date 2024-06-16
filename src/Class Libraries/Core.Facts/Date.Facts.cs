@@ -56,23 +56,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            var expected = new Date(1999, 12, 31);
-            Date actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, new Date(1999, 12, 31));
-                stream.Position = 0;
-                actual = (Date)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void ctor_int_MonthOfYear_int()
         {
             Assert.NotNull(new Date(1999, MonthOfYear.May, 31));

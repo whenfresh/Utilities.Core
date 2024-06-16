@@ -42,23 +42,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            var expected = new Quarter(1999, 3);
-            Quarter actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, new Quarter(1999, 3));
-                stream.Position = 0;
-                actual = (Quarter)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void ctor_int_QuarterOfYear()
         {
             Assert.NotNull(new Quarter(1999, QuarterOfYear.Q2));

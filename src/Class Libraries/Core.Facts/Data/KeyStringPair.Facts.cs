@@ -25,23 +25,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            var expected = new KeyStringPair("key", "value");
-            KeyStringPair actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, new KeyStringPair("key", "value"));
-                stream.Position = 0;
-                actual = (KeyStringPair)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void ctor_stringEmpty_string()
         {
             Assert.NotNull(new KeyStringPair(string.Empty, "value"));

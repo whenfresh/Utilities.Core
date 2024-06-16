@@ -27,30 +27,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            var expected = new TranslationDictionary<int>
-                               {
-                                   new Translation<int>(123, "en")
-                               };
-            TranslationDictionary<int> actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                var obj = new TranslationDictionary<int>
-                              {
-                                  new Translation<int>(123, "en")
-                              };
-                formatter.Serialize(stream, obj);
-                stream.Position = 0;
-                actual = (TranslationDictionary<int>)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void op_Add_Translation()
         {
             var obj = new TranslationDictionary<int>

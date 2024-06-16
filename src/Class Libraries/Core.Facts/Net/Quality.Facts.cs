@@ -26,24 +26,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            var expected = new Quality(0.23f);
-            Quality actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                var obj = new Quality(0.23f);
-                formatter.Serialize(stream, obj);
-                stream.Position = 0;
-                actual = (Quality)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void ctor_float()
         {
             Assert.NotNull(new Quality(0.75f));

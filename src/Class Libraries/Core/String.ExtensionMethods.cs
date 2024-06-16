@@ -1,16 +1,13 @@
 ﻿namespace Cavity
 {
     using System;
-#if NET20
     using System.Collections.Generic;
-#endif
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.IO;
-#if !NET20
+
     using System.Linq;
-#endif
-    using System.Runtime.Serialization.Formatters.Soap;
+
     using System.Text;
     using System.Threading;
     using System.Xml;
@@ -19,13 +16,8 @@
 
     public static class StringExtensionMethods
     {
-#if NET20
-        public static string Append(string obj, 
-                                    params char[] args)
-#else
         public static string Append(this string obj,
                                     params char[] args)
-#endif
         {
             if (null == obj)
             {
@@ -70,13 +62,8 @@
             }
         }
 
-#if NET20
-        public static string Append(string obj, 
-                                    params string[] args)
-#else
         public static string Append(this string obj,
                                     params string[] args)
-#endif
         {
             if (null == obj)
             {
@@ -1878,9 +1865,9 @@
                     writer.Write(xml);
                     writer.Flush();
                     stream.Position = 0;
-                    return typeof(Exception).IsAssignableFrom(type)
-                               ? new SoapFormatter().Deserialize(stream)
-                               : new XmlSerializer(type).Deserialize(stream);
+                    return !typeof(Exception).IsAssignableFrom(type)
+                               ? new XmlSerializer(type).Deserialize(stream)
+                               : throw new NotSupportedException("Soap Formatter not supported");
                 }
             }
         }

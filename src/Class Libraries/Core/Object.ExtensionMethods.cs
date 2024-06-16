@@ -4,7 +4,6 @@ namespace Cavity
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.IO;
-    using System.Runtime.Serialization.Formatters.Soap;
     using System.Text;
     using System.Xml;
     using System.Xml.Serialization;
@@ -118,23 +117,7 @@ namespace Cavity
             var buffer = new StringBuilder();
 
             var exception = value as Exception;
-#if NET20
-            if (ObjectExtensionMethods.IsNotNull(exception))
-#else
-            if (exception.IsNotNull())
-#endif
-            {
-                using (var stream = new MemoryStream())
-                {
-                    new SoapFormatter().Serialize(stream, value);
-                    stream.Seek(0, SeekOrigin.Begin);
-                    using (var reader = new StreamReader(stream))
-                    {
-                        buffer.Append(reader.ReadToEnd());
-                    }
-                }
-            }
-            else
+
             {
                 using (TextWriter writer = new EncodedStringWriter(buffer, CultureInfo.InvariantCulture, Encoding.UTF8))
                 {

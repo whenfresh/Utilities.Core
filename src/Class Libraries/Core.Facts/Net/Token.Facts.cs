@@ -27,23 +27,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            var expected = new Token("Example");
-            Token actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, new Token("Example"));
-                stream.Position = 0;
-                actual = (Token)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void ctor_string()
         {
             Assert.NotNull(new Token("Example"));

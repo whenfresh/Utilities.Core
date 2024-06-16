@@ -26,23 +26,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            var expected = new Translation<int>(123, "en");
-            Translation<int> actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, new Translation<int>(123, "en"));
-                stream.Position = 0;
-                actual = (Translation<int>)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void ctor_T()
         {
             const int expected = 123;

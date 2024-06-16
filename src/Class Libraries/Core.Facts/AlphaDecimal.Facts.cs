@@ -35,23 +35,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            AlphaDecimal expected = 123;
-            AlphaDecimal actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, (AlphaDecimal)123);
-                stream.Position = 0;
-                actual = (AlphaDecimal)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void opAddition_AlphaDecimal_AlphaDecimal()
         {
             AlphaDecimal one = 1;

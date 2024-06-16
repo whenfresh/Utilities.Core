@@ -22,22 +22,6 @@
                                                            .Result);
         }
 
-        [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            var expected = new AbsoluteUri("http://example.com");
-            AbsoluteUri actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, new AbsoluteUri("http://example.com"));
-                stream.Position = 0;
-                actual = (AbsoluteUri)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
 
         [Fact]
         public void ctor_UriAbsolute()

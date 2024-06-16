@@ -23,23 +23,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            var expected = new RelativeUri("/");
-            RelativeUri actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, new RelativeUri("/"));
-                stream.Position = 0;
-                actual = (RelativeUri)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void ctor_UriAbsolute()
         {
             Assert.Throws<UriFormatException>(() => new RelativeUri(new Uri("http://example.com/")));

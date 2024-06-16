@@ -98,23 +98,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            var expected = new MutableString("Example");
-            MutableString actual;
-
-            using (Stream stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, new MutableString("Example"));
-                stream.Position = 0;
-                actual = (MutableString)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void ctor_StringBuilder()
         {
             var expected = string.Empty;

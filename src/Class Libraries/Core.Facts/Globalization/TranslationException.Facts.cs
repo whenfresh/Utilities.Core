@@ -25,23 +25,6 @@
         }
 
         [Fact]
-        public void ctor_SerializationInfo_StreamingContext()
-        {
-            var expected = new TranslationException("test");
-            TranslationException actual;
-
-            using (var stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, new TranslationException("test"));
-                stream.Position = 0;
-                actual = (TranslationException)formatter.Deserialize(stream);
-            }
-
-            Assert.Equal(expected.Message, actual.Message);
-        }
-
-        [Fact]
         public void ctor_string()
         {
             Assert.NotNull(new TranslationException("message"));
