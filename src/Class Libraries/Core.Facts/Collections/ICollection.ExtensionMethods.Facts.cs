@@ -1,8 +1,8 @@
-﻿namespace Cavity.Collections
+﻿namespace WhenFresh.Utilities.Core.Facts.Collections
 {
     using System;
     using System.Collections.Generic;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Collections;
 
     public sealed class ICollectionExtensionMethodsFacts
     {

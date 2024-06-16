@@ -1,10 +1,10 @@
-﻿namespace Cavity.Compression
+﻿namespace WhenFresh.Utilities.Core.Compression
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.IO.Compression;
-    using Cavity.IO;
+    using WhenFresh.Utilities.Core.IO;
 
     public static class GZip
     {

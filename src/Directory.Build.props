@@ -3,7 +3,6 @@
     <PropertyGroup>
         <ImplicitUsings>true</ImplicitUsings>
         <LangVersion>latestmajor</LangVersion>
-
         <AssemblyName>WhenFresh.Utilities.$(MSBuildProjectName)</AssemblyName>
         <AssemblyTitle>WhenFresh.Utilities.$(MSBuildProjectName).dll</AssemblyTitle>
         <RootNamespace>WhenFresh.Utilities.$(MSBuildProjectName)</RootNamespace>

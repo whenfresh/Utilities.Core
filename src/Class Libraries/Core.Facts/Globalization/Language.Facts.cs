@@ -1,12 +1,10 @@
-﻿namespace Cavity.Globalization
+﻿namespace WhenFresh.Utilities.Core.Facts.Globalization
 {
     using System;
     using System.ComponentModel;
     using System.Globalization;
-    using System.IO;
     using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Formatters.Binary;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Globalization;
 
     public sealed class LanguageFacts
     {

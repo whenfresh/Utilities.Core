@@ -1,7 +1,8 @@
-﻿namespace Cavity.Xml
+﻿namespace WhenFresh.Utilities.Core.Facts.Xml
 {
     using System;
-    using Xunit;
+    using WhenFresh.Utilities.Core;
+    using WhenFresh.Utilities.Core.Xml;
 
     public sealed class XmlNamespaceFacts
     {

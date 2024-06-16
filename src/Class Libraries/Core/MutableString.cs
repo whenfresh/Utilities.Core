@@ -1,19 +1,19 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
-#if !NET20
     using System.Linq;
-#endif
     using System.Runtime.Serialization;
+    using System.Text;
+    using WhenFresh.Utilities.Core.Collections;
+#if !NET20
+#endif
 #if NET20 || NET35
     using System.Security.Permissions;
 #endif
-    using System.Text;
-    using Cavity.Collections;
 
     [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "This is not a collection.")]
     [Serializable]

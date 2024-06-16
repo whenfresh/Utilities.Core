@@ -1,4 +1,4 @@
-﻿namespace Cavity.Collections.Generic
+﻿namespace WhenFresh.Utilities.Core.Collections.Generic
 {
     using System;
     using System.Collections;

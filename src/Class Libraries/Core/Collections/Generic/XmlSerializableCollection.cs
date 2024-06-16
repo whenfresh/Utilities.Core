@@ -1,14 +1,14 @@
-﻿namespace Cavity.Collections.Generic
+﻿namespace WhenFresh.Utilities.Core.Collections.Generic
 {
     using System;
     using System.Collections.ObjectModel;
-#if !NET20
     using System.Linq;
-#endif
     using System.Xml;
     using System.Xml.Schema;
     using System.Xml.Serialization;
-    using Cavity.Xml;
+    using WhenFresh.Utilities.Core.Xml;
+#if !NET20
+#endif
 
     public abstract class XmlSerializableCollection<T> : Collection<T>,
                                                          IEquatable<XmlSerializableCollection<T>>,

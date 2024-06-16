@@ -1,4 +1,4 @@
-﻿namespace Cavity.Dynamic
+﻿namespace WhenFresh.Utilities.Core.Dynamic
 {
     using System;
     using System.Collections.Generic;

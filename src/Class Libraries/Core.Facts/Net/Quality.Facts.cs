@@ -1,12 +1,9 @@
-﻿namespace Cavity.Net
+﻿namespace WhenFresh.Utilities.Core.Facts.Net
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using System.IO;
     using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Formatters.Binary;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core.Net;
 
     public sealed class QualityFacts
     {

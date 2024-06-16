@@ -1,4 +1,4 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core
 {
     public interface IChangeDate : IChangeMonth<Date>
     {

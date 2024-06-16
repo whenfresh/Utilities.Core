@@ -1,13 +1,11 @@
-﻿namespace Cavity.Collections
+﻿namespace WhenFresh.Utilities.Core.Facts.Collections
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
-    using System.Runtime.Serialization.Formatters.Binary;
     using System.Xml;
-    using Cavity.Data;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core;
+    using WhenFresh.Utilities.Core.Collections;
+    using WhenFresh.Utilities.Core.Data;
 
     public sealed class KeyStringDictionaryFacts
     {

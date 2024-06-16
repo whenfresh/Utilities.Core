@@ -1,11 +1,8 @@
-﻿namespace Cavity.IO
+﻿namespace WhenFresh.Utilities.Core.IO
 {
     using System;
     using System.IO;
-#if !NET20 && !NET35
     using System.Threading.Tasks;
-
-#endif
 
     public class TempDirectory : IDisposable
     {

@@ -1,8 +1,8 @@
-namespace Cavity.Security.Cryptography
+namespace WhenFresh.Utilities.Core.Facts.Security.Cryptography
 {
     using System;
     using System.ComponentModel;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Security.Cryptography;
 
     public sealed class SaltFacts
     {

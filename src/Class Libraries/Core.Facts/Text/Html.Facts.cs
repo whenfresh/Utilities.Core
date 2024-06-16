@@ -1,6 +1,6 @@
-﻿namespace Cavity.Text
+﻿namespace WhenFresh.Utilities.Core.Facts.Text
 {
-    using Xunit;
+    using WhenFresh.Utilities.Core.Text;
 
     public sealed class HtmlFacts
     {

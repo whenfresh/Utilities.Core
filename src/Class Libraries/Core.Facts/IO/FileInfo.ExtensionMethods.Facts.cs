@@ -1,4 +1,4 @@
-﻿namespace Cavity.IO
+﻿namespace WhenFresh.Utilities.Core.Facts.IO
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -6,8 +6,7 @@
     using System.Linq;
     using System.Xml;
     using System.Xml.XPath;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core.IO;
 
     public sealed class FileInfoExtensionMethodsFacts
     {

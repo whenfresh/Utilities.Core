@@ -1,18 +1,16 @@
-﻿namespace Cavity.Collections
+﻿namespace WhenFresh.Utilities.Core.Collections
 {
-    using System;
-    using System.Collections;
 #if !NET20 && !NET35
-    using System.Collections.Concurrent;
 #endif
-    using System.Collections.Generic;
 #if NET20
     using System.Diagnostics.CodeAnalysis;
 #endif
-#if !NET20
+    using System;
+    using System.Collections;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
-#endif
     using System.Text;
 
     public static class IEnumerableExtensionMethods

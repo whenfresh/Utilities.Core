@@ -1,10 +1,9 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core
 {
     using System;
     using System.ComponentModel;
     using System.Runtime.Serialization;
     using System.Xml;
-
 #if NET20 || NET35
     using System.Security.Permissions;
 #endif

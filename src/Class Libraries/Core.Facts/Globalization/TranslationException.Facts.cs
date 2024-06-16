@@ -1,9 +1,7 @@
-﻿namespace Cavity.Globalization
+﻿namespace WhenFresh.Utilities.Core.Facts.Globalization
 {
     using System;
-    using System.IO;
-    using System.Runtime.Serialization.Formatters.Binary;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Globalization;
 
     public sealed class TranslationExceptionFacts
     {

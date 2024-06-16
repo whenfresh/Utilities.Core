@@ -1,10 +1,9 @@
-﻿namespace Cavity.Collections
+﻿namespace WhenFresh.Utilities.Core.Facts.Collections
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core.Collections;
 
     public sealed class IListExtensionMethodsFacts
     {

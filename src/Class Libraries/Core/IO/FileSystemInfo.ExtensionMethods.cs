@@ -1,12 +1,9 @@
-﻿namespace Cavity.IO
+﻿namespace WhenFresh.Utilities.Core.IO
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
-#if !NET20
     using System.Linq;
-
-#endif
 
     public static class FileSystemInfoExtensionMethods
     {

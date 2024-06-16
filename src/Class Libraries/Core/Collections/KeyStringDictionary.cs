@@ -1,14 +1,14 @@
-﻿namespace Cavity.Collections
+﻿namespace WhenFresh.Utilities.Core.Collections
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-#if !NET20
     using System.Linq;
-#endif
     using System.Runtime.Serialization;
-    using Cavity.Data;
-    using Cavity.Properties;
+    using WhenFresh.Utilities.Core.Data;
+    using WhenFresh.Utilities.Core.Properties;
+#if !NET20
+#endif
 
     [Serializable]
     public class KeyStringDictionary : Dictionary<string, string>,

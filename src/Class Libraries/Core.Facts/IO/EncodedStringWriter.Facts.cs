@@ -1,10 +1,10 @@
-namespace Cavity.IO
+namespace WhenFresh.Utilities.Core.Facts.IO
 {
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.IO;
     using System.Text;
-    using Xunit;
+    using WhenFresh.Utilities.Core.IO;
 
     public sealed class EncodedStringWriterFacts
     {

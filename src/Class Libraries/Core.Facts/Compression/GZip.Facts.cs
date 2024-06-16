@@ -1,9 +1,10 @@
-﻿namespace Cavity.Compression
+﻿namespace WhenFresh.Utilities.Core.Facts.Compression
 {
     using System;
     using System.IO;
-    using Cavity.IO;
-    using Xunit;
+    using WhenFresh.Utilities.Core;
+    using WhenFresh.Utilities.Core.Compression;
+    using WhenFresh.Utilities.Core.IO;
 
     public sealed class GZipFacts
     {

@@ -1,8 +1,9 @@
-﻿namespace Cavity.IO
+﻿namespace WhenFresh.Utilities.Core.Facts.IO
 {
     using System;
     using System.IO;
-    using Xunit;
+    using WhenFresh.Utilities.Core;
+    using WhenFresh.Utilities.Core.IO;
 
     public sealed class TempDirectoryFacts
     {

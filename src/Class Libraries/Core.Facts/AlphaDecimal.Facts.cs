@@ -1,16 +1,14 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core.Facts
 {
     using System;
     using System.ComponentModel;
     using System.Globalization;
-    using System.IO;
-#if !NET20 && !NET35
     using System.Numerics;
-#endif
     using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Formatters.Binary;
     using System.Xml;
-    using Xunit;
+    using WhenFresh.Utilities.Core;
+#if !NET20 && !NET35
+#endif
 
     public sealed class AlphaDecimalFacts
     {

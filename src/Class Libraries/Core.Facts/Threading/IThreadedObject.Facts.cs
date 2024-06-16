@@ -1,9 +1,9 @@
-﻿namespace Cavity.Threading
+﻿namespace WhenFresh.Utilities.Core.Facts.Threading
 {
     using System;
     using System.Threading;
     using Moq;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Threading;
 
     public sealed class IThreadedObjectFacts
     {

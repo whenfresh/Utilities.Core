@@ -1,4 +1,4 @@
-﻿namespace Cavity.Xml
+﻿namespace WhenFresh.Utilities.Core.Xml
 {
     using System;
     using System.Globalization;

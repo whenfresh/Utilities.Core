@@ -1,8 +1,8 @@
-﻿namespace Cavity.Collections
+﻿namespace WhenFresh.Utilities.Core.Facts.Collections
 {
     using System;
     using System.Collections.Generic;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Collections;
 
     public sealed class IDictionaryExtensionMethodsFacts
     {
@@ -39,7 +39,7 @@
         [Fact]
         public void op_TryAdd_IDictionaryOfTNull_TKey_TValue()
         {
-            Assert.Throws<ArgumentNullException>(() => (null as IDictionary<string, object>).TryAdd("example", new object()));
+            Assert.Throws<ArgumentNullException>(() => IDictionaryExtensionMethods.TryAdd((null as IDictionary<string, object>), "example", new object()));
         }
 
         [Fact]

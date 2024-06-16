@@ -1,12 +1,10 @@
-﻿namespace Cavity.Net
+﻿namespace WhenFresh.Utilities.Core.Facts.Net
 {
     using System;
     using System.ComponentModel;
-    using System.IO;
     using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Formatters.Binary;
-    using Cavity.Security.Cryptography;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Net;
+    using WhenFresh.Utilities.Core.Security.Cryptography;
 
     public sealed class EntityTagFacts
     {

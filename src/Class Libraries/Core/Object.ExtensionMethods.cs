@@ -1,4 +1,4 @@
-namespace Cavity
+namespace WhenFresh.Utilities.Core
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -8,8 +8,8 @@ namespace Cavity
     using System.Xml;
     using System.Xml.Serialization;
     using System.Xml.XPath;
-    using Cavity.IO;
-    using Cavity.Xml;
+    using WhenFresh.Utilities.Core.IO;
+    using WhenFresh.Utilities.Core.Xml;
 
     public static class ObjectExtensionMethods
     {

@@ -1,12 +1,11 @@
-﻿namespace Cavity.Net
+﻿namespace WhenFresh.Utilities.Core.Net
 {
     using System;
     using System.ComponentModel;
     using System.Globalization;
     using System.Runtime.Serialization;
-    using Cavity.Properties;
-    using Cavity.Security.Cryptography;
-
+    using WhenFresh.Utilities.Core.Properties;
+    using WhenFresh.Utilities.Core.Security.Cryptography;
 #if NET20 || NET35
     using System.Security.Permissions;
 #endif

@@ -1,10 +1,10 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core
 {
     using System;
-#if !NET20
     using System.Linq;
+    using WhenFresh.Utilities.Core.Properties;
+#if !NET20
 #endif
-    using Cavity.Properties;
 
     public static class GenericExtensionMethods
     {

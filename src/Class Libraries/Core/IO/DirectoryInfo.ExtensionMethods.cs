@@ -1,18 +1,15 @@
-﻿namespace Cavity.IO
+﻿namespace WhenFresh.Utilities.Core.IO
 {
+#if !NET20
+#endif
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.IO;
-#if !NET20
     using System.Linq;
-#endif
-#if !NET20 && !NET35
     using System.Threading.Tasks;
-
-#endif
 
     public static class DirectoryInfoExtensionMethods
     {

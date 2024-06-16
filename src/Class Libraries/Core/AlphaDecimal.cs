@@ -1,15 +1,13 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core
 {
-    using System;
 #if !NET20 && !NET35
-    using System.Collections.Generic;
 #endif
+    using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
-#if !NET20 && !NET35
     using System.Globalization;
     using System.Linq;
     using System.Numerics;
-#endif
     using System.Runtime.Serialization;
 #if NET20 || NET35
     using System.Security.Cryptography;

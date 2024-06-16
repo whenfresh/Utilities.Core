@@ -1,8 +1,8 @@
-﻿namespace Cavity.Dynamic
+﻿namespace WhenFresh.Utilities.Core.Facts.Dynamic
 {
     using System;
     using System.Dynamic;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Dynamic;
 
     public sealed class DynamicDataFacts
     {

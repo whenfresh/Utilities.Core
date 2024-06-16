@@ -1,4 +1,4 @@
-﻿namespace Cavity.Xml.XPath
+﻿namespace WhenFresh.Utilities.Core.Xml.XPath
 {
     using System;
     using System.Diagnostics.CodeAnalysis;

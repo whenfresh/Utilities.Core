@@ -1,12 +1,12 @@
-﻿namespace Cavity.Collections.Generic
+﻿namespace WhenFresh.Utilities.Core.Facts.Collections.Generic
 {
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Xml.Serialization;
-    using Cavity.Xml.XPath;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core;
+    using WhenFresh.Utilities.Core.Collections.Generic;
+    using WhenFresh.Utilities.Core.Xml.XPath;
 
     public sealed class XmlSerializableCollectionFacts
     {

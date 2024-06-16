@@ -1,7 +1,7 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core.Facts
 {
     using System.Xml;
-    using Xunit;
+    using WhenFresh.Utilities.Core;
 
     public sealed class CharactersFacts
     {

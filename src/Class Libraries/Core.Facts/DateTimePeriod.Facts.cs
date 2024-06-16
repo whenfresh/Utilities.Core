@@ -1,10 +1,9 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core.Facts
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Xml;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core;
 
     public sealed class DateTimePeriodOfTFacts
     {
@@ -110,7 +109,7 @@
         {
             var obj = new DateTimePeriod(DateTime.MinValue, XmlConvert.ToDateTime(ending, XmlDateTimeSerializationMode.Utc));
 
-            Assert.DoesNotThrow(() => obj.Beginning = XmlConvert.ToDateTime(beginning, XmlDateTimeSerializationMode.Utc));
+            obj.Beginning = XmlConvert.ToDateTime(beginning, XmlDateTimeSerializationMode.Utc);
         }
 
         [Theory]
@@ -164,7 +163,7 @@
         {
             var obj = new DateTimePeriod(XmlConvert.ToDateTime(beginning, XmlDateTimeSerializationMode.Utc), DateTime.MaxValue);
 
-            Assert.DoesNotThrow(() => obj.Ending = XmlConvert.ToDateTime(ending, XmlDateTimeSerializationMode.Utc));
+            obj.Ending = XmlConvert.ToDateTime(ending, XmlDateTimeSerializationMode.Utc);
         }
 
         [Theory]

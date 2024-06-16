@@ -1,10 +1,10 @@
-﻿namespace Cavity.Reflection
+﻿namespace WhenFresh.Utilities.Core.Facts.Reflection
 {
     using System;
     using System.IO;
     using System.Reflection;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core;
+    using WhenFresh.Utilities.Core.Reflection;
 
     public sealed class AssemblyExtensionMethodsFacts
     {

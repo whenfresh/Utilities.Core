@@ -1,8 +1,7 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core.Facts
 {
     using System.Xml;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core;
 
     public sealed class CharExtensionMethodsFacts
     {

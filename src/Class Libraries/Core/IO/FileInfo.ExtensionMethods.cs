@@ -1,15 +1,15 @@
-﻿namespace Cavity.IO
+﻿namespace WhenFresh.Utilities.Core.IO
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
-#if !NET20
     using System.Linq;
-#endif
     using System.Text;
     using System.Xml.XPath;
-    using Cavity.Security.Cryptography;
+    using WhenFresh.Utilities.Core.Security.Cryptography;
+#if !NET20
+#endif
 
     public static class FileInfoExtensionMethods
     {

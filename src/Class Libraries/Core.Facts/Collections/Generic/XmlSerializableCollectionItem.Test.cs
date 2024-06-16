@@ -1,4 +1,4 @@
-﻿namespace Cavity.Collections.Generic
+﻿namespace WhenFresh.Utilities.Core.Facts.Collections.Generic
 {
     using System;
     using System.Xml.Serialization;

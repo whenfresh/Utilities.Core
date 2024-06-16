@@ -1,9 +1,9 @@
-﻿namespace Cavity.Collections.Generic
+﻿namespace WhenFresh.Utilities.Core.Facts.Collections.Generic
 {
     using System;
     using System.Collections;
     using System.Linq;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Collections.Generic;
 
     public sealed class MultitonCollectionOfTFacts
     {

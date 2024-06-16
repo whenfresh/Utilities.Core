@@ -1,17 +1,17 @@
-﻿namespace Cavity.Data
+﻿namespace WhenFresh.Utilities.Core.Data
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
-#if !NET20
     using System.Linq;
-#endif
     using System.Text;
     using System.Xml;
     using System.Xml.Schema;
     using System.Xml.Serialization;
+#if !NET20
+#endif
 
     [XmlRoot("data")]
     public class DataCollection : IEnumerable<KeyStringPair>,

@@ -1,9 +1,9 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core.Facts
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
-    using Xunit;
+    using WhenFresh.Utilities.Core;
 
     public sealed class SerialFacts
     {

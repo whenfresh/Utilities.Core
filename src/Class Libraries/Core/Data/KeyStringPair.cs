@@ -1,9 +1,8 @@
-﻿namespace Cavity.Data
+﻿namespace WhenFresh.Utilities.Core.Data
 {
     using System;
     using System.Runtime.Serialization;
     using System.Text;
-
 #if NET20 || NET35
     using System.Security.Permissions;
 #endif

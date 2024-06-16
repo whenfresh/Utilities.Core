@@ -1,15 +1,15 @@
-﻿namespace Cavity.Net
+﻿namespace WhenFresh.Utilities.Core.Net
 {
     using System;
     using System.ComponentModel;
-#if !NET20
     using System.Linq;
+    using System.Runtime.Serialization;
+    using WhenFresh.Utilities.Core.Properties;
+#if !NET20
 #endif
 #if NET20 || NET35
     using System.Security.Permissions;
 #endif
-    using System.Runtime.Serialization;
-    using Cavity.Properties;
 
     [ImmutableObject(true)]
     [Serializable]

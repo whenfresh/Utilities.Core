@@ -1,6 +1,7 @@
-namespace Cavity
+namespace WhenFresh.Utilities.Core.Facts
 {
     using System;
+    using WhenFresh.Utilities.Core;
 
     public sealed class ValueObjectDerived : ValueObject<ValueObjectDerived>
     {

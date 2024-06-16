@@ -1,9 +1,9 @@
-﻿namespace Cavity.Text
+﻿namespace WhenFresh.Utilities.Core.Facts.Text
 {
     using System;
     using System.Net.Mime;
     using System.Text;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Text;
 
     public sealed class EncodingExtensionMethodsFacts
     {

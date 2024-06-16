@@ -1,4 +1,4 @@
-﻿namespace Cavity.Threading
+﻿namespace WhenFresh.Utilities.Core.Threading
 {
     using System;
     using System.Threading;

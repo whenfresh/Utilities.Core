@@ -1,14 +1,14 @@
-﻿namespace Cavity.Collections.Generic
+﻿namespace WhenFresh.Utilities.Core.Collections.Generic
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
-#if !NET20
     using System.Linq;
-#endif
     using System.Text;
+#if !NET20
+#endif
 
     [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "This naming is intentional.")]
     public class Matrix<T> : IEnumerable<T>,

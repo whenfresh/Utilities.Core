@@ -1,9 +1,8 @@
-﻿namespace Cavity.Text
+﻿namespace WhenFresh.Utilities.Core.Facts.Text
 {
     using System;
     using System.Text;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core.Text;
 
     public sealed class StringBuilderExtensionMethodsFacts
     {

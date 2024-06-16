@@ -1,4 +1,4 @@
-namespace Cavity.Security.Cryptography
+namespace WhenFresh.Utilities.Core.Security.Cryptography
 {
     using System;
     using System.ComponentModel;

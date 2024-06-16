@@ -1,8 +1,8 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core
 {
     using System;
     using System.Diagnostics;
-    using Cavity.Diagnostics;
+    using WhenFresh.Utilities.Core.Diagnostics;
 
     public abstract class DisposableObject : IDisposable
     {

@@ -1,13 +1,13 @@
-﻿namespace Cavity.Security.Cryptography
+﻿namespace WhenFresh.Utilities.Core.Facts.Security.Cryptography
 {
     using System;
     using System.ComponentModel;
     using System.IO;
     using System.Net.Sockets;
     using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Formatters.Binary;
     using System.Text;
-    using Xunit;
+    using WhenFresh.Utilities.Core;
+    using WhenFresh.Utilities.Core.Security.Cryptography;
 
     public sealed class MD5HashFacts
     {

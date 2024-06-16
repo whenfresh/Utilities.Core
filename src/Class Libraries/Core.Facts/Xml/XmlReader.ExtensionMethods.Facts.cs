@@ -1,9 +1,9 @@
-﻿namespace Cavity.Xml
+﻿namespace WhenFresh.Utilities.Core.Facts.Xml
 {
     using System;
     using System.IO;
     using System.Xml;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Xml;
 
     public sealed class XmlReaderExtensionMethodsFacts
     {

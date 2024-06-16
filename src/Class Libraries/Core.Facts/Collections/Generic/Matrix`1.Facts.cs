@@ -1,4 +1,4 @@
-﻿namespace Cavity.Collections.Generic
+﻿namespace WhenFresh.Utilities.Core.Facts.Collections.Generic
 {
     using System;
     using System.Collections.Generic;
@@ -6,8 +6,8 @@
     using System.Drawing;
     using System.Linq;
     using System.Text;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core;
+    using WhenFresh.Utilities.Core.Collections.Generic;
 
     public sealed class MatrixOfTFacts
     {

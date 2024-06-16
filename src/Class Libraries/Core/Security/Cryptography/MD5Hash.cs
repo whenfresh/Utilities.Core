@@ -1,4 +1,4 @@
-﻿namespace Cavity.Security.Cryptography
+﻿namespace WhenFresh.Utilities.Core.Security.Cryptography
 {
     using System;
     using System.ComponentModel;
@@ -8,7 +8,6 @@
     using System.Runtime.Serialization;
     using System.Security.Cryptography;
     using System.Text;
-
 #if NET20 || NET35
     using System.Security.Permissions;
 #endif

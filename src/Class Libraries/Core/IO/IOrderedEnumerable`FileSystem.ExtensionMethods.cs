@@ -1,6 +1,6 @@
 ﻿#if !NET20 && !NET35
 
-namespace Cavity.IO
+namespace WhenFresh.Utilities.Core.IO
 {
     using System;
     using System.IO;

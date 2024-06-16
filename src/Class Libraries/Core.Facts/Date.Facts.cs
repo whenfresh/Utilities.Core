@@ -1,13 +1,10 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core.Facts
 {
     using System;
     using System.ComponentModel;
-    using System.IO;
     using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Formatters.Binary;
     using System.Xml;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core;
 
     public sealed class DateFacts
     {

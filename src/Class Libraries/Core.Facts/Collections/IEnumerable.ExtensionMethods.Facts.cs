@@ -1,4 +1,4 @@
-﻿namespace Cavity.Collections
+﻿namespace WhenFresh.Utilities.Core.Facts.Collections
 {
     using System;
     using System.Collections;
@@ -6,7 +6,7 @@
     using System.Linq;
     using System.Xml;
     using Moq;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Collections;
 
     public sealed class IEnumerableExtensionMethodsFacts
     {
@@ -108,7 +108,7 @@
                                 "a", "b", "c"
                             };
 
-            Assert.Throws<ArgumentNullException>(() => array.Concat(null));
+            Assert.Throws<ArgumentNullException>(() => IEnumerableExtensionMethods.Concat(array, null));
         }
 
         [Fact]
@@ -217,7 +217,7 @@
         {
             var obj = "a,z".Split(',', StringSplitOptions.RemoveEmptyEntries);
 
-            var actual = obj.ToHashSet();
+            var actual = IEnumerableExtensionMethods.ToHashSet(obj);
 
             Assert.Equal("a", actual.First());
             Assert.Equal("z", actual.Last());
@@ -226,25 +226,25 @@
         [Fact]
         public void op_ToHashSet_IEnumerableEmpty()
         {
-            Assert.Empty(new List<string>().ToHashSet());
+            Assert.Empty(IEnumerableExtensionMethods.ToHashSet(new List<string>()));
         }
 
         [Fact]
         public void op_ToHashSet_IEnumerableEmpty_IEqualityComparerOfT()
         {
-            Assert.Empty(new List<string>().ToHashSet(new Mock<IEqualityComparer<string>>().Object));
+            Assert.Empty(IEnumerableExtensionMethods.ToHashSet(new List<string>(), new Mock<IEqualityComparer<string>>().Object));
         }
 
         [Fact]
         public void op_ToHashSet_IEnumerableNull()
         {
-            Assert.Throws<ArgumentNullException>(() => (null as IEnumerable<int>).ToHashSet());
+            Assert.Throws<ArgumentNullException>(() => IEnumerableExtensionMethods.ToHashSet((null as IEnumerable<int>)));
         }
 
         [Fact]
         public void op_ToHashSet_IEnumerableNull_IEqualityComparerOfT()
         {
-            Assert.Throws<ArgumentNullException>(() => (null as IEnumerable<int>).ToHashSet(new Mock<IEqualityComparer<int>>().Object));
+            Assert.Throws<ArgumentNullException>(() => IEnumerableExtensionMethods.ToHashSet((null as IEnumerable<int>), new Mock<IEqualityComparer<int>>().Object));
         }
 
         [Fact]
@@ -254,7 +254,7 @@
 
             var comparer = new Mock<IEqualityComparer<string>>();
 
-            var actual = obj.ToHashSet(comparer.Object);
+            var actual = IEnumerableExtensionMethods.ToHashSet(obj, comparer.Object);
 
             Assert.Equal("a", actual.First());
             Assert.Equal("z", actual.Last());

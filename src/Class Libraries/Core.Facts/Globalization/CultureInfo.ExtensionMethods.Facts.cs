@@ -1,9 +1,9 @@
-﻿namespace Cavity.Globalization
+﻿namespace WhenFresh.Utilities.Core.Facts.Globalization
 {
     using System;
     using System.Globalization;
     using System.Threading;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Globalization;
 
     public sealed class CultureInfoExtensionMethodsFacts
     {

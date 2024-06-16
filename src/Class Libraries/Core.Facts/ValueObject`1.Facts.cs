@@ -1,8 +1,8 @@
-namespace Cavity
+namespace WhenFresh.Utilities.Core.Facts
 {
     using System;
     using System.Xml;
-    using Xunit;
+    using WhenFresh.Utilities.Core;
 
     public sealed class ValueObjectOfTFacts
     {

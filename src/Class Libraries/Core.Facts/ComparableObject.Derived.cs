@@ -1,5 +1,7 @@
-namespace Cavity
+namespace WhenFresh.Utilities.Core.Facts
 {
+    using WhenFresh.Utilities.Core;
+
     public sealed class ComparableObjectDerived : ComparableObject
     {
         public ComparableObjectDerived()

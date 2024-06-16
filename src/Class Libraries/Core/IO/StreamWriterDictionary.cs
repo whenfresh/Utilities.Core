@@ -1,15 +1,15 @@
-﻿namespace Cavity.IO
+﻿namespace WhenFresh.Utilities.Core.IO
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
-#if !NET20
     using System.Linq;
-#endif
     using System.Runtime.Serialization;
     using System.Security.Permissions;
     using System.Text;
+#if !NET20
+#endif
 
     [Serializable]
     public class StreamWriterDictionary : Dictionary<string, StreamWriter>,

@@ -1,11 +1,12 @@
-﻿namespace Cavity.Data
+﻿namespace WhenFresh.Utilities.Core.Facts.Data
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Collections.Specialized;
-    using Cavity.Xml.XPath;
-    using Xunit;
+    using WhenFresh.Utilities.Core;
+    using WhenFresh.Utilities.Core.Data;
+    using WhenFresh.Utilities.Core.Xml.XPath;
 
     public sealed class DataCollectionFacts
     {

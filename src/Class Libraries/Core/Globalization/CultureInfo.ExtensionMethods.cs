@@ -1,4 +1,4 @@
-﻿namespace Cavity.Globalization
+﻿namespace WhenFresh.Utilities.Core.Globalization
 {
     using System;
     using System.Globalization;

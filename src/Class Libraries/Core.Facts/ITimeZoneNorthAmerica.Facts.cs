@@ -1,8 +1,8 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core.Facts
 {
     using System;
     using Moq;
-    using Xunit;
+    using WhenFresh.Utilities.Core;
 
     public sealed class ITimeZoneNorthAmericaFacts
     {

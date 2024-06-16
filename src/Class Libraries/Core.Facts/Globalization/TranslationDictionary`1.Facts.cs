@@ -1,11 +1,9 @@
-﻿namespace Cavity.Globalization
+﻿namespace WhenFresh.Utilities.Core.Facts.Globalization
 {
     using System.Collections.Generic;
     using System.Globalization;
-    using System.IO;
-    using System.Runtime.Serialization.Formatters.Binary;
     using System.Threading;
-    using Xunit;
+    using WhenFresh.Utilities.Core.Globalization;
 
     public sealed class TranslationDictionaryOfTFacts
     {

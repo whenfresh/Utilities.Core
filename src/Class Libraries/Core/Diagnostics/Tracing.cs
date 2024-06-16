@@ -1,4 +1,4 @@
-﻿namespace Cavity.Diagnostics
+﻿namespace WhenFresh.Utilities.Core.Diagnostics
 {
     using System.Diagnostics;
 

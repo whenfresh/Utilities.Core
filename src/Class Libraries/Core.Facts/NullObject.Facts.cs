@@ -1,6 +1,6 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core.Facts
 {
-    using Xunit;
+    using WhenFresh.Utilities.Core;
 
     public sealed class NullObjectFacts
     {

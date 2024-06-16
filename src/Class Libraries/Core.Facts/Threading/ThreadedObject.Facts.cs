@@ -1,7 +1,8 @@
-﻿namespace Cavity.Threading
+﻿namespace WhenFresh.Utilities.Core.Facts.Threading
 {
     using System.Threading;
-    using Xunit;
+    using WhenFresh.Utilities.Core;
+    using WhenFresh.Utilities.Core.Threading;
 
     public sealed class ThreadedObjectFacts
     {

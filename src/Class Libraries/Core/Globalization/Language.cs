@@ -1,10 +1,9 @@
-﻿namespace Cavity.Globalization
+﻿namespace WhenFresh.Utilities.Core.Globalization
 {
     using System;
     using System.ComponentModel;
     using System.Globalization;
     using System.Runtime.Serialization;
-
 #if NET20 || NET35
     using System.Security.Permissions;
 #endif

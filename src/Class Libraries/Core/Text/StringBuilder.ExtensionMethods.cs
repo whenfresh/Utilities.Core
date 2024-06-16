@@ -1,4 +1,4 @@
-﻿namespace Cavity.Text
+﻿namespace WhenFresh.Utilities.Core.Text
 {
     using System;
     using System.Text;

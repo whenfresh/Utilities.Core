@@ -1,4 +1,4 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core.Facts
 {
     using System;
     using System.Collections.Generic;
@@ -7,9 +7,8 @@
     using System.IO;
     using System.Text;
     using System.Xml;
-    using Cavity.IO;
-    using Xunit;
-    using Xunit.Extensions;
+    using WhenFresh.Utilities.Core;
+    using WhenFresh.Utilities.Core.IO;
 
     public sealed class StringExtensionMethodsFacts
     {

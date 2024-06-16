@@ -1,7 +1,7 @@
-﻿namespace Cavity
+﻿namespace WhenFresh.Utilities.Core
 {
     using System.Globalization;
-    using Cavity.Properties;
+    using WhenFresh.Utilities.Core.Properties;
 
     public static class ExceptionMessage
     {

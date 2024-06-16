@@ -1,4 +1,4 @@
-namespace Cavity
+namespace WhenFresh.Utilities.Core
 {
     using System;
 

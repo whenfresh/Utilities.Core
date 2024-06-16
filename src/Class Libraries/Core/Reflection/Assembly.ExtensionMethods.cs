@@ -1,4 +1,4 @@
-﻿namespace Cavity.Reflection
+﻿namespace WhenFresh.Utilities.Core.Reflection
 {
     using System;
     using System.IO;
