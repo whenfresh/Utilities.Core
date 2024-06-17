@@ -126,7 +126,8 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info, "one").Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -184,7 +185,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, FileMode.Append, FileAccess.Write, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -207,8 +208,8 @@ public sealed class StreamWriterDictionaryFacts
             {
                 obj.Item(file.Info.FullName, FileMode.Append, FileAccess.Write, FileShare.Write).Write("three");
             }
+            var expected = $"one{Environment.NewLine}two{Environment.NewLine}three";
 
-            var expected = "one{0}two{0}three".FormatWith(Environment.NewLine);
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -227,7 +228,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -246,7 +247,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, FileMode.Create, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -270,7 +271,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, FileMode.Create, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -289,7 +290,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -313,7 +314,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -330,7 +331,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, FileMode.Truncate, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -352,7 +353,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, FileMode.Truncate, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -389,7 +390,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, "one").Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -566,7 +567,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, "one", FileMode.Append, FileAccess.Write, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -590,7 +591,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, "one", FileMode.Append, FileAccess.Write, FileShare.Write).Write("three");
             }
 
-            var expected = "one{0}two{0}three".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two{Environment.NewLine}three";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -609,7 +610,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, "one", FileMode.Create, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -633,7 +634,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, "one", FileMode.Create, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -652,7 +653,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, "one", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -676,7 +677,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, "one", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -693,7 +694,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, "one", FileMode.Truncate, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);
@@ -715,7 +716,7 @@ public sealed class StreamWriterDictionaryFacts
                 obj.Item(file.Info.FullName, "one", FileMode.Truncate, FileAccess.ReadWrite, FileShare.Write).Write("two");
             }
 
-            var expected = "one{0}two".FormatWith(Environment.NewLine);
+            var expected = $"one{Environment.NewLine}two";
             var actual = File.ReadAllText(file.Info.FullName);
 
             Assert.Equal(expected, actual);

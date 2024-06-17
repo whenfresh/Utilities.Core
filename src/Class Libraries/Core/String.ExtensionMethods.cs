@@ -15,94 +15,94 @@ public static class StringExtensionMethods
     public static string Append(this string obj,
                                 params char[] args)
     {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
-
-            if (null == args)
-            {
-                return obj;
-            }
-
-            switch (args.Length)
-            {
-                case 0:
-                    return obj;
-                case 1:
-                    return string.Concat(obj, args[0]);
-                case 2:
-                    return string.Concat(obj, args[0], args[1]);
-                case 3:
-                    return string.Concat(obj, args[0], args[1], args[2]);
-                case 4:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3]);
-                case 5:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3], args[4]);
-                case 6:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5]);
-                case 7:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
-                case 8:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7]);
-                case 9:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8]);
-                default:
-                    var buffer = new StringBuilder(obj);
-                    foreach (var arg in args)
-                    {
-                        buffer.Append(arg);
-                    }
-
-                    return buffer.ToString();
-            }
+        if (null == obj)
+        {
+            throw new ArgumentNullException("obj");
         }
+
+        if (null == args)
+        {
+            return obj;
+        }
+
+        switch (args.Length)
+        {
+            case 0:
+                return obj;
+            case 1:
+                return string.Concat(obj, args[0]);
+            case 2:
+                return string.Concat(obj, args[0], args[1]);
+            case 3:
+                return string.Concat(obj, args[0], args[1], args[2]);
+            case 4:
+                return string.Concat(obj, args[0], args[1], args[2], args[3]);
+            case 5:
+                return string.Concat(obj, args[0], args[1], args[2], args[3], args[4]);
+            case 6:
+                return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5]);
+            case 7:
+                return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
+            case 8:
+                return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7]);
+            case 9:
+                return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8]);
+            default:
+                var buffer = new StringBuilder(obj);
+                foreach (var arg in args)
+                {
+                    buffer.Append(arg);
+                }
+
+                return buffer.ToString();
+        }
+    }
 
     public static string Append(this string obj,
                                 params string[] args)
     {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
-
-            if (null == args)
-            {
-                return obj;
-            }
-
-            switch (args.Length)
-            {
-                case 0:
-                    return obj;
-                case 1:
-                    return string.Concat(obj, args[0]);
-                case 2:
-                    return string.Concat(obj, args[0], args[1]);
-                case 3:
-                    return string.Concat(obj, args[0], args[1], args[2]);
-                case 4:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3]);
-                case 5:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3], args[4]);
-                case 6:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5]);
-                case 7:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
-                case 8:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7]);
-                case 9:
-                    return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8]);
-                default:
-                    var buffer = new StringBuilder(obj);
-                    foreach (var arg in args)
-                    {
-                        buffer.Append(arg);
-                    }
-
-                    return buffer.ToString();
-            }
+        if (null == obj)
+        {
+            throw new ArgumentNullException("obj");
         }
+
+        if (null == args)
+        {
+            return obj;
+        }
+
+        switch (args.Length)
+        {
+            case 0:
+                return obj;
+            case 1:
+                return string.Concat(obj, args[0]);
+            case 2:
+                return string.Concat(obj, args[0], args[1]);
+            case 3:
+                return string.Concat(obj, args[0], args[1], args[2]);
+            case 4:
+                return string.Concat(obj, args[0], args[1], args[2], args[3]);
+            case 5:
+                return string.Concat(obj, args[0], args[1], args[2], args[3], args[4]);
+            case 6:
+                return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5]);
+            case 7:
+                return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
+            case 8:
+                return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7]);
+            case 9:
+                return string.Concat(obj, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8]);
+            default:
+                var buffer = new StringBuilder(obj);
+                foreach (var arg in args)
+                {
+                    buffer.Append(arg);
+                }
+
+                return buffer.ToString();
+        }
+    }
 
 #if NET20
         public static string Caverphone(string obj)
@@ -251,47 +251,24 @@ public static class StringExtensionMethods
         return Append(buffer.ToString(), "111111").Substring(0, 6);
     }
 
-#if NET20
-        public static bool Contains(string obj,
-                                    char value)
-#else
+    [Obsolete("Replaced by framework implementation", true)]
     public static bool Contains(this string obj,
                                 char value)
-#endif
     {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
+        return obj.Contains(value);
+    }
 
-            return -1 != obj.IndexOf(value);
-        }
-
-#if NET20
-        public static bool Contains(string obj, 
-                                    string value, 
-                                    StringComparison comparisonType)
-#else
+    [Obsolete("Replaced by framework implementation", true)]
     public static bool Contains(this string obj,
                                 string value,
                                 StringComparison comparisonType)
-#endif
+
     {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
+        return obj.Contains(value, comparisonType);
+    }
 
-            return -1 != obj.IndexOf(value, comparisonType);
-        }
-
-#if NET20
-        public static bool ContainsAny(string obj, 
-                                       params char[] args)
-#else
     public static bool ContainsAny(this string obj,
                                    params char[] args)
-#endif
     {
         if (null == obj)
         {
@@ -313,21 +290,7 @@ public static class StringExtensionMethods
             return false;
         }
 
-#if NET20
-            foreach (var arg in args)
-            {
-                if (-1 == obj.IndexOf(arg))
-                {
-                    continue;
-                }
-
-                return true;
-            }
-
-            return false;
-#else
         return args.Any(arg => -1 != obj.IndexOf(arg));
-#endif
     }
 
 #if NET20
@@ -409,22 +372,22 @@ public static class StringExtensionMethods
     public static bool ContainsText(this string obj)
 #endif
     {
-            return !IsNullOrWhiteSpace(obj);
-        }
+        return !IsNullOrWhiteSpace(obj);
+    }
 
 #if !NET20
     public static T DefaultOrFromString<T>(this string value,
                                            Func<string, T> fromString)
     {
-            if (null == fromString)
-            {
-                throw new ArgumentNullException("fromString");
-            }
-
-            return ReferenceEquals(null, value)
-                       ? default(T)
-                       : fromString(value);
+        if (null == fromString)
+        {
+            throw new ArgumentNullException("fromString");
         }
+
+        return ReferenceEquals(null, value)
+                   ? default(T)
+                   : fromString(value);
+    }
 
 #endif
 
@@ -434,36 +397,36 @@ public static class StringExtensionMethods
     public static bool IsMonth(this string value)
 #endif
     {
-            if (null == value)
-            {
-                return false;
-            }
-
-            if (7 != value.Length)
-            {
-                return false;
-            }
-
-            if ('-' != value[4])
-            {
-                return false;
-            }
-
-            foreach (var index in new[] { 0, 1, 2, 3, 5, 6 })
-            {
-                if (!char.IsLetterOrDigit(value[index]))
-                {
-                    return false;
-                }
-
-                if (char.IsLetter(value[index]))
-                {
-                    return false;
-                }
-            }
-
-            return EndsWithAny(value, StringComparison.Ordinal, "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
+        if (null == value)
+        {
+            return false;
         }
+
+        if (7 != value.Length)
+        {
+            return false;
+        }
+
+        if ('-' != value[4])
+        {
+            return false;
+        }
+
+        foreach (var index in new[] { 0, 1, 2, 3, 5, 6 })
+        {
+            if (!char.IsLetterOrDigit(value[index]))
+            {
+                return false;
+            }
+
+            if (char.IsLetter(value[index]))
+            {
+                return false;
+            }
+        }
+
+        return EndsWithAny(value, StringComparison.Ordinal, "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
+    }
 
 #if NET20
         public static bool IsNotNullOrEmpty(string value)
@@ -471,8 +434,8 @@ public static class StringExtensionMethods
     public static bool IsNotNullOrEmpty(this string value)
 #endif
     {
-            return !string.IsNullOrEmpty(value);
-        }
+        return !string.IsNullOrEmpty(value);
+    }
 
 #if NET20
         public static bool IsNotNullOrWhiteSpace(string value)
@@ -480,14 +443,14 @@ public static class StringExtensionMethods
     public static bool IsNotNullOrWhiteSpace(this string value)
 #endif
     {
-            return !IsNullOrWhiteSpace(value);
-        }
+        return !IsNullOrWhiteSpace(value);
+    }
 
 #if !NET20
     public static bool IsNullOrEmpty(this string obj)
     {
-            return string.IsNullOrEmpty(obj);
-        }
+        return string.IsNullOrEmpty(obj);
+    }
 
 #endif
 
@@ -524,10 +487,10 @@ public static class StringExtensionMethods
     public static char LastCharacter(this string value)
 #endif
     {
-            return string.IsNullOrEmpty(value)
-                       ? ' '
-                       : value[value.Length - 1];
-        }
+        return string.IsNullOrEmpty(value)
+                   ? ' '
+                   : value[value.Length - 1];
+    }
 
 #if NET20
         public static bool EndsWithAny(string obj, 
@@ -641,19 +604,15 @@ public static class StringExtensionMethods
                                                string comparand)
 #endif
     {
-            return string.Equals(value, comparand, StringComparison.OrdinalIgnoreCase);
-        }
+        return string.Equals(value, comparand, StringComparison.OrdinalIgnoreCase);
+    }
 
-#if NET20
-        public static string FormatWith(string obj, 
-                                        params object[] args)
-#else
+    [Obsolete("Replaced by string interpolation.", false)]
     public static string FormatWith(this string obj,
                                     params object[] args)
-#endif
     {
-            return string.Format(CultureInfo.InvariantCulture, obj, args);
-        }
+        return string.Format(CultureInfo.InvariantCulture, obj, args);
+    }
 
     [SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId = "Body", Justification = "Space is not wasted.")]
 #if NET20
@@ -664,42 +623,42 @@ public static class StringExtensionMethods
                                           string comparand)
 #endif
     {
-            if (string.IsNullOrEmpty(obj))
-            {
-                return null == comparand ? 0 : comparand.Length;
-            }
-
-            if (string.IsNullOrEmpty(comparand))
-            {
-                return obj.Length;
-            }
-
-            var n = obj.Length;
-            var m = comparand.Length;
-            var d = new int[n + 1, m + 1];
-
-            for (var i = 0; i <= n; d[i, 0] = i++)
-            {
-            }
-
-            for (var j = 0; j <= m; d[0, j] = j++)
-            {
-            }
-
-            for (var i = 1; i <= n; i++)
-            {
-                for (var j = 1; j <= m; j++)
-                {
-                    var cost = (comparand[j - 1] == obj[i - 1]) ? 0 : 1;
-
-                    d[i, j] = Math.Min(
-                                       Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1),
-                                       d[i - 1, j - 1] + cost);
-                }
-            }
-
-            return d[n, m];
+        if (string.IsNullOrEmpty(obj))
+        {
+            return null == comparand ? 0 : comparand.Length;
         }
+
+        if (string.IsNullOrEmpty(comparand))
+        {
+            return obj.Length;
+        }
+
+        var n = obj.Length;
+        var m = comparand.Length;
+        var d = new int[n + 1, m + 1];
+
+        for (var i = 0; i <= n; d[i, 0] = i++)
+        {
+        }
+
+        for (var j = 0; j <= m; d[0, j] = j++)
+        {
+        }
+
+        for (var i = 1; i <= n; i++)
+        {
+            for (var j = 1; j <= m; j++)
+            {
+                var cost = (comparand[j - 1] == obj[i - 1]) ? 0 : 1;
+
+                d[i, j] = Math.Min(
+                                   Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1),
+                                   d[i - 1, j - 1] + cost);
+            }
+        }
+
+        return d[n, m];
+    }
 
     [Comment("See http://aspell.net/metaphone/")]
     [Comment("See http://aspell.net/metaphone/metaphone-kuhn.txt")]
@@ -709,32 +668,32 @@ public static class StringExtensionMethods
     public static string Metaphone(this string obj)
 #endif
     {
-            if (string.IsNullOrEmpty(obj))
-            {
-                return obj;
-            }
-
-            var buffer = MetaphoneAlphabet(obj);
-
-            MetaphoneFirstLetters(buffer);
-
-            for (var i = 0; i < buffer.Length; i++)
-            {
-                MetaphoneDropDuplicates(i, buffer);
-                MetaphoneLetterB(i, buffer);
-                MetaphoneLetterC(i, buffer);
-                MetaphoneLetterD(i, buffer);
-                MetaphoneLetterG(i, buffer);
-                MetaphoneLetterH(i, buffer);
-                MetaphoneLetterS(i, buffer);
-                MetaphoneLetterT(i, buffer);
-                MetaphoneLetterW(i, buffer);
-                MetaphoneLetterY(i, buffer);
-                MetaphoneLetterVowel(i, buffer);
-            }
-
-            return MetaphoneEnd(buffer);
+        if (string.IsNullOrEmpty(obj))
+        {
+            return obj;
         }
+
+        var buffer = MetaphoneAlphabet(obj);
+
+        MetaphoneFirstLetters(buffer);
+
+        for (var i = 0; i < buffer.Length; i++)
+        {
+            MetaphoneDropDuplicates(i, buffer);
+            MetaphoneLetterB(i, buffer);
+            MetaphoneLetterC(i, buffer);
+            MetaphoneLetterD(i, buffer);
+            MetaphoneLetterG(i, buffer);
+            MetaphoneLetterH(i, buffer);
+            MetaphoneLetterS(i, buffer);
+            MetaphoneLetterT(i, buffer);
+            MetaphoneLetterW(i, buffer);
+            MetaphoneLetterY(i, buffer);
+            MetaphoneLetterVowel(i, buffer);
+        }
+
+        return MetaphoneEnd(buffer);
+    }
 
 #if NET20
         public static string NormalizeWhiteSpace(string obj)
@@ -1051,18 +1010,18 @@ public static class StringExtensionMethods
     public static string RemoveDefiniteArticle(this string obj)
 #endif
     {
-            if (null == obj)
-            {
-                return null;
-            }
-
-            if (!obj.StartsWith("THE ", StringComparison.OrdinalIgnoreCase))
-            {
-                return obj;
-            }
-
-            return " " + RemoveFromStart(obj, "THE ", StringComparison.OrdinalIgnoreCase);
+        if (null == obj)
+        {
+            return null;
         }
+
+        if (!obj.StartsWith("THE ", StringComparison.OrdinalIgnoreCase))
+        {
+            return obj;
+        }
+
+        return " " + RemoveFromStart(obj, "THE ", StringComparison.OrdinalIgnoreCase);
+    }
 
 #if NET20
         public static string RemoveDoubleSpacing(string value)
@@ -1109,25 +1068,25 @@ public static class StringExtensionMethods
                                        StringComparison comparisonType)
 #endif
     {
-            if (string.IsNullOrEmpty(obj))
-            {
-                return obj;
-            }
-
-            if (null == value)
-            {
-                throw new ArgumentNullException("value");
-            }
-
-            if (0 == value.Length)
-            {
-                throw new ArgumentOutOfRangeException("value");
-            }
-
-            return obj.EndsWith(value, comparisonType)
-                       ? obj.Substring(0, obj.Length - value.Length)
-                       : obj;
+        if (string.IsNullOrEmpty(obj))
+        {
+            return obj;
         }
+
+        if (null == value)
+        {
+            throw new ArgumentNullException("value");
+        }
+
+        if (0 == value.Length)
+        {
+            throw new ArgumentOutOfRangeException("value");
+        }
+
+        return obj.EndsWith(value, comparisonType)
+                   ? obj.Substring(0, obj.Length - value.Length)
+                   : obj;
+    }
 
 #if NET20
         public static string RemoveFromStart(string obj, 
@@ -1139,25 +1098,25 @@ public static class StringExtensionMethods
                                          StringComparison comparisonType)
 #endif
     {
-            if (string.IsNullOrEmpty(obj))
-            {
-                return obj;
-            }
-
-            if (null == value)
-            {
-                throw new ArgumentNullException("value");
-            }
-
-            if (0 == value.Length)
-            {
-                throw new ArgumentOutOfRangeException("value");
-            }
-
-            return obj.StartsWith(value, comparisonType)
-                       ? obj.Substring(value.Length)
-                       : obj;
+        if (string.IsNullOrEmpty(obj))
+        {
+            return obj;
         }
+
+        if (null == value)
+        {
+            throw new ArgumentNullException("value");
+        }
+
+        if (0 == value.Length)
+        {
+            throw new ArgumentOutOfRangeException("value");
+        }
+
+        return obj.StartsWith(value, comparisonType)
+                   ? obj.Substring(value.Length)
+                   : obj;
+    }
 
 #if NET20
         public static string RemoveIllegalFileCharacters(string obj)
@@ -1165,103 +1124,90 @@ public static class StringExtensionMethods
     public static string RemoveIllegalFileCharacters(this string obj)
 #endif
     {
-            if (string.IsNullOrEmpty(obj))
-            {
-                return obj;
-            }
-
-            var buffer = new StringBuilder();
-            foreach (var c in obj)
-            {
-                var i = (int)c;
-                if (32 > i)
-                {
-                    // Control characters
-                    continue;
-                }
-
-                switch (i)
-                {
-                    case 34: // "
-                    case 42: // *
-                    case 47: // /
-                    case 58: // :
-                    case 60: // <
-                    case 62: // >
-                    case 63: // ?
-                    case 92: // \
-                    case 124: // |
-                    case 127: // DEL
-                        break;
-
-                    default:
-                        buffer.Append(c);
-                        break;
-                }
-            }
-
-            return buffer.ToString();
+        if (string.IsNullOrEmpty(obj))
+        {
+            return obj;
         }
 
-#if NET20
-        public static string Replace(string obj, 
-                                     string oldValue, 
-                                     string newValue, 
-                                     StringComparison comparisonType)
-#else
+        var buffer = new StringBuilder();
+        foreach (var c in obj)
+        {
+            var i = (int)c;
+            if (32 > i)
+            {
+                // Control characters
+                continue;
+            }
+
+            switch (i)
+            {
+                case 34: // "
+                case 42: // *
+                case 47: // /
+                case 58: // :
+                case 60: // <
+                case 62: // >
+                case 63: // ?
+                case 92: // \
+                case 124: // |
+                case 127: // DEL
+                    break;
+
+                default:
+                    buffer.Append(c);
+                    break;
+            }
+        }
+
+        return buffer.ToString();
+    }
+
+    [Obsolete("Replaced by framework implementation", true)]
     public static string Replace(this string obj,
                                  string oldValue,
                                  string newValue,
                                  StringComparison comparisonType)
-#endif
     {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
-
-            if (null == oldValue)
-            {
-                throw new ArgumentNullException("oldValue");
-            }
-
-            if (0 == obj.Length)
-            {
-                return obj;
-            }
-
-            if (0 == oldValue.Length)
-            {
-                return obj;
-            }
-
-            var buffer = new StringBuilder();
-            for (var i = 0; i < obj.Length; i++)
-            {
-                if (obj.Substring(i).StartsWith(oldValue, comparisonType))
-                {
-                    buffer.Append(newValue);
-                    i += oldValue.Length - 1;
-                    continue;
-                }
-
-                buffer.Append(obj[i]);
-            }
-
-            return buffer.ToString();
+        if (null == obj)
+        {
+            throw new ArgumentNullException("obj");
         }
 
-#if NET20
-        public static string ReplaceAllWith(string obj, 
-                                            string newValue, 
-                                            StringComparison comparisonType, 
-                                            params string[] args)
-#else
+        if (null == oldValue)
+        {
+            throw new ArgumentNullException("oldValue");
+        }
+
+        if (0 == obj.Length)
+        {
+            return obj;
+        }
+
+        if (0 == oldValue.Length)
+        {
+            return obj;
+        }
+
+        var buffer = new StringBuilder();
+        for (var i = 0; i < obj.Length; i++)
+        {
+            if (obj.Substring(i).StartsWith(oldValue, comparisonType))
+            {
+                buffer.Append(newValue);
+                i += oldValue.Length - 1;
+                continue;
+            }
+
+            buffer.Append(obj[i]);
+        }
+
+        return buffer.ToString();
+    }
+
     public static string ReplaceAllWith(this string obj,
                                         string newValue,
                                         StringComparison comparisonType,
                                         params string[] args)
-#endif
     {
         if (string.IsNullOrEmpty(obj))
         {
@@ -1278,31 +1224,15 @@ public static class StringExtensionMethods
             throw new ArgumentNullException("args");
         }
 
-#if NET20
-            foreach (var arg in args)
-            {
-                obj = Replace(obj, arg, newValue, comparisonType);
-            }
-
-            return obj;
-#else
         return args.Aggregate(obj,
                               (x,
                                arg) => x.Replace(arg, newValue, comparisonType));
-#endif
     }
 
-#if NET20
-        public static string ReplaceBeginning(string obj, 
-                                              string newValue, 
-                                              StringComparison comparisonType, 
-                                              params string[] beginnings)
-#else
     public static string ReplaceBeginning(this string obj,
                                           string newValue,
                                           StringComparison comparisonType,
                                           params string[] beginnings)
-#endif
     {
         if (string.IsNullOrEmpty(obj))
         {
@@ -1319,24 +1249,10 @@ public static class StringExtensionMethods
             throw new ArgumentNullException("beginnings");
         }
 
-#if NET20
-            foreach (var beginning in beginnings)
-            {
-                if (string.IsNullOrEmpty(beginning))
-                {
-                    continue;
-                }
-
-                if (!obj.StartsWith(beginning, comparisonType))
-                {
-                    continue;
-                }
-#else
         foreach (var beginning in beginnings
                                   .Where(beginning => !string.IsNullOrEmpty(beginning))
                                   .Where(beginning => obj.StartsWith(beginning, comparisonType)))
         {
-#endif
             return newValue + RemoveFromStart(obj, beginning, comparisonType);
         }
 
@@ -1402,18 +1318,18 @@ public static class StringExtensionMethods
                                     string value)
 #endif
     {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
-
-            if (null == value)
-            {
-                throw new ArgumentNullException("value");
-            }
-
-            return obj.Length == value.Length;
+        if (null == obj)
+        {
+            throw new ArgumentNullException("obj");
         }
+
+        if (null == value)
+        {
+            throw new ArgumentNullException("value");
+        }
+
+        return obj.Length == value.Length;
+    }
 
 #if NET20
         public static bool SameIndexesOfEach(string obj, 
@@ -1553,59 +1469,45 @@ public static class StringExtensionMethods
         return Append(buffer.ToString(), new string('0', 4 - buffer.ToString().Length));
     }
 
-#if NET20
-        public static string[] Split(string obj, 
-                                     char separator, 
-                                     StringSplitOptions options)
-#else
+    [Obsolete("Replaced by framework implementation", true)]
     public static string[] Split(this string obj,
                                  char separator,
                                  StringSplitOptions options)
-#endif
     {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
-
-            return obj.Split(
-                             new[]
-                                 {
-                                     separator
-                                 },
-                             options);
+        if (null == obj)
+        {
+            throw new ArgumentNullException("obj");
         }
 
-#if NET20
-        public static string[] Split(string obj, 
-                                     string separator, 
-                                     StringSplitOptions options)
-#else
+        return obj.Split(
+                         new[]
+                             {
+                                 separator
+                             },
+                         options);
+    }
+
     public static string[] Split(this string obj,
                                  string separator,
                                  StringSplitOptions options)
-#endif
-    {
-            if (null == obj)
-            {
-                throw new ArgumentNullException("obj");
-            }
 
-            return obj.Split(
-                             new[]
-                                 {
-                                     separator
-                                 },
-                             options);
+    {
+        if (null == obj)
+        {
+            throw new ArgumentNullException("obj");
         }
 
-#if NET20
-        public static bool StartsOrEndsWith(string obj, 
-                                            params char[] args)
-#else
+        return obj.Split(
+                         new[]
+                             {
+                                 separator
+                             },
+                         options);
+    }
+
     public static bool StartsOrEndsWith(this string obj,
                                         params char[] args)
-#endif
+
     {
         if (null == args)
         {
@@ -1617,40 +1519,12 @@ public static class StringExtensionMethods
             throw new ArgumentOutOfRangeException("args");
         }
 
-#if NET20
-            if (string.IsNullOrEmpty(obj))
-            {
-                return false;
-            }
-
-            foreach (var arg in args)
-            {
-                if (arg.Equals(obj[0]))
-                {
-                    return true;
-                }
-
-                if (arg.Equals(obj[obj.Length - 1]))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-#else
         return !string.IsNullOrEmpty(obj) && args.Any(arg => arg.Equals(obj[0]) || arg.Equals(obj[obj.Length - 1]));
-#endif
     }
 
-#if NET20
-        public static bool StartsWithAny(string obj, 
-                                         StringComparison comparison, 
-                                         params string[] args)
-#else
     public static bool StartsWithAny(this string obj,
                                      StringComparison comparison,
                                      params string[] args)
-#endif
     {
         if (null == obj)
         {
@@ -1672,70 +1546,41 @@ public static class StringExtensionMethods
             return false;
         }
 
-#if NET20
-            foreach (var arg in args)
-            {
-                if (string.IsNullOrEmpty(arg))
-                {
-                    continue;
-                }
-
-                if (obj.StartsWith(arg, comparison))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-#else
         return args
                .Where(arg => !string.IsNullOrEmpty(arg))
                .Any(arg => obj.StartsWith(arg, comparison));
-#endif
     }
 
-#if NET20
-        public static T To<T>(string obj)
-#else
     public static T To<T>(this string obj)
-#endif
     {
-            var type = typeof(T);
-            if (type.IsGenericType &&
-                type.GetGenericTypeDefinition() == typeof(Nullable<>))
-            {
-                return string.IsNullOrEmpty(obj)
-                           ? default(T)
-                           : To<T>(Nullable.GetUnderlyingType(type), obj);
-            }
-
-            return To<T>(type, obj);
+        var type = typeof(T);
+        if (type.IsGenericType &&
+            type.GetGenericTypeDefinition() == typeof(Nullable<>))
+        {
+            return string.IsNullOrEmpty(obj)
+                       ? default(T)
+                       : To<T>(Nullable.GetUnderlyingType(type), obj);
         }
 
-#if NET20
-        public static T TryTo<T>(string obj)
-#else
+        return To<T>(type, obj);
+    }
+
     public static T TryTo<T>(this string obj)
-#endif
     {
-            var type = typeof(T);
-            if (type.IsGenericType &&
-                type.GetGenericTypeDefinition() == typeof(Nullable<>))
-            {
-                return string.IsNullOrEmpty(obj)
-                           ? default(T)
-                           : TryTo<T>(Nullable.GetUnderlyingType(type), obj);
-            }
-
-            return TryTo<T>(type, obj);
+        var type = typeof(T);
+        if (type.IsGenericType &&
+            type.GetGenericTypeDefinition() == typeof(Nullable<>))
+        {
+            return string.IsNullOrEmpty(obj)
+                       ? default(T)
+                       : TryTo<T>(Nullable.GetUnderlyingType(type), obj);
         }
+
+        return TryTo<T>(type, obj);
+    }
 
     [Comment("TODO: Extend alphabet, see http://en.wikipedia.org/wiki/Latin_alphabets")]
-#if NET20
-        public static string ToEnglishAlphabet(string obj)
-#else
     public static string ToEnglishAlphabet(this string obj)
-#endif
     {
         if (string.IsNullOrEmpty(obj))
         {
@@ -1745,22 +1590,15 @@ public static class StringExtensionMethods
         var buffer = new StringBuilder();
         foreach (var c in obj)
         {
-#if NET20
-                var value = CharExtensionMethods.ToEnglishAlphabet(c);
-#else
             var value = c.ToEnglishAlphabet();
-#endif
+
             buffer.Append(value.HasValue ? value.Value : c);
         }
 
         return buffer.ToString();
     }
 
-#if NET20
-        public static string ToEnglishSpacedAlphanumeric(string obj)
-#else
     public static string ToEnglishSpacedAlphanumeric(this string obj)
-#endif
     {
         if (null == obj)
         {
@@ -1775,17 +1613,8 @@ public static class StringExtensionMethods
         obj = ToEnglishAlphabet(NormalizeWhiteSpace(obj));
         var buffer = new StringBuilder();
 
-#if NET20
-            foreach (var c in obj)
-            {
-                if (' ' != c && !char.IsLetterOrDigit(c))
-                {
-                    continue;
-                }
-#else
         foreach (var c in obj.Where(c => ' ' == c || char.IsLetterOrDigit(c)))
         {
-#endif
             buffer.Append(c);
         }
 
@@ -1793,80 +1622,63 @@ public static class StringExtensionMethods
     }
 
     [SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase", Justification = "Title casing only works from lower case strings.")]
-#if NET20
-        public static string ToTitleCase(string obj)
-#else
     public static string ToTitleCase(this string obj)
-#endif
     {
-            if (string.IsNullOrEmpty(obj))
-            {
-                return obj;
-            }
-
-            var info = Thread.CurrentThread.CurrentUICulture.TextInfo;
-
-            return info.ToTitleCase(obj.ToLowerInvariant());
+        if (string.IsNullOrEmpty(obj))
+        {
+            return obj;
         }
 
-#if NET20
-        public static IXPathNavigable XmlDeserialize(string xml)
-#else
+        var info = Thread.CurrentThread.CurrentUICulture.TextInfo;
+
+        return info.ToTitleCase(obj.ToLowerInvariant());
+    }
+
     public static IXPathNavigable XmlDeserialize(this string xml)
-#endif
     {
-            var result = new XmlDocument();
-            result.LoadXml(xml);
+        var result = new XmlDocument();
+        result.LoadXml(xml);
 
-            return result;
-        }
+        return result;
+    }
 
-#if NET20
-        public static T XmlDeserialize<T>(string xml)
-#else
     public static T XmlDeserialize<T>(this string xml)
-#endif
     {
-            return (T)XmlDeserialize(xml, typeof(T));
-        }
+        return (T)XmlDeserialize(xml, typeof(T));
+    }
 
-#if NET20
-        public static object XmlDeserialize(string xml, 
-                                            Type type)
-#else
     [SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Justification = "This is an odd rule that seems to be impossible to actually pass.")]
     public static object XmlDeserialize(this string xml,
                                         Type type)
-#endif
     {
-            if (null == xml)
-            {
-                throw new ArgumentNullException("xml");
-            }
+        if (null == xml)
+        {
+            throw new ArgumentNullException("xml");
+        }
 
-            if (0 == xml.Length)
-            {
-                throw new ArgumentOutOfRangeException("xml");
-            }
+        if (0 == xml.Length)
+        {
+            throw new ArgumentOutOfRangeException("xml");
+        }
 
-            if (null == type)
-            {
-                throw new ArgumentNullException("type");
-            }
+        if (null == type)
+        {
+            throw new ArgumentNullException("type");
+        }
 
-            using (var stream = new MemoryStream())
+        using (var stream = new MemoryStream())
+        {
+            using (var writer = new StreamWriter(stream))
             {
-                using (var writer = new StreamWriter(stream))
-                {
-                    writer.Write(xml);
-                    writer.Flush();
-                    stream.Position = 0;
-                    return !typeof(Exception).IsAssignableFrom(type)
-                               ? new XmlSerializer(type).Deserialize(stream)
-                               : throw new NotSupportedException("Soap Formatter not supported");
-                }
+                writer.Write(xml);
+                writer.Flush();
+                stream.Position = 0;
+                return !typeof(Exception).IsAssignableFrom(type)
+                           ? new XmlSerializer(type).Deserialize(stream)
+                           : throw new NotSupportedException("Soap Formatter not supported");
             }
         }
+    }
 
     [SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase", Justification = "The algorithm specifies lower case.")]
     [Comment("If the name starts with cough make it cou2f")]
@@ -1876,237 +1688,237 @@ public static class StringExtensionMethods
     [Comment("If the name starts with gn make it 2n")]
     public static string CaverphoneStart(string value)
     {
-            if (null == value)
-            {
-                return null;
-            }
+        if (null == value)
+        {
+            return null;
+        }
 
-            if (0 == value.Length)
-            {
-                return value;
-            }
-
-            value = ToEnglishAlphabet(value).ToLowerInvariant();
-
-            if (StartsWithAny(value, StringComparison.Ordinal, "cough", "rough", "tough"))
-            {
-                return string.Concat(value.Substring(0, 3), "2f", 5 == value.Length ? string.Empty : value.Substring(5));
-            }
-
-            if (value.StartsWith("enough", StringComparison.Ordinal))
-            {
-                return string.Concat(value.Substring(0, 4), "2f", 6 == value.Length ? string.Empty : value.Substring(6));
-            }
-
-            if (value.StartsWith("gn", StringComparison.Ordinal))
-            {
-                return string.Concat("2n", 2 == value.Length ? string.Empty : value.Substring(2));
-            }
-
+        if (0 == value.Length)
+        {
             return value;
         }
+
+        value = ToEnglishAlphabet(value).ToLowerInvariant();
+
+        if (StartsWithAny(value, StringComparison.Ordinal, "cough", "rough", "tough"))
+        {
+            return string.Concat(value.Substring(0, 3), "2f", 5 == value.Length ? string.Empty : value.Substring(5));
+        }
+
+        if (value.StartsWith("enough", StringComparison.Ordinal))
+        {
+            return string.Concat(value.Substring(0, 4), "2f", 6 == value.Length ? string.Empty : value.Substring(6));
+        }
+
+        if (value.StartsWith("gn", StringComparison.Ordinal))
+        {
+            return string.Concat("2n", 2 == value.Length ? string.Empty : value.Substring(2));
+        }
+
+        return value;
+    }
 
     [Comment("If the name ends with mb make it m2")]
     public static void CaverphoneEndings(StringBuilder buffer)
     {
-            if (null == buffer)
-            {
-                throw new ArgumentNullException("buffer");
-            }
-
-            if (2 > buffer.Length)
-            {
-                return;
-            }
-
-            var last = buffer.Length - 1;
-            var penultimate = last - 1;
-
-            if ('m' != buffer[penultimate])
-            {
-                return;
-            }
-
-            if ('b' != buffer[last])
-            {
-                return;
-            }
-
-            buffer[last] = '2';
+        if (null == buffer)
+        {
+            throw new ArgumentNullException("buffer");
         }
+
+        if (2 > buffer.Length)
+        {
+            return;
+        }
+
+        var last = buffer.Length - 1;
+        var penultimate = last - 1;
+
+        if ('m' != buffer[penultimate])
+        {
+            return;
+        }
+
+        if ('b' != buffer[last])
+        {
+            return;
+        }
+
+        buffer[last] = '2';
+    }
 
     public static string MetaphoneEnd(StringBuilder buffer)
     {
-            if (null == buffer)
-            {
-                throw new ArgumentNullException("buffer");
-            }
-
-            if (0 == buffer.Length)
-            {
-                return string.Empty;
-            }
-
-            buffer.Replace("CK", "K");
-            buffer.Replace("PH", "F");
-            buffer.Replace("X", "KS");
-
-            for (var i = buffer.Length; i > 0; i--)
-            {
-                switch (buffer[i - 1])
-                {
-                    case ' ':
-                        buffer.Remove(i - 1, 1);
-                        break;
-
-                    case 'j':
-                        buffer[i - 1] = 'J';
-                        break;
-                    case 'k':
-                        buffer[i - 1] = 'K';
-                        break;
-                    case 's':
-                        buffer[i - 1] = 'S';
-                        break;
-                    case 't':
-                        buffer[i - 1] = 'T';
-                        break;
-                    case 'x':
-                        buffer[i - 1] = 'X';
-                        break;
-
-                    case 'V':
-                        buffer[i - 1] = 'F';
-                        break;
-                    case 'Q':
-                        buffer[i - 1] = 'K';
-                        break;
-                    case 'Z':
-                        buffer[i - 1] = 'S';
-                        break;
-                }
-            }
-
-            return buffer.ToString();
+        if (null == buffer)
+        {
+            throw new ArgumentNullException("buffer");
         }
+
+        if (0 == buffer.Length)
+        {
+            return string.Empty;
+        }
+
+        buffer.Replace("CK", "K");
+        buffer.Replace("PH", "F");
+        buffer.Replace("X", "KS");
+
+        for (var i = buffer.Length; i > 0; i--)
+        {
+            switch (buffer[i - 1])
+            {
+                case ' ':
+                    buffer.Remove(i - 1, 1);
+                    break;
+
+                case 'j':
+                    buffer[i - 1] = 'J';
+                    break;
+                case 'k':
+                    buffer[i - 1] = 'K';
+                    break;
+                case 's':
+                    buffer[i - 1] = 'S';
+                    break;
+                case 't':
+                    buffer[i - 1] = 'T';
+                    break;
+                case 'x':
+                    buffer[i - 1] = 'X';
+                    break;
+
+                case 'V':
+                    buffer[i - 1] = 'F';
+                    break;
+                case 'Q':
+                    buffer[i - 1] = 'K';
+                    break;
+                case 'Z':
+                    buffer[i - 1] = 'S';
+                    break;
+            }
+        }
+
+        return buffer.ToString();
+    }
 
     public static void MetaphoneFirstLetters(StringBuilder buffer)
     {
-            if (null == buffer)
-            {
-                throw new ArgumentNullException("buffer");
-            }
-
-            if (0 == buffer.Length)
-            {
-                return;
-            }
-
-            if ('X' == buffer[0])
-            {
-                //// X-
-                buffer[0] = 'S';
-                return;
-            }
-
-            if (1 == buffer.Length)
-            {
-                return;
-            }
-
-            if ('A' == buffer[0] && 'E' == buffer[1])
-            {
-                //// AE-
-                buffer.Remove(0, 1);
-                return;
-            }
-
-            if ('G' == buffer[0] && 'N' == buffer[1])
-            {
-                //// GN-
-                buffer.Remove(0, 1);
-                return;
-            }
-
-            if ('K' == buffer[0] && 'N' == buffer[1])
-            {
-                //// KN-
-                buffer.Remove(0, 1);
-                return;
-            }
-
-            if ('P' == buffer[0] && 'N' == buffer[1])
-            {
-                //// PN-
-                buffer.Remove(0, 1);
-                return;
-            }
-
-            if ('W' == buffer[0] && 'R' == buffer[1])
-            {
-                //// WR-
-                buffer.Remove(0, 1);
-            }
+        if (null == buffer)
+        {
+            throw new ArgumentNullException("buffer");
         }
+
+        if (0 == buffer.Length)
+        {
+            return;
+        }
+
+        if ('X' == buffer[0])
+        {
+            //// X-
+            buffer[0] = 'S';
+            return;
+        }
+
+        if (1 == buffer.Length)
+        {
+            return;
+        }
+
+        if ('A' == buffer[0] && 'E' == buffer[1])
+        {
+            //// AE-
+            buffer.Remove(0, 1);
+            return;
+        }
+
+        if ('G' == buffer[0] && 'N' == buffer[1])
+        {
+            //// GN-
+            buffer.Remove(0, 1);
+            return;
+        }
+
+        if ('K' == buffer[0] && 'N' == buffer[1])
+        {
+            //// KN-
+            buffer.Remove(0, 1);
+            return;
+        }
+
+        if ('P' == buffer[0] && 'N' == buffer[1])
+        {
+            //// PN-
+            buffer.Remove(0, 1);
+            return;
+        }
+
+        if ('W' == buffer[0] && 'R' == buffer[1])
+        {
+            //// WR-
+            buffer.Remove(0, 1);
+        }
+    }
 
     [Comment("Drop 'B' if after 'M' and if it is at the end of the word.")]
     public static void MetaphoneLetterB(int index,
                                         StringBuilder buffer)
     {
-            if (null == buffer)
-            {
-                throw new ArgumentNullException("buffer");
-            }
-
-            if (0 == index)
-            {
-                return;
-            }
-
-            if (int.MaxValue == index)
-            {
-                throw new ArgumentOutOfRangeException("index");
-            }
-
-            if (int.MinValue == index)
-            {
-                throw new ArgumentOutOfRangeException("index");
-            }
-
-            var previous = int.MinValue == index ? index : index - 1;
-            var next = int.MaxValue == index ? index : index + 1;
-            var last = buffer.Length - 1;
-
-            if ('M' != buffer[previous])
-            {
-                return;
-            }
-
-            if ('B' != buffer[index])
-            {
-                return;
-            }
-
-            if (index == last)
-            {
-                //// -MB
-                buffer[index] = ' ';
-                return;
-            }
-
-            if (next != last)
-            {
-                return;
-            }
-
-            if ('E' != buffer[next])
-            {
-                return;
-            }
-
-            //// -MBE
-            buffer[index] = ' ';
+        if (null == buffer)
+        {
+            throw new ArgumentNullException("buffer");
         }
+
+        if (0 == index)
+        {
+            return;
+        }
+
+        if (int.MaxValue == index)
+        {
+            throw new ArgumentOutOfRangeException("index");
+        }
+
+        if (int.MinValue == index)
+        {
+            throw new ArgumentOutOfRangeException("index");
+        }
+
+        var previous = int.MinValue == index ? index : index - 1;
+        var next = int.MaxValue == index ? index : index + 1;
+        var last = buffer.Length - 1;
+
+        if ('M' != buffer[previous])
+        {
+            return;
+        }
+
+        if ('B' != buffer[index])
+        {
+            return;
+        }
+
+        if (index == last)
+        {
+            //// -MB
+            buffer[index] = ' ';
+            return;
+        }
+
+        if (next != last)
+        {
+            return;
+        }
+
+        if ('E' != buffer[next])
+        {
+            return;
+        }
+
+        //// -MBE
+        buffer[index] = ' ';
+    }
 
     [Comment("'C' transforms to 'X' if followed by 'IA' or 'H' (unless in latter case, it is part of '-SCH-', in which case it transforms to 'K').")]
     [Comment("'C' transforms to 'S' if followed by 'I', 'E', or 'Y'.")]
@@ -2305,25 +2117,25 @@ public static class StringExtensionMethods
     private static void MetaphoneDropDuplicates(int i,
                                                 StringBuilder buffer)
     {
-            if ('C' == buffer[i])
-            {
-                return;
-            }
-
-            var next = i + 1;
-
-            if (next == buffer.Length)
-            {
-                return;
-            }
-
-            if (buffer[i] != buffer[next])
-            {
-                return;
-            }
-
-            buffer[next] = ' ';
+        if ('C' == buffer[i])
+        {
+            return;
         }
+
+        var next = i + 1;
+
+        if (next == buffer.Length)
+        {
+            return;
+        }
+
+        if (buffer[i] != buffer[next])
+        {
+            return;
+        }
+
+        buffer[next] = ' ';
+    }
 
     [Comment("Drop all vowels unless it is the beginning.")]
     private static void MetaphoneLetterVowel(int i,
@@ -2609,7 +2421,6 @@ public static class StringExtensionMethods
         {
             value = XmlConvert.ToDateTimeOffset(obj);
         }
-
 #endif
         else if (typeof(decimal) == type)
         {

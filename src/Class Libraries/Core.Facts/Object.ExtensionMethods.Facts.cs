@@ -177,7 +177,7 @@ public sealed class ObjectExtensionMethodsFacts
         Assert.Equal(expected, actual);
     }
 
-    [Fact]
+    [Fact(Skip="Xml serialization is no longer supported on the platform")]
     public void op_XmlSerialize_objectException()
     {
         var xml = new InvalidOperationException().XmlSerialize().CreateNavigator().OuterXml;

@@ -1,6 +1,7 @@
 ﻿namespace WhenFresh.Utilities.Core.Facts.IO;
 
 using System;
+using System.Globalization;
 using System.IO;
 using WhenFresh.Utilities.Core;
 using WhenFresh.Utilities.Core.IO;
@@ -31,7 +32,7 @@ public sealed class TempDirectoryFacts
     [Fact]
     public void ctor_DirectoryInfo()
     {
-        using (var directory = new TempDirectory(new DirectoryInfo("C:\\").Root))
+        using (var directory = new TempDirectory(new DirectoryInfo(Path.GetTempPath())))
         {
             Assert.NotNull(directory);
         }
@@ -82,7 +83,8 @@ public sealed class TempDirectoryFacts
     {
         using (var directory = new TempDirectory())
         {
-            var file = new FileInfo(@"{0}\example.txt".FormatWith(directory.Info.FullName));
+            object[] args = new[] { directory.Info.FullName };
+            var file = new FileInfo(string.Format(CultureInfo.InvariantCulture, @"{0}\example.txt", args));
             using (file.Create())
             {
             }

@@ -7,6 +7,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Versioning;
 using System.Threading.Tasks;
 
 public static class DirectoryInfoExtensionMethods
@@ -358,29 +360,24 @@ public static class DirectoryInfoExtensionMethods
 
     [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "I want strong typing here.")]
     [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Code stack has been reviewed.")]
-#if NET20
-        public static void RobocopyTo(DirectoryInfo source,
-                                      DirectoryInfo destination)
-#else
+    [Obsolete("Robocopy is not supported on all platforms", true)]
     public static void RobocopyTo(this DirectoryInfo source,
                                   DirectoryInfo destination)
-#endif
     {
         RobocopyTo(source, destination, false);
     }
 
     [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "I want strong typing here.")]
     [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Code stack has been reviewed.")]
-#if NET20
-        public static void RobocopyTo(DirectoryInfo source,
-                                      DirectoryInfo destination,
-                                      bool move)
-#else
+    [Obsolete("Robocopy is not supported on all platforms", true)]
     public static void RobocopyTo(this DirectoryInfo source,
                                   DirectoryInfo destination,
                                   bool move)
-#endif
+
     {
+        if (OperatingSystem.IsWindows() is false)
+            throw new PlatformNotSupportedException();
+        
         if (null == source)
         {
             throw new ArgumentNullException("source");

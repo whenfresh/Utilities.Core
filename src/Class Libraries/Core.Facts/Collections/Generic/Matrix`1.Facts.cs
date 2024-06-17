@@ -513,7 +513,7 @@ public sealed class MatrixOfTFacts
     [Fact]
     public void op_GetHashCode()
     {
-        var expected = "-1\r\n".GetHashCode();
+        var expected = $"-1{Environment.NewLine}".GetHashCode();
 
         var actual = new Matrix<decimal>(1, 1);
         actual[0, 0] = decimal.MinusOne;

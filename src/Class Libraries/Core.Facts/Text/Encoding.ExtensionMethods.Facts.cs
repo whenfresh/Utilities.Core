@@ -16,7 +16,7 @@ public sealed class EncodingExtensionMethodsFacts
     [Fact]
     public void op_ToContentType_EncodingDefault_string()
     {
-        var expected = new ContentType("text/example; charset=Windows-1252");
+        var expected = new ContentType("text/example; charset=utf-8");
         var actual = Encoding.Default.ToContentType("text/example");
 
         Assert.Equal(expected, actual);

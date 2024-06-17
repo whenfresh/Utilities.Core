@@ -31,7 +31,7 @@ public sealed class CurrentTempDirectoryFacts
     {
         var current = new DirectoryInfo(Environment.CurrentDirectory);
 
-        var expected = new DirectoryInfo(current.Root.FullName).ToDirectory("Temp", true).FullName;
+        var expected = new DirectoryInfo(current.FullName).ToDirectory("Temp", true).FullName;
         var actual = CurrentTempDirectory.Location.FullName;
 
         Assert.Equal(expected, actual);

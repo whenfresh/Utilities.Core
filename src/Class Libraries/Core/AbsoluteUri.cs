@@ -1,5 +1,6 @@
 ﻿namespace WhenFresh.Utilities.Core;
 
+using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
 #if NET20 || NET35
@@ -155,7 +156,8 @@ public class AbsoluteUri : IComparable,
         else
         {
             var index = path.IndexOf(':');
-            path = @"{0}\{1}".FormatWith(path.Substring(0, index), path.Substring(index + 1));
+            object[] args = new[] { path.Substring(0, index), path.Substring(index + 1) };
+            path = string.Format(CultureInfo.InvariantCulture, @"{0}\{1}", args);
         }
 
         path = path

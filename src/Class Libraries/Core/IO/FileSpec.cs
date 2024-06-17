@@ -7,6 +7,8 @@ using System.IO;
 [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "This naming is intentional.")]
 public class FileSpec : IEnumerable<FileInfo>
 {
+    private static readonly string GlobDirectory = $"{Path.DirectorySeparatorChar}**{Path.DirectorySeparatorChar}";
+
     public FileSpec(string value)
     {
         if (null == value)
@@ -47,9 +49,9 @@ public class FileSpec : IEnumerable<FileInfo>
         DirectoryInfo directory;
         string pattern;
         var option = SearchOption.TopDirectoryOnly;
-        if (Value.Contains(@"\**\"))
+        if (Value.Contains(GlobDirectory))
         {
-            var index = Value.IndexOf(@"\**\", StringComparison.Ordinal);
+            var index = Value.IndexOf(GlobDirectory, StringComparison.Ordinal);
             directory = new DirectoryInfo(Value.Substring(0, index));
             pattern = Value.Substring(index + 4);
             option = SearchOption.AllDirectories;
@@ -61,11 +63,7 @@ public class FileSpec : IEnumerable<FileInfo>
             pattern = Value.Substring(index);
         }
 
-#if NET20 || NET35
-            foreach (var file in directory.GetFiles(pattern, option))
-#else
         foreach (var file in directory.EnumerateFiles(pattern, option))
-#endif
         {
             yield return file;
         }

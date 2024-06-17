@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using WhenFresh.Utilities.Core;
@@ -77,7 +78,7 @@ public sealed class FileSpecFacts
                            .AppendLine(string.Empty)
                            .FullName;
 
-            var name = @"{0}\*.txt".FormatWith(temp.Info.FullName);
+            var name = Path.Combine(temp.Info.FullName, "*.txt");
 
             var actual = new FileSpec(name).First().FullName;
 
@@ -96,7 +97,8 @@ public sealed class FileSpecFacts
                 .ToFile("example.txt")
                 .AppendLine(string.Empty);
 
-            var name = @"{0}\*.txt".FormatWith(temp.Info.FullName);
+            var args = temp.Info.FullName;
+            var name =  Path.Combine(args, "*.txt");
 
             Assert.Empty(new FileSpec(name));
         }
@@ -114,7 +116,8 @@ public sealed class FileSpecFacts
                            .AppendLine(string.Empty)
                            .FullName;
 
-            var name = @"{0}\**\*.txt".FormatWith(temp.Info.FullName);
+            var name =
+                Path.Combine(temp.Info.FullName, "**", "*.txt");
 
             var actual = new FileSpec(name).First().FullName;
 

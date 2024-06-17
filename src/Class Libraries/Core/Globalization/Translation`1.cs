@@ -65,23 +65,9 @@ public struct Translation<T> : ISerializable,
                    : Value.Equals(other.Value);
     }
 
-    public override int GetHashCode()
-    {
-        return ToString().GetHashCode();
-    }
+    public override int GetHashCode() => ToString().GetHashCode();
 
-    public override string ToString()
-    {
-#if NET20
-            return StringExtensionMethods.FormatWith("{0}: {1}", Language, Value);
-#else
-        return "{0}: {1}".FormatWith(Language, Value);
-#endif
-    }
-
-#if NET20 || NET35
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
-#endif
+    public override string ToString() => $"{Language}: {Value}";
 
     void ISerializable.GetObjectData(SerializationInfo info,
                                      StreamingContext context)

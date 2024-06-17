@@ -6,9 +6,17 @@ using System.IO;
 using System.Linq;
 using WhenFresh.Utilities.Core;
 using WhenFresh.Utilities.Core.IO;
+using Xunit.Abstractions;
 
 public sealed class DirectoryInfoExtensionMethodsFacts
 {
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    public DirectoryInfoExtensionMethodsFacts(ITestOutputHelper testOutputHelper)
+    {
+        _testOutputHelper = testOutputHelper;
+    }
+
     [Fact]
     public void a_definition()
     {
@@ -739,8 +747,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfoNull_DirectoryInfo()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var destination = temp.Info.ToDirectory("destination").Make();
@@ -750,8 +762,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfoNotFound_DirectoryInfo()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source");
@@ -762,8 +778,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfo_DirectoryInfoNull()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source").Make();
@@ -773,8 +793,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfo_DirectoryInfoNotFound()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source").Make();
@@ -790,8 +814,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfo_DirectoryInfo()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source").Make();
@@ -807,8 +835,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfoNull_DirectoryInfo_boolFalse()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var destination = temp.Info.ToDirectory("destination").Make();
@@ -818,8 +850,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfoNotFound_DirectoryInfo_boolFalse()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source");
@@ -830,8 +866,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfo_DirectoryInfoNull_boolFalse()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source").Make();
@@ -841,8 +881,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfo_DirectoryInfoNotFound_boolFalse()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source").Make();
@@ -858,8 +902,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfo_DirectoryInfo_boolFalse()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source").Make();
@@ -875,8 +923,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfoNull_DirectoryInfo_boolTrue()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var destination = temp.Info.ToDirectory("destination").Make();
@@ -886,8 +938,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfoNotFound_DirectoryInfo_boolTrue()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+        
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source");
@@ -898,8 +954,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfo_DirectoryInfoNull_boolTrue()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source").Make();
@@ -909,8 +969,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfo_DirectoryInfoNotFound_boolTrue()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source").Make();
@@ -926,8 +990,12 @@ public sealed class DirectoryInfoExtensionMethodsFacts
     }
 
     [Fact]
+    [Obsolete("Robocopy is not cross-platform")]
     public void op_RobocopyTo_DirectoryInfo_DirectoryInfo_boolTrue()
     {
+        if (OperatingSystem.IsWindows() is false)
+            _testOutputHelper.WriteLine("Robocopy is only available on Windows.");
+
         using (var temp = new TempDirectory())
         {
             var source = temp.Info.ToDirectory("source").Make();

@@ -181,7 +181,7 @@ public sealed class MD5HashFacts
     ////public void op_Compute_FileSystemInfo()
     ////{
     ////    MD5Hash expected = Convert.FromBase64String(_jigsawHash);
-    ////    var actual = MD5Hash.Compute(new FileInfo(@"Security\Cryptography\jigsaw.html"));
+    ////    var actual = MD5Hash.Compute(new FileInfo(Path.Combine("Security","Cryptography","jigsaw.html")));
 
     ////    Assert.Equal(expected, actual);
     ////}
@@ -190,7 +190,7 @@ public sealed class MD5HashFacts
     public void op_Compute_FileSystemInfoEmpty()
     {
         MD5Hash expected = Convert.FromBase64String(_emptyHash);
-        var actual = MD5Hash.Compute(new FileInfo(@"Security\Cryptography\empty.html"));
+        var actual = MD5Hash.Compute(new FileInfo(Path.Combine("Security","Cryptography","empty.html")));
 
         Assert.Equal(expected, actual);
     }
@@ -346,8 +346,8 @@ public sealed class MD5HashFacts
     [Fact]
     public void op_Differ_MD5HashJigsaw_MD5HashEmpty()
     {
-        var jigsaw = new FileInfo(@"Security\Cryptography\jigsaw.html");
-        var empty = new FileInfo(@"Security\Cryptography\empty.html");
+        var jigsaw = new FileInfo(Path.Combine("Security","Cryptography","jigsaw.html"));
+        var empty = new FileInfo(Path.Combine("Security","Cryptography","empty.html"));
 
         Assert.True(MD5Hash.Differ(jigsaw, empty));
     }
@@ -355,8 +355,8 @@ public sealed class MD5HashFacts
     [Fact]
     public void op_Differ_MD5HashJigsaw_MD5HashJigsaw()
     {
-        var one = new FileInfo(@"Security\Cryptography\jigsaw.html");
-        var two = new FileInfo(@"Security\Cryptography\jigsaw.html");
+        var one = new FileInfo(Path.Combine("Security","Cryptography","jigsaw.html"));
+        var two = new FileInfo(Path.Combine("Security","Cryptography","jigsaw.html"));
 
         Assert.False(MD5Hash.Differ(one, two));
     }
@@ -450,8 +450,8 @@ public sealed class MD5HashFacts
     [Fact]
     public void op_Same_MD5HashJigsaw_MD5HashEmpty()
     {
-        var jigsaw = new FileInfo(@"Security\Cryptography\jigsaw.html");
-        var empty = new FileInfo(@"Security\Cryptography\empty.html");
+        var jigsaw = new FileInfo(Path.Combine("Security","Cryptography","jigsaw.html"));
+        var empty = new FileInfo(Path.Combine("Security","Cryptography","empty.html"));
 
         Assert.False(MD5Hash.Same(jigsaw, empty));
     }
@@ -459,8 +459,8 @@ public sealed class MD5HashFacts
     [Fact]
     public void op_Same_MD5HashJigsaw_MD5HashJigsaw()
     {
-        var one = new FileInfo(@"Security\Cryptography\jigsaw.html");
-        var two = new FileInfo(@"Security\Cryptography\jigsaw.html");
+        var one = new FileInfo(Path.Combine("Security","Cryptography","jigsaw.html"));
+        var two = new FileInfo(Path.Combine("Security","Cryptography","jigsaw.html"));
 
         Assert.True(MD5Hash.Same(one, two));
     }

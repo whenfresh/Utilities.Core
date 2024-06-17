@@ -14,12 +14,9 @@ public class CurrentTempDirectory : TempDirectory
         get
         {
             var current = new DirectoryInfo(Environment.CurrentDirectory);
-            var root = new DirectoryInfo(current.Root.FullName);
-#if NET20
-                return DirectoryInfoExtensionMethods.ToDirectory(root, "Temp", true);
-#else
-            return root.ToDirectory("Temp", true);
-#endif
+            
+            
+            return current.ToDirectory("Temp", true);
         }
     }
 }

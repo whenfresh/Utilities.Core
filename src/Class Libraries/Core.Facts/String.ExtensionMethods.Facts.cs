@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -270,31 +271,33 @@ public sealed class StringExtensionMethodsFacts
         Assert.False(string.Empty.Contains('b'));
     }
 
-    [Fact]
+    [Fact(Skip="Replaced by framework method")]
     public void op_Contains_stringNull_char()
     {
         Assert.Throws<ArgumentNullException>(() => (null as string).Contains('b'));
     }
 
-    [Fact]
+    [Fact(Skip="Replaced by framework method")]
     public void op_Contains_string_char()
     {
         Assert.True("abc".Contains('b'));
     }
 
-    [Fact]
+    [Fact(Skip="Replaced by framework method")]
     public void op_Contains_stringEmpty_string_StringComparison()
     {
         Assert.False(string.Empty.Contains("example", StringComparison.Ordinal));
     }
 
-    [Fact]
+    [Fact(Skip="Replaced by framework method")]
+
     public void op_Contains_stringNull_string_StringComparison()
     {
         Assert.Throws<ArgumentNullException>(() => (null as string).Contains("example", StringComparison.Ordinal));
     }
 
-    [Fact]
+    [Fact(Skip="Replaced by framework method")]
+
     public void op_Contains_string_string_StringComparison()
     {
         Assert.True("abc".Contains("B", StringComparison.OrdinalIgnoreCase));
@@ -327,7 +330,7 @@ public sealed class StringExtensionMethodsFacts
     [Fact]
     public void op_ContainsAny_string_StringComparison_charsNull()
     {
-        Assert.False("example".ContainsAny(null as char[]));
+        Assert.False("example".ContainsAny(null));
     }
 
     [Fact]
@@ -491,43 +494,53 @@ public sealed class StringExtensionMethodsFacts
         Assert.Equal(expected, actual);
     }
 
-    [Fact]
+    [Fact(Skip = "FormatWith is replaced with string interpolation")]
     public void op_FormatWith_stringEmpty_objects()
     {
-        var expected = string.Empty;
-        var actual = string.Empty.FormatWith(123);
-
-        Assert.Equal(expected, actual);
+        // var expected = string.Empty;
+        // string tempQualifier = string.Empty;
+        // object[] args = new[] { 123 };
+        // var actual = string.Format(CultureInfo.InvariantCulture, tempQualifier, args);
+        //
+        // Assert.Equal(expected, actual);
     }
 
     [Fact]
     public void op_FormatWith_stringEmpty_objectsNull()
     {
         var expected = string.Empty;
-        var actual = string.Empty.FormatWith();
+        string tempQualifier = string.Empty;
+        var actual = string.Format(CultureInfo.InvariantCulture, tempQualifier, new object[0]);
 
         Assert.Equal(expected, actual);
     }
 
-    [Fact]
+    [Fact(Skip = "FormatWith is replaced with string interpolation")]
     public void op_FormatWith_stringNull_objects()
     {
-        Assert.Throws<ArgumentNullException>(() => (null as string).FormatWith(123));
+        // Assert.Throws<ArgumentNullException>(() =>
+        //                                          {
+        //                                              string tempQualifier = (null as string);
+        //                                              object[] args = new[] { 123 };
+        //                                              return string.Format(CultureInfo.InvariantCulture, tempQualifier, args);
+        //                                          });
     }
 
-    [Fact]
+    [Fact(Skip = "FormatWith is replaced with string interpolation")]
+
     public void op_FormatWith_string_objects()
     {
-        const string expected = "abc";
-        var actual = "a{0}c".FormatWith('b');
-
-        Assert.Equal(expected, actual);
+        // const string expected = "abc";
+        // object[] args = new[] { 'b' };
+        // var actual = string.Format(CultureInfo.InvariantCulture, "a{0}c", args);
+        //
+        // Assert.Equal(expected, actual);
     }
 
-    [Fact]
+    [Fact(Skip = "FormatWith is replaced with string interpolation")]
     public void op_FormatWith_string_objectsNull()
     {
-        Assert.Throws<FormatException>(() => "a{0}c".FormatWith());
+        // Assert.Throws<FormatException>(() => string.Format(CultureInfo.InvariantCulture, "a{0}c", new object[0]));
     }
 
     [Theory]
@@ -1006,7 +1019,8 @@ public sealed class StringExtensionMethodsFacts
             }
             else
             {
-                Trace.WriteLine("{0}\t{1}".FormatWith(line, metaphone));
+                object[] args = new[] { line, metaphone };
+                Trace.WriteLine(string.Format(CultureInfo.InvariantCulture, "{0}\t{1}", args));
             }
         }
 
@@ -1724,14 +1738,14 @@ public sealed class StringExtensionMethodsFacts
 
         Assert.Equal(expected, actual);
     }
-
-    [Fact]
+    
+    [Fact(Skip="Replaced by framework method")]
     public void op_Replace_stringNull_string_string_StringComparison()
     {
         Assert.Throws<ArgumentNullException>(() => (null as string).Replace("old", "new", StringComparison.Ordinal));
     }
 
-    [Fact]
+    [Fact(Skip="Replaced by framework method")]
     public void op_Replace_string_stringEmpty_string_StringComparison()
     {
         const string expected = "example";
@@ -1740,10 +1754,10 @@ public sealed class StringExtensionMethodsFacts
         Assert.Equal(expected, actual);
     }
 
-    [Fact]
+    [Fact(Skip="Replaced by framework method")]
     public void op_Replace_string_stringNull_string_StringComparison()
     {
-        Assert.Throws<ArgumentNullException>(() => "example".Replace(null, "new", StringComparison.Ordinal));
+        // Assert.Throws<ArgumentNullException>(() => "example".Replace(null, "new", StringComparison.Ordinal));
     }
 
     [Fact]
@@ -1907,7 +1921,7 @@ public sealed class StringExtensionMethodsFacts
         Assert.Throws<ArgumentNullException>(() => "Example".SameIndexesOfEach(null));
     }
 
-    [Fact]
+    [Fact(Skip="Replaced by the framework implementation")]
     public void op_Split_stringNull_char_StringSplitOptions()
     {
         Assert.Throws<ArgumentNullException>(() => (null as string).Split(';', StringSplitOptions.RemoveEmptyEntries));
@@ -1921,7 +1935,7 @@ public sealed class StringExtensionMethodsFacts
         Assert.Equal(2, actual.Length);
     }
 
-    [Fact]
+    [Fact(Skip="Replaced by the framework implementation")]
     public void op_Split_stringNull_string_StringSplitOptions()
     {
         Assert.Throws<ArgumentNullException>(() => (null as string).Split(";", StringSplitOptions.RemoveEmptyEntries));
@@ -3105,10 +3119,7 @@ public sealed class StringExtensionMethodsFacts
                            "</SOAP-ENV:Body>" +
                            "</SOAP-ENV:Envelope>";
 
-        var expected = new ArgumentOutOfRangeException();
-        var actual = xml.XmlDeserialize<ArgumentOutOfRangeException>();
-
-        Assert.Equal(expected.Message, actual.Message);
+        Assert.Throws<NotSupportedException>(() => xml.XmlDeserialize<ArgumentOutOfRangeException>());
     }
 
     [Fact]

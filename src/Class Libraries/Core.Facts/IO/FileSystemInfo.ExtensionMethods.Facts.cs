@@ -1,11 +1,13 @@
 ﻿namespace WhenFresh.Utilities.Core.Facts.IO;
 
 using System;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using WhenFresh.Utilities.Core.IO;
 
 public sealed class FileSystemInfoExtensionMethodsFacts
 {
+    public static string path_root = Path.GetPathRoot(Path.GetTempPath());
     [Fact]
     public void a_definition()
     {
@@ -22,8 +24,8 @@ public sealed class FileSystemInfoExtensionMethodsFacts
     [Fact]
     public void op_CombineAsDirectory_FileSystemInfo_objects()
     {
-        const string expected = @"C:\1\2\3";
-        var actual = new DirectoryInfo(@"C:\").CombineAsDirectory(1, 2, 3);
+        string expected = Path.Combine(path_root, "1", "2", "3");
+        var actual = new DirectoryInfo(path_root).CombineAsDirectory(1, 2, 3);
 
         Assert.IsType<DirectoryInfo>(actual);
         Assert.Equal(expected, actual.FullName);
@@ -32,7 +34,7 @@ public sealed class FileSystemInfoExtensionMethodsFacts
     [Fact]
     public void op_CombineAsDirectory_FileSystemInfo_objectsEmpty()
     {
-        const string expected = @"C:\";
+         string expected =path_root;
         var actual = new DirectoryInfo(expected).CombineAsDirectory();
 
         Assert.IsType<DirectoryInfo>(actual);
@@ -42,7 +44,7 @@ public sealed class FileSystemInfoExtensionMethodsFacts
     [Fact]
     public void op_CombineAsDirectory_FileSystemInfo_objectsNull()
     {
-        const string expected = @"C:\";
+        string expected =path_root;
         var actual = new DirectoryInfo(expected).CombineAsDirectory(null as object[]);
 
         Assert.IsType<DirectoryInfo>(actual);
@@ -58,8 +60,8 @@ public sealed class FileSystemInfoExtensionMethodsFacts
     [Fact]
     public void op_CombineAsFile_FileSystemInfo_objects()
     {
-        const string expected = @"C:\1\2\3\example.txt";
-        var actual = new DirectoryInfo(@"C:\").CombineAsFile(1, 2, 3, "example.txt");
+        string expected = Path.Combine(path_root, "1", "2", "3", "example.txt");
+        var actual = new DirectoryInfo(path_root).CombineAsFile(1, 2, 3, "example.txt");
 
         Assert.IsType<FileInfo>(actual);
         Assert.Equal(expected, actual.FullName);
@@ -68,7 +70,7 @@ public sealed class FileSystemInfoExtensionMethodsFacts
     [Fact]
     public void op_CombineAsFile_FileSystemInfo_objectsEmpty()
     {
-        const string expected = @"C:\";
+        string expected =path_root;
         var actual = new DirectoryInfo(expected).CombineAsFile();
 
         Assert.IsType<FileInfo>(actual);
@@ -78,7 +80,7 @@ public sealed class FileSystemInfoExtensionMethodsFacts
     [Fact]
     public void op_CombineAsFile_FileSystemInfo_objectsNull()
     {
-        const string expected = @"C:\";
+        string expected =path_root;
         var actual = new DirectoryInfo(expected).CombineAsFile(null as object[]);
 
         Assert.IsType<FileInfo>(actual);
@@ -94,8 +96,8 @@ public sealed class FileSystemInfoExtensionMethodsFacts
     [Fact]
     public void op_Combine_FileSystemInfo_objects()
     {
-        const string expected = @"C:\1\2\3";
-        var actual = new DirectoryInfo(@"C:\").Combine(1, 2, 3);
+        string expected = Path.Combine(path_root, "1", "2", "3");
+        var actual = new DirectoryInfo(path_root).Combine(1, 2, 3);
 
         Assert.Equal(expected, actual);
     }
@@ -103,7 +105,7 @@ public sealed class FileSystemInfoExtensionMethodsFacts
     [Fact]
     public void op_Combine_FileSystemInfo_objectsEmpty()
     {
-        const string expected = @"C:\";
+        string expected =path_root;
         var actual = new DirectoryInfo(expected).Combine();
 
         Assert.Equal(expected, actual);
@@ -112,7 +114,7 @@ public sealed class FileSystemInfoExtensionMethodsFacts
     [Fact]
     public void op_Combine_FileSystemInfo_objectsNull()
     {
-        const string expected = @"C:\";
+        string expected =path_root;
         var actual = new DirectoryInfo(expected).Combine(null as object[]);
 
         Assert.Equal(expected, actual);

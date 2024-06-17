@@ -12,16 +12,9 @@ public class TempDirectory : IDisposable
 
     public TempDirectory(DirectoryInfo directory)
     {
-        if (null == directory)
-        {
-            throw new ArgumentNullException("directory");
-        }
+        ArgumentNullException.ThrowIfNull(directory);
 
-#if NET20 || NET35
-            Info = new DirectoryInfo(Path.Combine(directory.FullName, Guid.NewGuid().ToString()));
-#else
         Info = directory.CombineAsDirectory(Guid.NewGuid());
-#endif
         Info.Create();
     }
 
@@ -44,11 +37,7 @@ public class TempDirectory : IDisposable
     {
         if (!Disposed && disposing)
         {
-#if NET20
-                if (ObjectExtensionMethods.IsNotNull(Info))
-#else
             if (Info.IsNotNull())
-#endif
             {
                 Info.Refresh();
                 if (Info.Exists)
@@ -67,32 +56,17 @@ public class TempDirectory : IDisposable
 
     private static void DeleteSubdirectories(DirectoryInfo directory)
     {
-#if NET20 || NET35
-            foreach (var subdirectory in directory.GetDirectories())
-            {
-                DeleteSubdirectories(subdirectory);
-                subdirectory.Delete();
-            }
-#else
         Parallel.ForEach(directory.EnumerateDirectories(),
                          subdirectory =>
                              {
                                  DeleteSubdirectories(subdirectory);
                                  subdirectory.Delete();
                              });
-#endif
     }
 
     private void DeleteFiles()
     {
-#if NET20 || NET35
-            foreach (var file in Info.GetFiles("*", SearchOption.AllDirectories))
-            {
-                file.Delete();
-            }
-#else
         Parallel.ForEach(Info.EnumerateFiles("*", SearchOption.AllDirectories),
                          file => file.Delete());
-#endif
     }
 }

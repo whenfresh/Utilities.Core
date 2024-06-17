@@ -1,6 +1,7 @@
 ﻿namespace WhenFresh.Utilities.Core.IO;
 
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -482,7 +483,8 @@ public static class FileInfoExtensionMethods
 #if NET20
                     throw new IOException(StringExtensionMethods.FormatWith("{0} already exists.", destination.FullName));
 #else
-                throw new IOException("{0} already exists.".FormatWith(destination.FullName));
+                object[] args = new[] { destination.FullName };
+                throw new IOException(string.Format(CultureInfo.InvariantCulture, "{0} already exists.", args));
 #endif
             }
         }

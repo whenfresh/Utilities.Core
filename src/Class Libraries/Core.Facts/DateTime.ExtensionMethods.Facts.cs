@@ -23,9 +23,9 @@ public sealed class DateTimeExtensionMethodsFacts
     [Fact]
     public void op_ToFileName_DateTime()
     {
-        var date = new DateTime(1999, 1, 31, 8, 1, 5, 123);
+        var localTime = new DateTime(1999, 1, 31, 8, 1, 5, 123);
         const string expected = "1999-01-31 08h01 05,123 GMT";
-        var actual = date.ToFileName();
+        var actual = localTime.ToFileName();
 
         Assert.Equal(expected, actual);
     }
@@ -33,9 +33,9 @@ public sealed class DateTimeExtensionMethodsFacts
     [Fact]
     public void op_ToFileName_DateTime_whenDaylightSavings()
     {
-        var date = new DateTime(1999, 6, 1, 20, 1, 5, 123);
+        var localTime = new DateTime(1999, 6, 1, 20, 1, 5, 123);
         const string expected = "1999-06-01 19h01 05,123 GMT";
-        var actual = date.ToFileName();
+        var actual = localTime.ToFileName();
 
         Assert.Equal(expected, actual);
     }
@@ -62,12 +62,12 @@ public sealed class DateTimeExtensionMethodsFacts
     [Fact]
     public void op_ToLocalTime_DateTime_string()
     {
-        var obj = DateTime.UtcNow;
+        var utcTime = DateTime.UtcNow;
 
         var value = TimeZoneInfo.FindSystemTimeZoneById("New Zealand Standard Time");
 
-        var expected = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(obj, value.Id);
-        var actual = obj.ToLocalTime(value.StandardName);
+        var expected = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(utcTime, value.Id);
+        var actual = utcTime.ToLocalTime(value.StandardName);
 
         Assert.Equal(expected, actual);
     }
