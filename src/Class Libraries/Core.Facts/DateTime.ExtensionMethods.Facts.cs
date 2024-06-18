@@ -39,7 +39,7 @@ public sealed class DateTimeExtensionMethodsFacts
 
         Assert.Equal(expected, actual);
     }
-
+ 
     [Fact]
     public void op_ToLocalTime_DateTime_TimeZoneInfo()
     {
@@ -59,32 +59,33 @@ public sealed class DateTimeExtensionMethodsFacts
         Assert.Throws<ArgumentNullException>(() => DateTime.UtcNow.ToLocalTime(null as TimeZoneInfo));
     }
 
-    [Fact]
+    [Fact, Obsolete]
     public void op_ToLocalTime_DateTime_string()
     {
         var utcTime = DateTime.UtcNow;
 
-        var value = TimeZoneInfo.FindSystemTimeZoneById("New Zealand Standard Time");
+        var timeZone = TimeZoneInfo.FindSystemTimeZoneById("New Zealand Standard Time");
 
-        var expected = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(utcTime, value.Id);
-        var actual = utcTime.ToLocalTime(value.StandardName);
+        var expected = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(utcTime, timeZone.Id);
+        
+        var actual = utcTime.ToLocalTime(timeZone.Id);
 
         Assert.Equal(expected, actual);
     }
 
-    [Fact]
+    [Fact, Obsolete]
     public void op_ToLocalTime_DateTime_stringEmpty()
     {
         Assert.Throws<ArgumentOutOfRangeException>(() => DateTime.UtcNow.ToLocalTime(string.Empty));
     }
 
-    [Fact]
+    [Fact, Obsolete]
     public void op_ToLocalTime_DateTime_stringInvalid()
     {
         Assert.Throws<TimeZoneNotFoundException>(() => DateTime.UtcNow.ToLocalTime("Not a valid time zone"));
     }
 
-    [Fact]
+    [Fact, Obsolete]
     public void op_ToLocalTime_DateTime_stringNull()
     {
         Assert.Throws<ArgumentNullException>(() => DateTime.UtcNow.ToLocalTime(null as string));

@@ -13,28 +13,35 @@ public static class DateTimeExtensionMethods
         return new Date(value);
     }
 
-#if NET20
-        public static string ToFileName(DateTime value)
-#else
     public static string ToFileName(this DateTime value)
-#endif
     {
-        return value.ToUniversalTime().ToString(@"yyyy-MM-dd HH\hmm ss,fff G\MT", CultureInfo.InvariantCulture);
+        // code is assuming that everything runs in the UK
+        // so to make it work, we do a bit of gymnastics
+        
+        var ukTime = TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time");
+        // return value.ToLocalTime(ukTime);
+        var converted = value.Kind switch
+            {
+                DateTimeKind.Utc => value,
+                DateTimeKind.Unspecified => TimeZoneInfo.ConvertTimeToUtc(value, ukTime),
+                DateTimeKind.Local => value.ToUniversalTime()
+            };
+        // var converted = 
+        
+        return converted.ToString(@"yyyy-MM-dd HH\hmm ss,fff G\MT", CultureInfo.InvariantCulture);
     }
 
-#if !NET20
+    [Obsolete("This method converts with zone id but does not validate zone ids, please use the overload taking a TimeZoneInfo", true)]
     public static DateTime ToLocalTime(this DateTime value,
                                        string zone)
     {
-        if (null == zone)
-        {
-            throw new ArgumentNullException("zone");
-        }
+        ArgumentNullException.ThrowIfNull(zone);
 
-        if (0 == zone.Length)
-        {
-            throw new ArgumentOutOfRangeException("zone");
-        }
+        if (zone.Length == 0)
+            throw new ArgumentOutOfRangeException(nameof(zone));
+        //
+        // if (value.Kind != DateTimeKind.Utc)
+        //     throw new ArgumentOutOfRangeException(nameof(value), "Cannot convert non-UTC times");
 
         return value.ToLocalTime(TimeZoneInfo.FindSystemTimeZoneById(zone));
     }
@@ -42,15 +49,14 @@ public static class DateTimeExtensionMethods
     public static DateTime ToLocalTime(this DateTime value,
                                        TimeZoneInfo zone)
     {
-        if (null == zone)
-        {
-            throw new ArgumentNullException("zone");
-        }
+        ArgumentNullException.ThrowIfNull(zone);
+        //
+        // if (value.Kind != DateTimeKind.Utc)
+        //     throw new ArgumentOutOfRangeException(nameof(value), "Cannot convert non-UTC times");
 
         return TimeZoneInfo.ConvertTimeBySystemTimeZoneId(value, zone.Id);
     }
 
-#endif
 
 #if NET20
         public static Month ToMonth(DateTime value)
