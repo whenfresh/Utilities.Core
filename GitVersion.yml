@@ -13,28 +13,3 @@ branches:
   main:
     label: preview
     regex: '^master$|^main$'
-
-#    prevent-increment:
-#      of-merged-branch: true
-#      when-current-commit-tagged: true
-#    track-merge-target: false
-#    source-branches: []
-#    tracks-release-branches: false
-#    is-release-branch: false
-#    is-main-branch: true
-#    pre-release-weight: 55000
-#ignore:
-#  sha: []
-#mode: ContinuousDelivery
-#increment: Inherit
-#prevent-increment:
-#  of-merged-branch: false
-#  when-branch-merged: false
-#  when-current-commit-tagged: true
-#track-merge-target: false
-#track-merge-message: true
-#commit-message-incrementing: Enabled
-#regex: ''
-#tracks-release-branches: false
-#is-release-branch: false
-#is-main-branch: false
