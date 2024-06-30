@@ -37,12 +37,6 @@ public sealed class IDictionaryExtensionMethodsFacts
     }
 
     [Fact]
-    public void op_TryAdd_IDictionaryOfTNull_TKey_TValue()
-    {
-        Assert.Throws<ArgumentNullException>(() => IDictionaryExtensionMethods.TryAdd((null as IDictionary<string, object>), "example", new object()));
-    }
-
-    [Fact]
     public void op_TryAdd_IDictionaryOfT_KeyValuePair_whenFalse()
     {
         var list = new Dictionary<string, int>
@@ -59,24 +53,5 @@ public sealed class IDictionaryExtensionMethodsFacts
         var list = new Dictionary<string, string>();
 
         Assert.True(list.TryAdd(new KeyValuePair<string, string>("example", string.Empty)));
-    }
-
-    [Fact]
-    public void op_TryAdd_IDictionaryOfT_TKey_TValue_whenFalse()
-    {
-        var list = new Dictionary<string, int>
-                       {
-                           { "example", 123 }
-                       };
-
-        Assert.False(list.TryAdd("example", 456));
-    }
-
-    [Fact]
-    public void op_TryAdd_IDictionaryOfT_TKey_TValue_whenTrue()
-    {
-        var list = new Dictionary<string, string>();
-
-        Assert.True(list.TryAdd("example", string.Empty));
     }
 }

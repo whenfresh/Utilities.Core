@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net80</TargetFramework>
-    
     <Description>Utility core library used by dependent libraries.</Description>
   </PropertyGroup>
 
