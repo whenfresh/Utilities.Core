@@ -1,4 +1,4 @@
-namespace WhenFresh.Utilities.Core;
+namespace WhenFresh.Utilities;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -7,8 +7,8 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Xml.XPath;
-using WhenFresh.Utilities.Core.IO;
-using WhenFresh.Utilities.Core.Xml;
+using WhenFresh.Utilities.IO;
+using WhenFresh.Utilities.Xml;
 
 public static class ObjectExtensionMethods
 {

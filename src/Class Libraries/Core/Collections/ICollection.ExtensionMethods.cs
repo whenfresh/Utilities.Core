@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Collections;
+﻿namespace WhenFresh.Utilities.Collections;
 
 public static class ICollectionExtensionMethods
 {

@@ -1,7 +1,6 @@
-﻿namespace WhenFresh.Utilities.Core.Facts;
+﻿namespace WhenFresh.Utilities;
 
 using Moq;
-using WhenFresh.Utilities.Core;
 
 public sealed class IChangeDateFacts
 {

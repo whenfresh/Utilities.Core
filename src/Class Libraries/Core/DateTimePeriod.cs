@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core;
+﻿namespace WhenFresh.Utilities;
 
 public struct DateTimePeriod : IEquatable<DateTimePeriod>
 {

@@ -1,8 +1,7 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.IO;
+﻿namespace WhenFresh.Utilities.IO;
 
 using System;
 using System.IO;
-using WhenFresh.Utilities.Core.IO;
 
 public sealed class TempFileFacts
 {

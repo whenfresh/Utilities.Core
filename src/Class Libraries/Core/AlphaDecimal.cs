@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core;
+﻿namespace WhenFresh.Utilities;
 
 #if !NET20 && !NET35
 #endif

@@ -1,7 +1,6 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Globalization;
+﻿namespace WhenFresh.Utilities.Globalization;
 
 using System;
-using WhenFresh.Utilities.Core.Globalization;
 
 public sealed class TranslationExceptionFacts
 {

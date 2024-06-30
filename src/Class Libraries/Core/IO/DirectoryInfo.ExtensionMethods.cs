@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.IO;
+﻿namespace WhenFresh.Utilities.IO;
 
 #if !NET20
 #endif
@@ -7,8 +7,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Versioning;
 using System.Threading.Tasks;
 
 public static class DirectoryInfoExtensionMethods

@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Diagnostics;
+﻿namespace WhenFresh.Utilities.Diagnostics;
 
 using System.Diagnostics;
 

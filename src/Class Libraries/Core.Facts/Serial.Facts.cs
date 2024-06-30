@@ -1,9 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts;
+﻿namespace WhenFresh.Utilities;
 
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WhenFresh.Utilities.Core;
 
 public sealed class SerialFacts
 {

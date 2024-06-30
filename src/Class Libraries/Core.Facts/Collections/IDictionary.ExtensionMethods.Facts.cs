@@ -1,8 +1,7 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Collections;
+﻿namespace WhenFresh.Utilities.Collections;
 
 using System;
 using System.Collections.Generic;
-using WhenFresh.Utilities.Core.Collections;
 
 public sealed class IDictionaryExtensionMethodsFacts
 {

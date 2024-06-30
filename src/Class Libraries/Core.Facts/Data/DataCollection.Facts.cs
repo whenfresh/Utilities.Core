@@ -1,12 +1,10 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Data;
+﻿namespace WhenFresh.Utilities.Data;
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.Data;
-using WhenFresh.Utilities.Core.Xml.XPath;
+using WhenFresh.Utilities.Xml.XPath;
 
 public sealed class DataCollectionFacts
 {

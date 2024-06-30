@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Globalization;
+﻿namespace WhenFresh.Utilities.Globalization;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;

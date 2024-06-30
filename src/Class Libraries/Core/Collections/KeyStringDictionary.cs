@@ -1,10 +1,10 @@
-﻿namespace WhenFresh.Utilities.Core.Collections;
+﻿namespace WhenFresh.Utilities.Collections;
 
 using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
-using WhenFresh.Utilities.Core.Data;
-using WhenFresh.Utilities.Core.Properties;
+using WhenFresh.Utilities.Data;
+using WhenFresh.Utilities.Properties;
 #if !NET20
 #endif
 

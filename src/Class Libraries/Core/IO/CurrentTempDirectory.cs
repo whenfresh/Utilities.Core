@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.IO;
+﻿namespace WhenFresh.Utilities.IO;
 
 using System.IO;
 

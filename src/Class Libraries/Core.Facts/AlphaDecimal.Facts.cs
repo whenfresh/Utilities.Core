@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Facts;
+﻿namespace WhenFresh.Utilities;
 
 using System;
 using System.ComponentModel;
@@ -6,7 +6,6 @@ using System.Globalization;
 using System.Numerics;
 using System.Runtime.Serialization;
 using System.Xml;
-using WhenFresh.Utilities.Core;
 #if !NET20 && !NET35
 #endif
 

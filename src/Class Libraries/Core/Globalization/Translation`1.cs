@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Globalization;
+﻿namespace WhenFresh.Utilities.Globalization;
 
 using System.ComponentModel;
 using System.Runtime.Serialization;

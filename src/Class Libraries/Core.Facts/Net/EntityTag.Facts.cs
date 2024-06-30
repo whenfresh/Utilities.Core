@@ -1,10 +1,9 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Net;
+﻿namespace WhenFresh.Utilities.Net;
 
 using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
-using WhenFresh.Utilities.Core.Net;
-using WhenFresh.Utilities.Core.Security.Cryptography;
+using WhenFresh.Utilities.Security.Cryptography;
 
 public sealed class EntityTagFacts
 {

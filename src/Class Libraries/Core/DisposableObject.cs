@@ -1,7 +1,7 @@
-﻿namespace WhenFresh.Utilities.Core;
+﻿namespace WhenFresh.Utilities;
 
 using System.Diagnostics;
-using WhenFresh.Utilities.Core.Diagnostics;
+using WhenFresh.Utilities.Diagnostics;
 
 public abstract class DisposableObject : IDisposable
 {

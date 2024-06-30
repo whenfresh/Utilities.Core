@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Reflection;
+﻿namespace WhenFresh.Utilities.Reflection;
 
 using System.IO;
 using System.Reflection;

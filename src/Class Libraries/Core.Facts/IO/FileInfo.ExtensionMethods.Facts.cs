@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.IO;
+﻿namespace WhenFresh.Utilities.IO;
 
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.XPath;
-using WhenFresh.Utilities.Core.IO;
 
 public sealed class FileInfoExtensionMethodsFacts
 {

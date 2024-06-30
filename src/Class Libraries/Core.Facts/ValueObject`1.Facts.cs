@@ -1,8 +1,7 @@
-namespace WhenFresh.Utilities.Core.Facts;
+namespace WhenFresh.Utilities;
 
 using System;
 using System.Xml;
-using WhenFresh.Utilities.Core;
 
 public sealed class ValueObjectOfTFacts
 {

@@ -1,6 +1,6 @@
 ﻿#if !NET20 && !NET35
 
-namespace WhenFresh.Utilities.Core.IO
+namespace WhenFresh.Utilities.IO
 {
     using System.IO;
     using System.Linq;

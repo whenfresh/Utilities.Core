@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.IO;
+﻿namespace WhenFresh.Utilities.IO;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.XPath;
-using WhenFresh.Utilities.Core.Security.Cryptography;
+using WhenFresh.Utilities.Security.Cryptography;
 #if !NET20
 #endif
 

@@ -1,10 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Compression;
+﻿namespace WhenFresh.Utilities.Compression;
 
 using System;
 using System.IO;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.Compression;
-using WhenFresh.Utilities.Core.IO;
+using WhenFresh.Utilities.IO;
 
 public sealed class GZipFacts
 {

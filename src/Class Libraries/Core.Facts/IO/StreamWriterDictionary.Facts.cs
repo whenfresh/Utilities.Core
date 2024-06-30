@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.IO;
+﻿namespace WhenFresh.Utilities.IO;
 
 using System;
 using System.Collections.Generic;
@@ -6,8 +6,6 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.IO;
 
 public sealed class StreamWriterDictionaryFacts
 {

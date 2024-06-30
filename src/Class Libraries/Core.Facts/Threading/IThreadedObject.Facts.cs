@@ -1,9 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Threading;
+﻿namespace WhenFresh.Utilities.Threading;
 
 using System;
 using System.Threading;
 using Moq;
-using WhenFresh.Utilities.Core.Threading;
 
 public sealed class IThreadedObjectFacts
 {

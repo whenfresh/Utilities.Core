@@ -1,6 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Dynamic;
-
-using WhenFresh.Utilities.Core.Dynamic;
+﻿namespace WhenFresh.Utilities.Dynamic;
 
 public sealed class DerivedDynamicData : DynamicData
 {

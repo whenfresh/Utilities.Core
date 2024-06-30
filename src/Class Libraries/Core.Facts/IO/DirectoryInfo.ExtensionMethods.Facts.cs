@@ -1,11 +1,9 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.IO;
+﻿namespace WhenFresh.Utilities.IO;
 
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.IO;
 using Xunit.Abstractions;
 
 public sealed class DirectoryInfoExtensionMethodsFacts

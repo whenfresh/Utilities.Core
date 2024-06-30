@@ -1,10 +1,9 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Xml.XPath;
+﻿namespace WhenFresh.Utilities.Xml.XPath;
 
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using System.Xml.XPath;
-using WhenFresh.Utilities.Core.Xml.XPath;
 
 [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "XPath", Justification = "Following the BCL naming style.")]
 public sealed class XPathNavigatorExtensionMethodsFacts

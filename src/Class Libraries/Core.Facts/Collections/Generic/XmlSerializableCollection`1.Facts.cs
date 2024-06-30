@@ -1,12 +1,10 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Collections.Generic;
+﻿namespace WhenFresh.Utilities.Collections.Generic;
 
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Serialization;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.Collections.Generic;
-using WhenFresh.Utilities.Core.Xml.XPath;
+using WhenFresh.Utilities.Xml.XPath;
 
 public sealed class XmlSerializableCollectionFacts
 {

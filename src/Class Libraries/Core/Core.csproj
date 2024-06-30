@@ -3,7 +3,13 @@
     <TargetFramework>net80</TargetFramework>
     <Description>Utility core library used by dependent libraries.</Description>
   </PropertyGroup>
-
+<ItemGroup>
+  <EmbeddedResource Update="Properties\Resources.resx">
+    <Generator>ResXFileCodeGenerator</Generator>
+    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    <SubType>Designer</SubType>
+  </EmbeddedResource>
+</ItemGroup>
   <ItemGroup>
     <Content Include="Properties\CodeAnalysis.dictionary" />
 

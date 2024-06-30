@@ -1,11 +1,9 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Collections;
+﻿namespace WhenFresh.Utilities.Collections;
 
 using System;
 using System.Collections.Generic;
 using System.Xml;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.Collections;
-using WhenFresh.Utilities.Core.Data;
+using WhenFresh.Utilities.Data;
 
 public sealed class KeyStringDictionaryFacts
 {

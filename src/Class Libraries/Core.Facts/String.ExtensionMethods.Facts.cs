@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Facts;
+﻿namespace WhenFresh.Utilities;
 
 using System;
 using System.Collections.Generic;
@@ -8,8 +8,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Xml;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.IO;
+using WhenFresh.Utilities.IO;
 
 public sealed class StringExtensionMethodsFacts
 {

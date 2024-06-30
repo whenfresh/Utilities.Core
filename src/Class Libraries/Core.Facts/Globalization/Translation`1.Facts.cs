@@ -1,9 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Globalization;
+﻿namespace WhenFresh.Utilities.Globalization;
 
 using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
-using WhenFresh.Utilities.Core.Globalization;
 
 public sealed class TranslationOfTFacts
 {

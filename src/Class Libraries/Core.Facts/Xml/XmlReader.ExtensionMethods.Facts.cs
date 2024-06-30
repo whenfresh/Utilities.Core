@@ -1,9 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Xml;
+﻿namespace WhenFresh.Utilities.Xml;
 
 using System;
 using System.IO;
 using System.Xml;
-using WhenFresh.Utilities.Core.Xml;
 
 public sealed class XmlReaderExtensionMethodsFacts
 {

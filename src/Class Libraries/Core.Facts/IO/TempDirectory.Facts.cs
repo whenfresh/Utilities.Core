@@ -1,10 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.IO;
+﻿namespace WhenFresh.Utilities.IO;
 
 using System;
 using System.Globalization;
 using System.IO;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.IO;
 
 public sealed class TempDirectoryFacts
 {

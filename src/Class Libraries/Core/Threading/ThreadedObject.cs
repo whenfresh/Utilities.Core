@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Threading;
+﻿namespace WhenFresh.Utilities.Threading;
 
 using System.Threading;
 

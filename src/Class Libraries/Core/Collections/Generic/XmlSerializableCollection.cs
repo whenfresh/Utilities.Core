@@ -1,11 +1,11 @@
-﻿namespace WhenFresh.Utilities.Core.Collections.Generic;
+﻿namespace WhenFresh.Utilities.Collections.Generic;
 
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using WhenFresh.Utilities.Core.Xml;
+using WhenFresh.Utilities.Xml;
 #if !NET20
 #endif
 

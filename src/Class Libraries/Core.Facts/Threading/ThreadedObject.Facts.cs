@@ -1,8 +1,6 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Threading;
+﻿namespace WhenFresh.Utilities.Threading;
 
 using System.Threading;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.Threading;
 
 public sealed class ThreadedObjectFacts
 {

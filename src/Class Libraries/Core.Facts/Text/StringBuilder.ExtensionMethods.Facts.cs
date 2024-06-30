@@ -1,8 +1,7 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Text;
+﻿namespace WhenFresh.Utilities.Text;
 
 using System;
 using System.Text;
-using WhenFresh.Utilities.Core.Text;
 
 public sealed class StringBuilderExtensionMethodsFacts
 {

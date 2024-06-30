@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Collections.Generic;
+﻿namespace WhenFresh.Utilities.Collections.Generic;
 
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;

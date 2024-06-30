@@ -1,10 +1,10 @@
-﻿namespace WhenFresh.Utilities.Core.Net;
+﻿namespace WhenFresh.Utilities.Net;
 
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using WhenFresh.Utilities.Core.Properties;
-using WhenFresh.Utilities.Core.Security.Cryptography;
+using WhenFresh.Utilities.Properties;
+using WhenFresh.Utilities.Security.Cryptography;
 #if NET20 || NET35
     using System.Security.Permissions;
 #endif

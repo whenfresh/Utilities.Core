@@ -1,7 +1,7 @@
-﻿namespace WhenFresh.Utilities.Core;
+﻿namespace WhenFresh.Utilities;
 
 using System.Linq;
-using WhenFresh.Utilities.Core.Properties;
+using WhenFresh.Utilities.Properties;
 #if !NET20
 #endif
 

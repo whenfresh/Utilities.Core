@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core;
+﻿namespace WhenFresh.Utilities;
 
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using WhenFresh.Utilities.Core.Collections;
+using WhenFresh.Utilities.Collections;
 #if !NET20
 #endif
 #if NET20 || NET35

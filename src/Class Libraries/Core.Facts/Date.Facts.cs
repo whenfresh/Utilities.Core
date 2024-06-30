@@ -1,10 +1,9 @@
-﻿namespace WhenFresh.Utilities.Core.Facts;
+﻿namespace WhenFresh.Utilities;
 
 using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 using System.Xml;
-using WhenFresh.Utilities.Core;
 
 public sealed class DateFacts
 {

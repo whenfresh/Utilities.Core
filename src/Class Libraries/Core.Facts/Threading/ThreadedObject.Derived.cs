@@ -1,6 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Threading;
-
-using WhenFresh.Utilities.Core.Threading;
+﻿namespace WhenFresh.Utilities.Threading;
 
 public sealed class DerivedThreadedObject : ThreadedObject
 {

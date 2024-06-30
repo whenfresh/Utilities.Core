@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Collections;
+﻿namespace WhenFresh.Utilities.Collections;
 
 using System;
 using System.Collections;
@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using Moq;
-using WhenFresh.Utilities.Core.Collections;
 
 public sealed class IEnumerableExtensionMethodsFacts
 {

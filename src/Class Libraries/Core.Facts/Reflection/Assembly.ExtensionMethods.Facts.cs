@@ -1,10 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Reflection;
+﻿namespace WhenFresh.Utilities.Reflection;
 
 using System;
 using System.IO;
 using System.Reflection;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.Reflection;
 
 public sealed class AssemblyExtensionMethodsFacts
 {

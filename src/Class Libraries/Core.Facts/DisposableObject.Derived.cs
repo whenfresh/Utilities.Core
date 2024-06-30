@@ -1,6 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Facts;
-
-using WhenFresh.Utilities.Core;
+﻿namespace WhenFresh.Utilities;
 
 public sealed class DerivedDisposableObject : DisposableObject
 {

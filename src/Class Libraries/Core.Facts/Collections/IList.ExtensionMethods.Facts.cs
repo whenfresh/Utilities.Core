@@ -1,9 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Collections;
+﻿namespace WhenFresh.Utilities.Collections;
 
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using WhenFresh.Utilities.Core.Collections;
 
 public sealed class IListExtensionMethodsFacts
 {

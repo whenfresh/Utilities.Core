@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Dynamic;
+﻿namespace WhenFresh.Utilities.Dynamic;
 
 using System.Dynamic;
 

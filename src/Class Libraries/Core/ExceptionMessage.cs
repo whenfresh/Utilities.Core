@@ -1,7 +1,7 @@
-﻿namespace WhenFresh.Utilities.Core;
+﻿namespace WhenFresh.Utilities;
 
 using System.Globalization;
-using WhenFresh.Utilities.Core.Properties;
+using WhenFresh.Utilities.Properties;
 
 public static class ExceptionMessage
 {

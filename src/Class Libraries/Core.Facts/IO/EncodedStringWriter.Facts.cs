@@ -1,10 +1,9 @@
-namespace WhenFresh.Utilities.Core.Facts.IO;
+namespace WhenFresh.Utilities.IO;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Text;
-using WhenFresh.Utilities.Core.IO;
 
 public sealed class EncodedStringWriterFacts
 {

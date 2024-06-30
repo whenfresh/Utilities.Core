@@ -1,9 +1,8 @@
-namespace WhenFresh.Utilities.Core.Facts;
+namespace WhenFresh.Utilities;
 
 using System;
 using System.Globalization;
 using System.Xml;
-using WhenFresh.Utilities.Core;
 
 public sealed class ObjectExtensionMethodsFacts
 {

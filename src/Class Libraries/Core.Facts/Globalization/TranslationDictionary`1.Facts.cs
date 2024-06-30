@@ -1,9 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Globalization;
+﻿namespace WhenFresh.Utilities.Globalization;
 
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
-using WhenFresh.Utilities.Core.Globalization;
 
 public sealed class TranslationDictionaryOfTFacts
 {

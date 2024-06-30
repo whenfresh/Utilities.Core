@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Net;
+﻿namespace WhenFresh.Utilities.Net;
 
 using System.Runtime.Serialization;
 using System.Xml;

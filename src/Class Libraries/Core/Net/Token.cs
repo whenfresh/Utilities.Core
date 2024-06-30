@@ -1,9 +1,9 @@
-﻿namespace WhenFresh.Utilities.Core.Net;
+﻿namespace WhenFresh.Utilities.Net;
 
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
-using WhenFresh.Utilities.Core.Properties;
+using WhenFresh.Utilities.Properties;
 #if !NET20
 #endif
 #if NET20 || NET35

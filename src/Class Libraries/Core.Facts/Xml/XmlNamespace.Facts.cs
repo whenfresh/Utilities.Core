@@ -1,8 +1,6 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Xml;
+﻿namespace WhenFresh.Utilities.Xml;
 
 using System;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.Xml;
 
 public sealed class XmlNamespaceFacts
 {

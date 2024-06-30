@@ -1,9 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Text;
+﻿namespace WhenFresh.Utilities.Text;
 
 using System;
 using System.Net.Mime;
 using System.Text;
-using WhenFresh.Utilities.Core.Text;
 
 public sealed class EncodingExtensionMethodsFacts
 {

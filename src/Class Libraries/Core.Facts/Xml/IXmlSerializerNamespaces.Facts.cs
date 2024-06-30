@@ -1,8 +1,7 @@
-namespace WhenFresh.Utilities.Core.Facts.Xml;
+namespace WhenFresh.Utilities.Xml;
 
 using System.Xml.Serialization;
 using Moq;
-using WhenFresh.Utilities.Core.Xml;
 
 public sealed class IXmlSerializerNamespacesFacts
 {

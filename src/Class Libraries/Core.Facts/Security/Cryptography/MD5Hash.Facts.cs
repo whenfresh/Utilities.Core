@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Security.Cryptography;
+﻿namespace WhenFresh.Utilities.Security.Cryptography;
 
 using System;
 using System.ComponentModel;
@@ -6,8 +6,6 @@ using System.IO;
 using System.Net.Sockets;
 using System.Runtime.Serialization;
 using System.Text;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.Security.Cryptography;
 
 public sealed class MD5HashFacts
 {

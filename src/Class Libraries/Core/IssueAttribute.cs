@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core;
+﻿namespace WhenFresh.Utilities;
 
 [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
 public sealed class IssueAttribute : Attribute

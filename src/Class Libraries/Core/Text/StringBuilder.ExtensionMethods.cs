@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Text;
+﻿namespace WhenFresh.Utilities.Text;
 
 using System.Text;
 

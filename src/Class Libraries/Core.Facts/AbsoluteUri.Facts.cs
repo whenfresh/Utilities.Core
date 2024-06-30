@@ -1,9 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts;
+﻿namespace WhenFresh.Utilities;
 
 using System;
 using System.IO;
 using System.Runtime.Serialization;
-using WhenFresh.Utilities.Core;
 
 public sealed class AbsoluteUriFacts
 {

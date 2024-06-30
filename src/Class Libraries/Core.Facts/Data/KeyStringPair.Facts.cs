@@ -1,9 +1,7 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Data;
+﻿namespace WhenFresh.Utilities.Data;
 
 using System;
 using System.Runtime.Serialization;
-using WhenFresh.Utilities.Core;
-using WhenFresh.Utilities.Core.Data;
 
 public sealed class KeyStringPairFacts
 {

@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Facts;
+﻿namespace WhenFresh.Utilities;
 
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,6 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using WhenFresh.Utilities.Core;
 
 public sealed class MutableStringFacts
 {

@@ -1,8 +1,7 @@
-﻿namespace WhenFresh.Utilities.Core.Facts;
+﻿namespace WhenFresh.Utilities;
 
 using System;
 using Moq;
-using WhenFresh.Utilities.Core;
 
 public sealed class ITimeZoneEuropeFacts
 {

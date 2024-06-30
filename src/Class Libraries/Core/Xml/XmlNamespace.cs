@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Xml;
+﻿namespace WhenFresh.Utilities.Xml;
 
 using System.Globalization;
 

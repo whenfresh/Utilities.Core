@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Xml.XPath;
+﻿namespace WhenFresh.Utilities.Xml.XPath;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;

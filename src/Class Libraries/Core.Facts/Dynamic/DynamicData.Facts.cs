@@ -1,8 +1,7 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Dynamic;
+﻿namespace WhenFresh.Utilities.Dynamic;
 
 using System;
 using System.Dynamic;
-using WhenFresh.Utilities.Core.Dynamic;
 
 public sealed class DynamicDataFacts
 {

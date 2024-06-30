@@ -1,9 +1,8 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Net;
+﻿namespace WhenFresh.Utilities.Net;
 
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using WhenFresh.Utilities.Core.Net;
 
 public sealed class QualityFacts
 {

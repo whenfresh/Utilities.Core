@@ -1,6 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Facts.Text;
-
-using WhenFresh.Utilities.Core.Text;
+﻿namespace WhenFresh.Utilities.Text;
 
 public sealed class HtmlFacts
 {

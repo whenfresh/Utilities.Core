@@ -1,4 +1,4 @@
-﻿namespace WhenFresh.Utilities.Core.Data;
+﻿namespace WhenFresh.Utilities.Data;
 
 using System.Collections;
 using System.Collections.ObjectModel;

@@ -1,9 +1,9 @@
-﻿namespace WhenFresh.Utilities.Core.Compression;
+﻿namespace WhenFresh.Utilities.Compression;
 
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Compression;
-using WhenFresh.Utilities.Core.IO;
+using WhenFresh.Utilities.IO;
 
 public static class GZip
 {

@@ -1,4 +1,4 @@
-namespace WhenFresh.Utilities.Core.Security.Cryptography;
+namespace WhenFresh.Utilities.Security.Cryptography;
 
 using System.ComponentModel;
 using System.Security.Cryptography;
